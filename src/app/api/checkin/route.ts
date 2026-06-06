@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient, createServiceClient } from "@/lib/supabase/server"
-import { anthropic, buildCheckinPrompt } from "@/lib/anthropic"
+import { generarReflexion } from "@/lib/gemini"
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Datos incompletos" }, { status: 400 })
   }
 
-  // Verificar suscripción
+  // Verificar suscripción con service role (bypasa RLS)
   const serviceClient = await createServiceClient()
   const { data: profile } = await serviceClient
     .from("profiles")
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
   const isPro = profile?.subscription_status === "active"
 
-  // Guardar check-in
+  // Guardar check-in siempre
   const { data: checkin, error: insertError } = await serviceClient
     .from("checkins")
     .insert({
@@ -44,17 +44,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error al guardar" }, { status: 500 })
   }
 
-  // Generar reflexión IA solo para Pro
+  // Generar reflexión con Gemini solo para Pro
   if (isPro) {
     try {
-      const prompt = buildCheckinPrompt(emocion, intensidad, respuestas ?? {}, journal ?? "")
-      const message = await anthropic.messages.create({
-        model: "claude-sonnet-4-6",
-        max_tokens: 300,
-        messages: [{ role: "user", content: prompt }],
-      })
-
-      const reflexion = message.content[0].type === "text" ? message.content[0].text : null
+      const reflexion = await generarReflexion(
+        emocion,
+        intensidad,
+        respuestas ?? {},
+        journal ?? ""
+      )
 
       if (reflexion) {
         await serviceClient
@@ -65,7 +63,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ reflexion, isPro: true })
       }
     } catch (err) {
-      console.error("Error generando reflexión IA:", err)
+      console.error("Error generando reflexión con Gemini:", err)
     }
   }
 
