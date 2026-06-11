@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 
-const GUMROAD_URL = "https://johansebas0.gumroad.com/l/kpwmex"
+const GUMROAD_URL = "https://pay.hotmart.com/G106279170B"
 
 export default function LandingPage() {
   return (
