@@ -8,7 +8,7 @@ import { CheckCircle, XCircle, User, Sparkles, ExternalLink, Star, Leaf } from "
 
 interface Profile { full_name: string; subscription_status: string }
 
-const GUMROAD_URL = "https://johansebas0.gumroad.com/l/kpwmex"
+const GUMROAD_URL = "https://pay.hotmart.com/G106279170B"
 
 export default function CuentaPage() {
   const searchParams = useSearchParams()
