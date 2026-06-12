@@ -11,7 +11,7 @@ export async function generarReflexion(
   journal: string
 ): Promise<string> {
   const genAI = getGemini()
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
 
   const respuestasFormateadas = Object.entries(respuestas)
     .map(([pregunta, respuesta]) => `• ${pregunta}: ${respuesta}`)
