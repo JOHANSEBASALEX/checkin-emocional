@@ -30,7 +30,7 @@ export function AIReflection({ reflexion, emocion }: Props) {
         </div>
         <div>
           <p className="font-bold text-sm" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
-            Sana y Florece IA
+            Tu reflexión de hoy
           </p>
           <p className="text-xs" style={{ color: "#9A7080" }}>✦ Reflexión personalizada para ti</p>
         </div>

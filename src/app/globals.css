@@ -48,54 +48,49 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* Paleta Sana y Florece */
-  --green-50: #f0faf4;
-  --green-100: #d6f5e3;
-  --green-200: #a8e8c4;
-  --green-400: #5ebd8f;
-  --green-500: #3aA876;
-  --green-600: #2d8a60;
-  --gold-50: #fffbeb;
-  --gold-100: #fef3c7;
-  --gold-200: #fde68a;
-  --gold-400: #F0C040;
-  --gold-500: #D4AF37;
-  --gold-600: #B8960A;
+  --brand-50: #FAF8F5;
+  --brand-100: #F5EDE4;
+  --brand-200: #EDE0D4;
+  --brand-400: #D4A898;
+  --brand-500: #B07060;
+  --brand-600: #9A5848;
+  --gold-400: #C9A84C;
+  --gold-500: #B8960A;
 }
 
 :root {
-  /* Verde suave como primario */
-  --background: #f9fdfb;
-  --foreground: oklch(0.18 0.02 150);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 150);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 150);
-  --primary: oklch(0.58 0.12 155);       /* verde medio */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.02 90);      /* crema dorado claro */
-  --secondary-foreground: oklch(0.25 0.05 80);
-  --muted: oklch(0.96 0.01 155);
-  --muted-foreground: oklch(0.52 0.04 155);
-  --accent: oklch(0.88 0.09 85);         /* dorado suave */
-  --accent-foreground: oklch(0.25 0.06 85);
+  --background: #FAF8F5;
+  --foreground: #3D3030;
+  --card: #FFFFFF;
+  --card-foreground: #3D3030;
+  --popover: #FFFFFF;
+  --popover-foreground: #3D3030;
+  --primary: #B07060;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5EDE4;
+  --secondary-foreground: #3D3030;
+  --muted: #F5EDE4;
+  --muted-foreground: #9A7080;
+  --accent: #EDE0D4;
+  --accent-foreground: #3D3030;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.90 0.03 155);
-  --input: oklch(0.93 0.02 155);
-  --ring: oklch(0.58 0.12 155);
-  --chart-1: oklch(0.58 0.12 155);
-  --chart-2: oklch(0.75 0.12 85);
-  --chart-3: oklch(0.68 0.09 180);
-  --chart-4: oklch(0.72 0.08 130);
-  --chart-5: oklch(0.65 0.10 100);
+  --border: #E8D4C4;
+  --input: #F5EDE4;
+  --ring: #B07060;
+  --chart-1: #B07060;
+  --chart-2: #D4A898;
+  --chart-3: #C9A84C;
+  --chart-4: #9A7080;
+  --chart-5: #EDE0D4;
   --radius: 0.75rem;
-  --sidebar: oklch(0.99 0.005 155);
-  --sidebar-foreground: oklch(0.18 0.02 150);
-  --sidebar-primary: oklch(0.58 0.12 155);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.94 0.04 155);
-  --sidebar-accent-foreground: oklch(0.25 0.05 155);
-  --sidebar-border: oklch(0.90 0.03 155);
-  --sidebar-ring: oklch(0.58 0.12 155);
+  --sidebar: #FAF8F5;
+  --sidebar-foreground: #3D3030;
+  --sidebar-primary: #B07060;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F5EDE4;
+  --sidebar-accent-foreground: #3D3030;
+  --sidebar-border: #E8D4C4;
+  --sidebar-ring: #B07060;
 }
 
 @layer base {
@@ -111,21 +106,19 @@
 }
 
 /* Utilidades paleta Sana y Florece */
-.bg-brand-green { background-color: #3aA876; }
-.bg-brand-green-light { background-color: #f0faf4; }
-.bg-brand-gold { background-color: #D4AF37; }
-.bg-brand-gold-light { background-color: #fffbeb; }
-.text-brand-green { color: #3aA876; }
-.text-brand-gold { color: #D4AF37; }
-.border-brand-green { border-color: #3aA876; }
-.border-brand-gold { border-color: #D4AF37; }
+.bg-brand { background-color: #B07060; }
+.bg-brand-light { background-color: #FAF8F5; }
+.bg-brand-soft { background-color: #F5EDE4; }
+.text-brand { color: #B07060; }
+.text-brand-dark { color: #3D3030; }
+.border-brand { border-color: #D4A898; }
 
 .gradient-hero {
-  background: linear-gradient(135deg, #f0faf4 0%, #ffffff 50%, #fffbeb 100%);
+  background: linear-gradient(135deg, #FAF8F5 0%, #F5EDE4 50%, #EDE0D4 100%);
 }
 .gradient-card {
-  background: linear-gradient(135deg, #3aA876 0%, #2d6e4e 100%);
+  background: linear-gradient(135deg, #B07060 0%, #9A5848 100%);
 }
-.gradient-gold {
-  background: linear-gradient(135deg, #D4AF37 0%, #F0C040 100%);
+.gradient-warm {
+  background: linear-gradient(135deg, #EDE0D4 0%, #F5EDE4 100%);
 }
