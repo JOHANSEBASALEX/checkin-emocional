@@ -1,8 +1,8 @@
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import Groq from "groq-sdk"
 
-function getGemini() {
-  return new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-}
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+})
 
 export async function generarReflexion(
   emocion: string,
@@ -10,9 +10,6 @@ export async function generarReflexion(
   respuestas: Record<string, string>,
   journal: string
 ): Promise<string> {
-  const genAI = getGemini()
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
-
   const respuestasFormateadas = Object.entries(respuestas)
     .map(([pregunta, respuesta]) => `• ${pregunta}: ${respuesta}`)
     .join("\n")
@@ -27,6 +24,10 @@ ${journal ? `- Nota personal: ${journal}` : ""}
 
 Ofrece una reflexión de 3-4 oraciones: valida la emoción sin juzgar, identifica un patrón o insight significativo, y termina con una invitación amable a una acción pequeña y concreta. Habla en segunda persona, en español, con tono cálido y esperanzador. Solo párrafo fluido, sin listas ni subtítulos.`
 
-  const result = await model.generateContent(prompt)
-  return result.response.text()
+  const response = await groq.chat.completions.create({
+    messages: [{ role: "user", content: prompt }],
+    model: "llama-3.3-70b-versatile",
+  })
+
+  return response.choices[0]?.message?.content || ""
 }
