@@ -23,7 +23,11 @@ export default function LoginPage() {
     setError("")
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) { setError("Correo o contraseña incorrectos"); setLoading(false); return }
+    if (error) {
+      setError("Correo o contraseña incorrectos")
+      setLoading(false)
+      return
+    }
     router.push("/dashboard")
     router.refresh()
   }
@@ -31,16 +35,15 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex" style={{ background: "#FAF8F5" }}>
 
-      {/* Panel izquierdo */}
-      <div className="hidden lg:flex lg:w-1/2 flex-col justify-center items-center p-16 relative" 
+      <div className="hidden lg:flex lg:w-1/2 flex-col justify-center items-center p-16 relative"
         style={{ background: "linear-gradient(145deg,#1B2A4A 0%,#2A3F6B 100%)" }}>
         <div className="text-center max-w-sm">
-          <Image 
-            src="/logo.png" 
-            alt="Sana y Florece" 
-            width={200} 
-            height={200} 
-            style={{ borderRadius: "50%", objectFit: "cover", margin: "0 auto 2rem", border: "4px solid #C9A84C", boxShadow: "0 8px 40px rgba(201,168,76,0.3)" }} 
+          <Image
+            src="/logo.png"
+            alt="Sana y Florece"
+            width={200}
+            height={200}
+            style={{ borderRadius: "50%", objectFit: "cover", margin: "0 auto 2rem", border: "4px solid #C9A84C", boxShadow: "0 8px 40px rgba(201,168,76,0.3)" }}
           />
           <h2 className="text-3xl font-bold mb-4" style={{ color: "#C9A84C", fontFamily: "'Playfair Display', serif" }}>
             Bienvenida de vuelta
@@ -55,17 +58,15 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Panel derecho — formulario */}
       <div className="flex-1 flex items-center justify-center p-8" style={{ background: "#FAF8F5" }}>
         <div className="w-full max-w-md">
-          {/* Logo pequeño */}
           <div className="flex items-center gap-2.5 mb-10">
-            <Image 
-              src="/logo.png" 
-              alt="Sana y Florece" 
-              width={40} 
-              height={40} 
-              style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid #C9A84C" }} 
+            <Image
+              src="/logo.png"
+              alt="Sana y Florece"
+              width={40}
+              height={40}
+              style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid #C9A84C" }}
             />
             <div>
               <span className="font-bold block leading-none" style={{ color: "#1B2A4A", fontFamily: "'Playfair Display', serif" }}>Sana y Florece</span>
@@ -106,4 +107,30 @@ export default function LoginPage() {
 
             {error && (
               <div className="rounded-xl px-4 py-3 text-sm" style={{ background: "#fef2f2", color: "#991b1b" }}>
-                {e
+                {error}
+              </div>
+            )}
+
+            <Button
+              type="submit"
+              className="w-full h-11 text-white font-semibold text-base gap-2 rounded-xl"
+              style={{ background: loading ? "#9A7080" : "linear-gradient(135deg,#1B2A4A,#2A3F6B)" }}
+              disabled={loading}
+            >
+              {loading ? "Ingresando..." : <span className="flex items-center gap-2">Ingresar <ArrowRight className="w-4 h-4" /></span>}
+            </Button>
+          </form>
+
+          <div className="mt-6 pt-6 text-center" style={{ borderTop: "1px solid #E8D4C4" }}>
+            <p className="text-sm" style={{ color: "#9A7080" }}>
+              ¿No tienes cuenta?{" "}
+              <Link href="/registro" className="font-semibold hover:underline" style={{ color: "#C9A84C" }}>
+                Regístrate gratis
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
