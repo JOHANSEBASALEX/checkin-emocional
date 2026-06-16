@@ -171,7 +171,7 @@ export default function CheckinPage() {
 
                 {/* Reflexión IA o upsell */}
                 {resultado?.reflexion ? (
-                  <AIReflection reflexion={resultado.reflexion} emocion={emocion} />
+                  <AIReflection reflexion={resultado.reflexion} emocion={emocion}categoria={categoria} />
                 ) : (
                   <div className="rounded-2xl p-6 border-2 border-dashed text-center" style={{ borderColor: "#d6f5e3", background: "#f9fdfb" }}>
                     <Sparkles className="w-8 h-8 mx-auto mb-3" style={{ color: "#D4AF37" }} />
