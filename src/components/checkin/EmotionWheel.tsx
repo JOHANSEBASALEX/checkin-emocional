@@ -6,14 +6,14 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 const IMAGENES_EMOCION: Record<string, string> = {
-  "Alegría":   "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&h=120&fit=crop&crop=face",
-  "Tristeza":  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=face",
-  "Ansiedad":  "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=120&h=120&fit=crop&crop=face",
-  "Enojo":     "https://images.unsplash.com/photo-1502767089025-6572583495f9?w=120&h=120&fit=crop&crop=face",
-  "Miedo":     "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=120&h=120&fit=crop&crop=face",
-  "Calma":     "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=120&h=120&fit=crop&crop=face",
-  "Amor":      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=120&h=120&fit=crop&crop=face",
-  "Confusión": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=face",
+  "Alegria":   "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=120&h=120&fit=crop&crop=face",
+  "Tristeza":  "https://images.unsplash.com/photo-1542992015-4a0b729b1385?w=120&h=120&fit=crop&crop=face",
+  "Ansiedad":  "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=120&h=120&fit=crop&crop=face",
+  "Enojo":     "https://images.unsplash.com/photo-1595956553066-fe24a8c33395?w=120&h=120&fit=crop&crop=face",
+  "Miedo":     "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=face",
+  "Calma":     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=face",
+  "Amor":      "https://images.unsplash.com/photo-1524638431109-93d95c968f03?w=120&h=120&fit=crop&crop=face",
+  "Confusion": "https://images.unsplash.com/photo-1546961342-ea5f60b193b7?w=120&h=120&fit=crop&crop=face",
 }
 
 interface Props {
@@ -28,7 +28,7 @@ export function EmotionWheel({ onSelect }: Props) {
     <div className="space-y-7">
       <div>
         <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#B07060" }}>
-          1. ¿En qué categoría está tu emoción?
+          1. En que categoria esta tu emocion?
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {EMOCIONES.map(({ categoria }) => (
@@ -50,7 +50,7 @@ export function EmotionWheel({ onSelect }: Props) {
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 flex-shrink-0"
                 style={{ borderColor: categoriaActiva === categoria ? "#B07060" : "#E8D4C4" }}>
                 <Image
-                  src={IMAGENES_EMOCION[categoria]}
+                  src={IMAGENES_EMOCION[categoria] ?? IMAGENES_EMOCION["Calma"]}
                   alt={categoria}
                   width={56}
                   height={56}
@@ -67,7 +67,7 @@ export function EmotionWheel({ onSelect }: Props) {
       {categoriaObj && (
         <div>
           <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#B07060" }}>
-            2. ¿Cuál describe mejor lo que sientes?
+            2. Cual describe mejor lo que sientes?
           </p>
           <div className="flex flex-wrap gap-2.5">
             {categoriaObj.emociones.map(emocion => (
