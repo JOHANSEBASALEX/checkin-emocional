@@ -1,4 +1,5 @@
-﻿"use client"
+﻿$content = @'
+"use client"
 
 import { useState } from "react"
 import { EMOCIONES } from "@/lib/constants"
@@ -6,14 +7,14 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 const IMAGENES_EMOCION: Record<string, string> = {
-  "Alegria":   "https://api.dicebear.com/7.x/avataaars/svg?seed=alegria&backgroundColor=ffd5dc&topType=LongHairStraight&facialHairType=Blank&mouthType=Smile&eyeType=Happy&skinColor=F8D5C2",
-  "Tristeza":  "https://api.dicebear.com/7.x/avataaars/svg?seed=tristeza&backgroundColor=dbeafe&topType=LongHairWavy&facialHairType=Blank&mouthType=Sad&eyeType=Cry&skinColor=F8D5C2",
-  "Ansiedad":  "https://api.dicebear.com/7.x/avataaars/svg?seed=ansiedad&backgroundColor=ede9fe&topType=LongHairBun&facialHairType=Blank&mouthType=Concerned&eyeType=Wink&skinColor=D08B5B",
-  "Enojo":     "https://api.dicebear.com/7.x/avataaars/svg?seed=enojo&backgroundColor=fee2e2&topType=LongHairCurly&facialHairType=Blank&mouthType=Grimace&eyeType=EyeRoll&skinColor=F8D5C2",
-  "Miedo":     "https://api.dicebear.com/7.x/avataaars/svg?seed=miedo&backgroundColor=f3f4f6&topType=LongHairStraight2&facialHairType=Blank&mouthType=ScreamOpen&eyeType=Surprised&skinColor=FFDBB4",
-  "Calma":     "https://api.dicebear.com/7.x/avataaars/svg?seed=calma&backgroundColor=d1fae5&topType=LongHairDreads&facialHairType=Blank&mouthType=Twinkle&eyeType=Happy&skinColor=D08B5B",
-  "Amor":      "https://api.dicebear.com/7.x/avataaars/svg?seed=amor&backgroundColor=fce7f3&topType=LongHairMiaWallace&facialHairType=Blank&mouthType=Smile&eyeType=Hearts&skinColor=F8D5C2",
-  "Confusion": "https://api.dicebear.com/7.x/avataaars/svg?seed=confusion&backgroundColor=fef3c7&topType=LongHairBob&facialHairType=Blank&mouthType=Concerned&eyeType=Squint&skinColor=FFDBB4",
+  "Alegria":   "/emociones/ALEGRIA.jpeg",
+  "Tristeza":  "/emociones/TRISTEZA.jpeg",
+  "Ansiedad":  "/emociones/ANSIEDAD.jpeg",
+  "Enojo":     "/emociones/ENOJO.jpeg",
+  "Miedo":     "/emociones/MIEDO.jpeg",
+  "Calma":     "/emociones/CALMA.jpeg",
+  "Amor":      "/emociones/AMOR.jpeg",
+  "Confusion": "/emociones/CONFUSION.jpeg",
 }
 
 interface Props {
@@ -48,14 +49,13 @@ export function EmotionWheel({ onSelect }: Props) {
               }
             >
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 flex-shrink-0"
-                style={{ borderColor: categoriaActiva === categoria ? "#B07060" : "#E8D4C4", background: "#FAF8F5" }}>
+                style={{ borderColor: categoriaActiva === categoria ? "#B07060" : "#E8D4C4" }}>
                 <Image
-                  src={IMAGENES_EMOCION[categoria] ?? IMAGENES_EMOCION["Calma"]}
+                  src={IMAGENES_EMOCION[categoria] ?? "/emociones/CALMA.jpeg"}
                   alt={categoria}
                   width={56}
                   height={56}
                   className="w-full h-full object-cover"
-                  unoptimized
                 />
               </div>
               <span className="text-xs font-semibold">{categoria}</span>
@@ -96,3 +96,6 @@ export function EmotionWheel({ onSelect }: Props) {
     </div>
   )
 }
+'@
+[System.IO.File]::WriteAllText("C:\PROYECTOS\checkin-emocional\src\components\checkin\EmotionWheel.tsx", $content, [System.Text.Encoding]::UTF8)
+Write-Host "Guardado"
