@@ -6,14 +6,14 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 const IMAGENES_EMOCION: Record<string, string> = {
-  "Alegria":   "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=120&h=120&fit=crop&crop=face",
-  "Tristeza":  "https://images.unsplash.com/photo-1542992015-4a0b729b1385?w=120&h=120&fit=crop&crop=face",
-  "Ansiedad":  "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=120&h=120&fit=crop&crop=face",
-  "Enojo":     "https://images.unsplash.com/photo-1595956553066-fe24a8c33395?w=120&h=120&fit=crop&crop=face",
-  "Miedo":     "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=face",
-  "Calma":     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=face",
-  "Amor":      "https://images.unsplash.com/photo-1524638431109-93d95c968f03?w=120&h=120&fit=crop&crop=face",
-  "Confusion": "https://images.unsplash.com/photo-1546961342-ea5f60b193b7?w=120&h=120&fit=crop&crop=face",
+  "Alegria":   "https://api.dicebear.com/7.x/avataaars/svg?seed=alegria&backgroundColor=ffd5dc&topType=LongHairStraight&facialHairType=Blank&mouthType=Smile&eyeType=Happy&skinColor=F8D5C2",
+  "Tristeza":  "https://api.dicebear.com/7.x/avataaars/svg?seed=tristeza&backgroundColor=dbeafe&topType=LongHairWavy&facialHairType=Blank&mouthType=Sad&eyeType=Cry&skinColor=F8D5C2",
+  "Ansiedad":  "https://api.dicebear.com/7.x/avataaars/svg?seed=ansiedad&backgroundColor=ede9fe&topType=LongHairBun&facialHairType=Blank&mouthType=Concerned&eyeType=Wink&skinColor=D08B5B",
+  "Enojo":     "https://api.dicebear.com/7.x/avataaars/svg?seed=enojo&backgroundColor=fee2e2&topType=LongHairCurly&facialHairType=Blank&mouthType=Grimace&eyeType=EyeRoll&skinColor=F8D5C2",
+  "Miedo":     "https://api.dicebear.com/7.x/avataaars/svg?seed=miedo&backgroundColor=f3f4f6&topType=LongHairStraight2&facialHairType=Blank&mouthType=ScreamOpen&eyeType=Surprised&skinColor=FFDBB4",
+  "Calma":     "https://api.dicebear.com/7.x/avataaars/svg?seed=calma&backgroundColor=d1fae5&topType=LongHairDreads&facialHairType=Blank&mouthType=Twinkle&eyeType=Happy&skinColor=D08B5B",
+  "Amor":      "https://api.dicebear.com/7.x/avataaars/svg?seed=amor&backgroundColor=fce7f3&topType=LongHairMiaWallace&facialHairType=Blank&mouthType=Smile&eyeType=Hearts&skinColor=F8D5C2",
+  "Confusion": "https://api.dicebear.com/7.x/avataaars/svg?seed=confusion&backgroundColor=fef3c7&topType=LongHairBob&facialHairType=Blank&mouthType=Concerned&eyeType=Squint&skinColor=FFDBB4",
 }
 
 interface Props {
@@ -48,7 +48,7 @@ export function EmotionWheel({ onSelect }: Props) {
               }
             >
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 flex-shrink-0"
-                style={{ borderColor: categoriaActiva === categoria ? "#B07060" : "#E8D4C4" }}>
+                style={{ borderColor: categoriaActiva === categoria ? "#B07060" : "#E8D4C4", background: "#FAF8F5" }}>
                 <Image
                   src={IMAGENES_EMOCION[categoria] ?? IMAGENES_EMOCION["Calma"]}
                   alt={categoria}

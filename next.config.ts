@@ -1,7 +1,5 @@
-import type { NextConfig } from "next"
-
+﻿import type { NextConfig } from "next"
 const nextConfig: NextConfig = {
-  // Permite importar SVGs e imágenes desde dominios externos si se necesitan
   images: {
     remotePatterns: [
       {
@@ -12,9 +10,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "api.dicebear.com",
+      },
     ],
   },
-  // Headers de seguridad
   async headers() {
     return [
       {
@@ -28,5 +29,4 @@ const nextConfig: NextConfig = {
     ]
   },
 }
-
 export default nextConfig
