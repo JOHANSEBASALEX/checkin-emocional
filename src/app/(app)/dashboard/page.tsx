@@ -26,7 +26,7 @@ export default async function DashboardPage() {
     .eq("id", user.id)
     .single()
 
-  const nombre = profile?.full_name?.split(" ")[0] ?? "tú"
+  const nombre = profile?.full_name?.split(" ")[0] ?? "tÃº"
   const isPro = profile?.subscription_status === "active"
   const total = checkins?.length ?? 0
   const conReflexion = checkins?.filter(c => c.reflexion_ia).length ?? 0
@@ -57,9 +57,9 @@ export default async function DashboardPage() {
       <div className="flex items-start justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
-            Hola, {nombre} 🌸
+            Hola, {nombre} ðŸŒ¸
           </h1>
-          <p className="text-sm" style={{ color: "#9A7080" }}>Aquí está tu panorama emocional</p>
+          <p className="text-sm" style={{ color: "#9A7080" }}>AquÃ­ estÃ¡ tu panorama emocional</p>
         </div>
         <Link href="/checkin">
           <Button className="text-white gap-2 rounded-xl h-10" style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
@@ -80,16 +80,16 @@ export default async function DashboardPage() {
             color: "#B07060",
           },
           {
-            valor: promedioIntensidad ?? "—",
+            valor: promedioIntensidad ?? "â€”",
             label: "Intensidad media (7d)",
             icon: <TrendingUp className="w-4 h-4" style={{ color: "#C9A84C" }} />,
             bg: "#FAF8F5",
             color: "#C9A84C",
           },
           {
-            valor: categoriaTop?.emoji ?? "—",
+            valor: categoriaTop?.categoria ?? "-",
             label: emocionTop ?? "Sin datos",
-            sublabel: "emoción frecuente",
+            sublabel: "emociÃ³n frecuente",
             icon: null,
             bg: "#F5EDE4",
             color: "#9A7080",
@@ -107,13 +107,13 @@ export default async function DashboardPage() {
         ))}
       </div>
 
-      {/* Gráfica semanal */}
+      {/* GrÃ¡fica semanal */}
       {chartData.length > 0 && (
         <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
               <h2 className="font-bold" style={{ color: "#3D3030" }}>Intensidad emocional</h2>
-              <p className="text-xs" style={{ color: "#9A7080" }}>Últimos 7 días</p>
+              <p className="text-xs" style={{ color: "#9A7080" }}>Ãšltimos 7 dÃ­as</p>
             </div>
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#B07060" }} />
           </div>
@@ -131,7 +131,7 @@ export default async function DashboardPage() {
             <p className="text-sm" style={{ color: "#F5EDE4" }}>Descubre insights personalizados por $4.97/mes</p>
           </div>
           <Link href="/cuenta" className="flex-shrink-0">
-            <Button className="ml-4 font-bold text-sm" style={{ background: "#EDE0D4", color: "#B07060" }}>Ver Pro →</Button>
+            <Button className="ml-4 font-bold text-sm" style={{ background: "#EDE0D4", color: "#B07060" }}>Ver Pro â†’</Button>
           </Link>
         </div>
       )}
@@ -141,12 +141,12 @@ export default async function DashboardPage() {
 
       {(!checkins || checkins.length === 0) ? (
         <div className="text-center py-16 rounded-3xl border-2 border-dashed" style={{ background: "#FAF8F5", borderColor: "#D4A898" }}>
-          <p className="text-4xl mb-3">🌸</p>
-          <p className="font-bold mb-1" style={{ color: "#3D3030" }}>Aún no tienes check-ins</p>
+          <p className="text-4xl mb-3">ðŸŒ¸</p>
+          <p className="font-bold mb-1" style={{ color: "#3D3030" }}>AÃºn no tienes check-ins</p>
           <p className="text-sm mb-5" style={{ color: "#9A7080" }}>Haz tu primer registro y empieza a conocerte mejor</p>
           <Link href="/checkin">
             <Button className="text-white rounded-xl" style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
-              Hacer mi primer check-in 🌸
+              Hacer mi primer check-in ðŸŒ¸
             </Button>
           </Link>
         </div>
