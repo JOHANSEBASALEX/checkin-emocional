@@ -4,15 +4,28 @@ import { useState } from "react"
 import { PREGUNTAS_POR_EMOCION, PREGUNTAS_DEFAULT } from "@/lib/constants"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Leaf } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import Image from "next/image"
+
+const IMAGENES_EMOCION: Record<string, string> = {
+  "Alegria":   "/emociones/ALEGRIA.jpeg",
+  "Tristeza":  "/emociones/TRISTEZA.jpeg",
+  "Ansiedad":  "/emociones/ANSIEDAD.jpeg",
+  "Enojo":     "/emociones/ENOJO.jpeg",
+  "Miedo":     "/emociones/MIEDO.jpeg",
+  "Calma":     "/emociones/CALMA.jpeg",
+  "Amor":      "/emociones/AMOR.jpeg",
+  "Confusion": "/emociones/CONFUSION.jpeg",
+}
 
 interface Props {
   emocion: string
   intensidad: number
+  categoria?: string
   onComplete: (respuestas: Record<string, string>, journal: string) => void
 }
 
-export function GuidedQuestions({ emocion, intensidad, onComplete }: Props) {
+export function GuidedQuestions({ emocion, intensidad, categoria, onComplete }: Props) {
   const preguntas = PREGUNTAS_POR_EMOCION[emocion] ?? PREGUNTAS_DEFAULT
   const [paso, setPaso] = useState(0)
   const [respuestas, setRespuestas] = useState<Record<string, string>>({})
@@ -21,6 +34,7 @@ export function GuidedQuestions({ emocion, intensidad, onComplete }: Props) {
 
   const esFaseJournal = paso === preguntas.length
   const progreso = Math.round((paso / (preguntas.length + 1)) * 100)
+  const imagenUrl = IMAGENES_EMOCION[categoria ?? ""] ?? "/emociones/CALMA.jpeg"
 
   function avanzar() {
     if (!esFaseJournal) {
@@ -35,7 +49,9 @@ export function GuidedQuestions({ emocion, intensidad, onComplete }: Props) {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "#F5EDE4" }}>
-        <Leaf className="w-4 h-4 flex-shrink-0" style={{ color: "#B07060" }} />
+        <div className="w-10 h-10 rounded-xl overflow-hidden border-2 flex-shrink-0" style={{ borderColor: "#D4A898" }}>
+          <Image src={imagenUrl} alt={emocion} width={40} height={40} className="w-full h-full object-cover" />
+        </div>
         <div>
           <span className="font-bold" style={{ color: "#3D3030" }}>{emocion}</span>
           <span className="text-xs ml-2" style={{ color: "#9A7080" }}>· Intensidad {intensidad}/10</span>
@@ -48,45 +64,32 @@ export function GuidedQuestions({ emocion, intensidad, onComplete }: Props) {
           <span>{progreso}%</span>
         </div>
         <div className="h-2 rounded-full overflow-hidden" style={{ background: "#F5EDE4" }}>
-          <div
-            className="h-full rounded-full transition-all duration-500"
-            style={{ width: `${progreso}%`, background: "linear-gradient(90deg,#B07060,#C9A84C)" }}
-          />
+          <div className="h-full rounded-full transition-all duration-500"
+            style={{ width: `${progreso}%`, background: "linear-gradient(90deg,#B07060,#C9A84C)" }} />
         </div>
       </div>
 
       {!esFaseJournal ? (
         <div className="space-y-3">
           <p className="font-semibold leading-snug" style={{ color: "#3D3030" }}>{preguntas[paso]}</p>
-          <Textarea
-            value={respuestaActual}
-            onChange={e => setRespuestaActual(e.target.value)}
+          <Textarea value={respuestaActual} onChange={e => setRespuestaActual(e.target.value)}
             placeholder="Escribe lo que sientas, no hay respuestas incorrectas..."
             className="min-h-28 resize-none rounded-xl border-2 text-gray-700"
-            style={{ borderColor: "#D4A898" }}
-            autoFocus
-          />
+            style={{ borderColor: "#D4A898" }} autoFocus />
         </div>
       ) : (
         <div className="space-y-3">
           <p className="font-semibold" style={{ color: "#3D3030" }}>Algo mas que quieras expresar? (opcional)</p>
-          <Textarea
-            value={journal}
-            onChange={e => setJournal(e.target.value)}
+          <Textarea value={journal} onChange={e => setJournal(e.target.value)}
             placeholder="Un pensamiento, una imagen, una sensacion, lo que sea..."
             className="min-h-28 resize-none rounded-xl border-2 text-gray-700"
-            style={{ borderColor: "#D4A898" }}
-            autoFocus
-          />
+            style={{ borderColor: "#D4A898" }} autoFocus />
         </div>
       )}
 
-      <Button
-        onClick={avanzar}
-        disabled={!esFaseJournal && !respuestaActual.trim()}
+      <Button onClick={avanzar} disabled={!esFaseJournal && !respuestaActual.trim()}
         className="w-full h-11 text-white font-semibold rounded-xl gap-2"
-        style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}
-      >
+        style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
         {esFaseJournal ? "Finalizar check-in" : "Siguiente pregunta"}
         <ArrowRight className="w-4 h-4" />
       </Button>

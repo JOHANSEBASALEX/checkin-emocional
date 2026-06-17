@@ -18,34 +18,34 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     .single()
 
   const isPro = profile?.subscription_status === "active"
-  const nombre = profile?.full_name?.split(" ")[0] ?? user.email?.split("@")[0] ?? "tú"
+  const nombre = profile?.full_name?.split(" ")[0] ?? user.email?.split("@")[0] ?? "tu"
 
   return (
-    <div className="min-h-screen flex" style={{ background: "linear-gradient(160deg,#FAF8F5 0%,#ffffff 60%,#F5EDE4 100%)" }}>
+    <div className="min-h-screen flex" style={{ background: "linear-gradient(160deg,#EDE0D4 0%,#FAF8F5 50%,#E8D4C4 100%)" }}>
 
       {/* Sidebar */}
-      <aside className="w-64 flex flex-col py-7 px-5 fixed h-full border-r" 
-        style={{ background: "rgba(255,255,255,0.95)", borderColor: "#E8D4C4", backdropFilter: "blur(8px)" }}>
+      <aside className="w-64 flex flex-col py-7 px-5 fixed h-full border-r"
+        style={{ background: "rgba(27,42,74,0.97)", borderColor: "#2A3F6F", backdropFilter: "blur(8px)" }}>
 
         {/* Logo */}
         <div className="flex items-center gap-2.5 mb-8 px-1">
-          <Image 
-            src="/logo.png" 
-            alt="Sana y Florece" 
-            width={36} 
-            height={36} 
-            style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid #D4A898" }} 
+          <Image
+            src="/logo.png"
+            alt="Sana y Florece"
+            width={36}
+            height={36}
+            style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid #C9A84C" }}
           />
           <div>
-            <span className="font-bold text-sm leading-none block" style={{ color: "#3D3030" }}>Sana y Florece</span>
-            <span className="text-xs" style={{ color: "#9A7080" }}>Check-in Emocional</span>
+            <span className="font-bold text-sm leading-none block" style={{ color: "#FAF8F5" }}>Sana y Florece</span>
+            <span className="text-xs" style={{ color: "#C9A84C" }}>Check-in Emocional</span>
           </div>
         </div>
 
         {/* Nav */}
         <nav className="flex flex-col gap-1 flex-1">
           <Link href="/checkin">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl font-semibold text-sm text-white mb-1" 
+            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl font-semibold text-sm text-white mb-1"
               style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
               <PlusCircle className="w-4 h-4" />
               Nuevo check-in
@@ -53,21 +53,21 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </Link>
           <Link href="/dashboard">
             <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm"
-              style={{ color: "#806860" }}>
+              style={{ color: "#D4A898" }}>
               <LayoutDashboard className="w-4 h-4" />
               Mi historial
             </div>
           </Link>
           <Link href="/cuenta">
             <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm"
-              style={{ color: "#806860" }}>
+              style={{ color: "#D4A898" }}>
               <User className="w-4 h-4" />
               Mi cuenta
             </div>
           </Link>
         </nav>
 
-        <Separator className="my-4" style={{ background: "#E8D4C4" }} />
+        <Separator className="my-4" style={{ background: "#2A3F6F" }} />
 
         {!isPro && (
           <div className="rounded-2xl p-4 mb-4" style={{ background: "linear-gradient(145deg,#B07060,#9A5848)" }}>
@@ -75,19 +75,19 @@ export default async function AppLayout({ children }: { children: React.ReactNod
               <Sparkles className="w-3.5 h-3.5 text-white" />
               <p className="font-semibold text-xs text-white">Activa reflexiones IA</p>
             </div>
-            <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guía personalizada por $4.97/mes</p>
+            <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guia personalizada por $4.97/mes</p>
             <Link href="/cuenta">
               <div className="rounded-xl py-1.5 text-center text-xs font-bold" style={{ background: "#EDE0D4", color: "#B07060" }}>
-                Ver Plan Pro ✨
+                Ver Plan Pro
               </div>
             </Link>
           </div>
         )}
 
         <div className="px-1 space-y-1">
-          <p className="text-xs px-2" style={{ color: "#9A7080" }}>
-            Hola, <strong style={{ color: "#3D3030" }}>{nombre}</strong>
-            {isPro && <span className="ml-1.5 font-semibold" style={{ color: "#C9A84C" }}>· Pro ✨</span>}
+          <p className="text-xs px-2" style={{ color: "#D4A898" }}>
+            Hola, <strong style={{ color: "#FAF8F5" }}>{nombre}</strong>
+            {isPro && <span className="ml-1.5 font-semibold" style={{ color: "#C9A84C" }}>· Pro</span>}
           </p>
           <LogoutButton />
         </div>
