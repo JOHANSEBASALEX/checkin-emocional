@@ -1,11 +1,11 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 import Image from "next/image"
 
 const GUMROAD_URL = "https://pay.hotmart.com/G106279170B"
 
 export default function LandingPage() {
   return (
-    <div style={{ fontFamily: "Nunito, sans-serif", background: "#FAF8F5", color: "#3D3030", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "Nunito, sans-serif", background: "#EDE0D4", color: "#3D3030", minHeight: "100vh" }}>
       <nav style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 1.5rem", background: "#1B2A4A", borderBottom: "1px solid #2A3F6F" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <Image src="/logo.png" alt="Sana y Florece" width={44} height={44} style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid #C9A84C" }} />
@@ -19,7 +19,7 @@ export default function LandingPage() {
           <Link href="/registro" style={{ fontSize: "0.85rem", background: "#B07060", color: "white", textDecoration: "none", padding: "0.4rem 1rem", borderRadius: "20px", fontWeight: 700 }}>Empezar gratis</Link>
         </div>
       </nav>
-      <div style={{ background: "linear-gradient(160deg,#FAF8F5 0%,#F5EDE4 100%)", padding: "3rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid #E8D4C4" }}>
+      <div style={{ background: "linear-gradient(160deg,#EDE0D4 0%,#E8D4C4 100%)", padding: "3rem 1.5rem 2.5rem", textAlign: "center", borderBottom: "1px solid #E8D4C4" }}>
         <Image src="/logo.png" alt="Sana y Florece" width={90} height={90} style={{ borderRadius: "50%", objectFit: "cover", margin: "0 auto 1.25rem", display: "block", border: "3px solid #C9A84C" }} />
         <div style={{ display: "inline-block", background: "#F5EDE4", color: "#B07060", fontSize: "11px", letterSpacing: "1.5px", textTransform: "uppercase", padding: "5px 14px", borderRadius: "20px", marginBottom: "1rem", border: "1px solid #D4A898" }}>Sana y Florece</div>
         <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: "2.2rem", lineHeight: "1.2", color: "#3D3030", margin: "0 0 0.75rem" }}>
@@ -49,7 +49,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div style={{ padding: "2.5rem 1.5rem", textAlign: "center", background: "linear-gradient(160deg,#F5EDE4,#FAF8F5)", borderTop: "1px solid #E8D4C4" }}>
+      <div style={{ padding: "2.5rem 1.5rem", textAlign: "center", background: "linear-gradient(160deg,#E8D4C4,#EDE0D4)", borderTop: "1px solid #E8D4C4" }}>
         <h2 style={{ fontFamily: "Playfair Display, serif", fontSize: "1.5rem", color: "#3D3030", marginBottom: "0.5rem" }}>Lista para empezar?</h2>
         <p style={{ fontSize: "0.9rem", color: "#9A7080", marginBottom: "1.5rem" }}>Unete a mujeres que ya cuidan su mundo interior cada dia</p>
         <Link href="/registro" style={{ display: "inline-block", background: "#1B2A4A", color: "white", fontSize: "1rem", fontWeight: 700, padding: "0.9rem 2.5rem", borderRadius: "50px", textDecoration: "none" }}>Comenzar gratis</Link>
