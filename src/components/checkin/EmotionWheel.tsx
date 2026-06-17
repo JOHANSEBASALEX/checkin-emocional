@@ -1,5 +1,4 @@
-﻿$content = @'
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { EMOCIONES } from "@/lib/constants"
@@ -96,6 +95,3 @@ export function EmotionWheel({ onSelect }: Props) {
     </div>
   )
 }
-'@
-[System.IO.File]::WriteAllText("C:\PROYECTOS\checkin-emocional\src\components\checkin\EmotionWheel.tsx", $content, [System.Text.Encoding]::UTF8)
-Write-Host "Guardado"
