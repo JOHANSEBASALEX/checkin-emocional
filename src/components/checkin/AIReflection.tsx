@@ -2,14 +2,14 @@
 import Image from "next/image"
 
 const IMAGENES_REFLEXION: Record<string, string> = {
-  "Alegria":   "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&crop=face",
-  "Tristeza":  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face",
-  "Ansiedad":  "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=200&h=200&fit=crop&crop=face",
-  "Enojo":     "https://images.unsplash.com/photo-1502767089025-6572583495f9?w=200&h=200&fit=crop&crop=face",
-  "Miedo":     "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=200&h=200&fit=crop&crop=face",
-  "Calma":     "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=200&h=200&fit=crop&crop=face",
-  "Amor":      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=face",
-  "Confusion": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face",
+  "Alegria":   "/emociones/ALEGRIA.jpeg",
+  "Tristeza":  "/emociones/TRISTEZA.jpeg",
+  "Ansiedad":  "/emociones/ANSIEDAD.jpeg",
+  "Enojo":     "/emociones/ENOJO.jpeg",
+  "Miedo":     "/emociones/MIEDO.jpeg",
+  "Calma":     "/emociones/CALMA.jpeg",
+  "Amor":      "/emociones/AMOR.jpeg",
+  "Confusion": "/emociones/CONFUSION.jpeg",
 }
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function AIReflection({ reflexion, emocion, categoria }: Props) {
-  const imagenUrl = IMAGENES_REFLEXION[categoria ?? ""] ?? IMAGENES_REFLEXION["Calma"]
+  const imagenUrl = IMAGENES_REFLEXION[categoria ?? ""] ?? "/emociones/CALMA.jpeg"
 
   return (
     <div className="rounded-3xl p-6 border-2" style={{
@@ -55,14 +55,13 @@ export function AIReflection({ reflexion, emocion, categoria }: Props) {
 
       <div className="flex gap-4 items-start mb-5">
         <div className="flex-shrink-0">
-          <div className="w-20 h-20 rounded-2xl overflow-hidden border-2" style={{ borderColor: "#D4A898" }}>
+          <div className="w-24 h-24 rounded-2xl overflow-hidden border-2" style={{ borderColor: "#D4A898" }}>
             <Image
               src={imagenUrl}
               alt={emocion}
-              width={80}
-              height={80}
+              width={96}
+              height={96}
               className="w-full h-full object-cover"
-              unoptimized
             />
           </div>
           <p className="text-center text-xs mt-1.5 font-medium" style={{ color: "#B07060" }}>

@@ -34,51 +34,48 @@ export function GuidedQuestions({ emocion, intensidad, onComplete }: Props) {
 
   return (
     <div className="space-y-6">
-      {/* Header emoción */}
-      <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "#f0faf4" }}>
-        <Leaf className="w-4 h-4 flex-shrink-0" style={{ color: "#3aA876" }} />
+      <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "#F5EDE4" }}>
+        <Leaf className="w-4 h-4 flex-shrink-0" style={{ color: "#B07060" }} />
         <div>
-          <span className="font-bold" style={{ color: "#2d6e4e" }}>{emocion}</span>
-          <span className="text-xs text-gray-400 ml-2">· Intensidad {intensidad}/10</span>
+          <span className="font-bold" style={{ color: "#3D3030" }}>{emocion}</span>
+          <span className="text-xs ml-2" style={{ color: "#9A7080" }}>· Intensidad {intensidad}/10</span>
         </div>
       </div>
 
-      {/* Progreso */}
       <div>
-        <div className="flex justify-between text-xs text-gray-400 mb-2">
+        <div className="flex justify-between text-xs mb-2" style={{ color: "#9A7080" }}>
           <span>{esFaseJournal ? "Nota libre (opcional)" : `Pregunta ${paso + 1} de ${preguntas.length}`}</span>
           <span>{progreso}%</span>
         </div>
-        <div className="h-2 rounded-full overflow-hidden" style={{ background: "#f0faf4" }}>
+        <div className="h-2 rounded-full overflow-hidden" style={{ background: "#F5EDE4" }}>
           <div
             className="h-full rounded-full transition-all duration-500"
-            style={{ width: `${progreso}%`, background: "linear-gradient(90deg,#3aA876,#D4AF37)" }}
+            style={{ width: `${progreso}%`, background: "linear-gradient(90deg,#B07060,#C9A84C)" }}
           />
         </div>
       </div>
 
-      {/* Pregunta o journal */}
       {!esFaseJournal ? (
         <div className="space-y-3">
-          <p className="font-semibold text-gray-800 leading-snug">{preguntas[paso]}</p>
+          <p className="font-semibold leading-snug" style={{ color: "#3D3030" }}>{preguntas[paso]}</p>
           <Textarea
             value={respuestaActual}
             onChange={e => setRespuestaActual(e.target.value)}
             placeholder="Escribe lo que sientas, no hay respuestas incorrectas..."
-            className="min-h-28 resize-none rounded-xl border-2 focus:border-green-400 text-gray-700"
-            style={{ borderColor: "#d6f5e3" }}
+            className="min-h-28 resize-none rounded-xl border-2 text-gray-700"
+            style={{ borderColor: "#D4A898" }}
             autoFocus
           />
         </div>
       ) : (
         <div className="space-y-3">
-          <p className="font-semibold text-gray-800">¿Algo más que quieras expresar? (opcional)</p>
+          <p className="font-semibold" style={{ color: "#3D3030" }}>Algo mas que quieras expresar? (opcional)</p>
           <Textarea
             value={journal}
             onChange={e => setJournal(e.target.value)}
-            placeholder="Un pensamiento, una imagen, una sensación, lo que sea..."
-            className="min-h-28 resize-none rounded-xl border-2 focus:border-green-400 text-gray-700"
-            style={{ borderColor: "#d6f5e3" }}
+            placeholder="Un pensamiento, una imagen, una sensacion, lo que sea..."
+            className="min-h-28 resize-none rounded-xl border-2 text-gray-700"
+            style={{ borderColor: "#D4A898" }}
             autoFocus
           />
         </div>
@@ -88,9 +85,9 @@ export function GuidedQuestions({ emocion, intensidad, onComplete }: Props) {
         onClick={avanzar}
         disabled={!esFaseJournal && !respuestaActual.trim()}
         className="w-full h-11 text-white font-semibold rounded-xl gap-2"
-        style={{ background: "linear-gradient(135deg,#3aA876,#2d8a60)" }}
+        style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}
       >
-        {esFaseJournal ? "Finalizar check-in 🌿" : "Siguiente pregunta"}
+        {esFaseJournal ? "Finalizar check-in" : "Siguiente pregunta"}
         <ArrowRight className="w-4 h-4" />
       </Button>
     </div>
