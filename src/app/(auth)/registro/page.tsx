@@ -1,7 +1,6 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
@@ -11,12 +10,12 @@ import { Label } from "@/components/ui/label"
 import Image from "next/image"
 
 export default function RegistroPage() {
-  const router = useRouter()
   const [nombre, setNombre] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [enviado, setEnviado] = useState(false)
 
   async function handleRegistro(e: React.FormEvent) {
     e.preventDefault()
@@ -29,14 +28,12 @@ export default function RegistroPage() {
       options: { data: { full_name: nombre } },
     })
     if (error) { setError(error.message); setLoading(false); return }
-    router.push("/dashboard")
-    router.refresh()
+    setEnviado(true)
+    setLoading(false)
   }
 
   return (
     <div className="min-h-screen flex" style={{ background: "#EDE0D4" }}>
-
-      {/* Panel izquierdo */}
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-center items-center p-16 relative overflow-hidden"
         style={{ background: "linear-gradient(145deg,#1B2A4A 0%,#2A3F6F 100%)" }}>
         <div className="text-center max-w-sm">
@@ -59,7 +56,6 @@ export default function RegistroPage() {
         </div>
       </div>
 
-      {/* Panel derecho */}
       <div className="flex-1 flex items-center justify-center p-8" style={{ background: "#EDE0D4" }}>
         <div className="w-full max-w-md">
           <div className="flex items-center gap-2.5 mb-10">
@@ -76,51 +72,71 @@ export default function RegistroPage() {
           </h1>
           <p className="text-sm mb-8" style={{ color: "#9A7080" }}>Sin tarjeta de credito requerida</p>
 
-          <form onSubmit={handleRegistro} className="space-y-5">
-            <div className="space-y-1.5">
-              <Label htmlFor="nombre" style={{ color: "#3D3030" }}>Tu nombre</Label>
-              <Input id="nombre" type="text" value={nombre} onChange={e => setNombre(e.target.value)}
-                placeholder="Maria" className="h-11 border-2 rounded-xl"
-                style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="email" style={{ color: "#3D3030" }}>Correo electronico</Label>
-              <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)}
-                placeholder="tu@correo.com" className="h-11 border-2 rounded-xl"
-                style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="password" style={{ color: "#3D3030" }}>Contrasena</Label>
-              <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)}
-                placeholder="Minimo 8 caracteres" minLength={8} className="h-11 border-2 rounded-xl"
-                style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
-            </div>
-
-            {error && (
-              <div className="rounded-xl px-4 py-3 text-sm" style={{ background: "#fef2f2", color: "#991b1b" }}>
-                {error}
+          {enviado ? (
+            <div className="rounded-2xl p-8 text-center" style={{ background: "#FAF8F5", border: "2px solid #D4A898" }}>
+              <p className="text-5xl mb-4">📩</p>
+              <p className="font-bold text-xl mb-3" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
+                Revisa tu correo
+              </p>
+              <p className="text-sm mb-6" style={{ color: "#9A7080", lineHeight: "1.7" }}>
+                Te enviamos un enlace de confirmacion a <strong style={{ color: "#B07060" }}>{email}</strong>. Debes hacer clic en ese enlace antes de poder ingresar a la app.
+              </p>
+              <p className="text-xs" style={{ color: "#B09888" }}>
+                Si no lo ves, revisa tu carpeta de spam o correo no deseado.
+              </p>
+              <div className="mt-6 pt-6" style={{ borderTop: "1px solid #D4A898" }}>
+                <Link href="/login" className="font-semibold hover:underline" style={{ color: "#B07060" }}>
+                  Ya confirme mi correo, ingresar
+                </Link>
               </div>
-            )}
+            </div>
+          ) : (
+            <form onSubmit={handleRegistro} className="space-y-5">
+              <div className="space-y-1.5">
+                <Label htmlFor="nombre" style={{ color: "#3D3030" }}>Tu nombre</Label>
+                <Input id="nombre" type="text" value={nombre} onChange={e => setNombre(e.target.value)}
+                  placeholder="Maria" className="h-11 border-2 rounded-xl"
+                  style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="email" style={{ color: "#3D3030" }}>Correo electronico</Label>
+                <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)}
+                  placeholder="tu@correo.com" className="h-11 border-2 rounded-xl"
+                  style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="password" style={{ color: "#3D3030" }}>Contrasena</Label>
+                <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)}
+                  placeholder="Minimo 8 caracteres" minLength={8} className="h-11 border-2 rounded-xl"
+                  style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
+              </div>
 
-            <Button type="submit" className="w-full h-11 text-white font-semibold text-base gap-2 rounded-xl"
-              style={{ background: loading ? "#2A3F6F" : "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}
-              disabled={loading}>
-              {loading ? "Creando cuenta..." : <><span>Crear cuenta gratis</span><ArrowRight className="w-4 h-4" /></>}
-            </Button>
-          </form>
+              {error && (
+                <div className="rounded-xl px-4 py-3 text-sm" style={{ background: "#fef2f2", color: "#991b1b" }}>
+                  {error}
+                </div>
+              )}
 
-          <div className="mt-6 pt-6 text-center" style={{ borderTop: "1px solid #D4A898" }}>
-            <p className="text-sm" style={{ color: "#9A7080" }}>
-              Ya tienes cuenta?{" "}
-              <Link href="/login" className="font-semibold hover:underline" style={{ color: "#B07060" }}>
-                Inicia sesion
-              </Link>
-            </p>
-          </div>
+              <Button type="submit" className="w-full h-11 text-white font-semibold text-base gap-2 rounded-xl"
+                style={{ background: loading ? "#2A3F6F" : "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}
+                disabled={loading}>
+                {loading ? "Creando cuenta..." : <><span>Crear cuenta gratis</span><ArrowRight className="w-4 h-4" /></>}
+              </Button>
 
-          <p className="text-xs text-center mt-4" style={{ color: "#B09888" }}>
-            Al registrarte aceptas nuestros terminos de uso y politica de privacidad.
-          </p>
+              <div className="mt-6 pt-6 text-center" style={{ borderTop: "1px solid #D4A898" }}>
+                <p className="text-sm" style={{ color: "#9A7080" }}>
+                  Ya tienes cuenta?{" "}
+                  <Link href="/login" className="font-semibold hover:underline" style={{ color: "#B07060" }}>
+                    Inicia sesion
+                  </Link>
+                </p>
+              </div>
+
+              <p className="text-xs text-center mt-4" style={{ color: "#B09888" }}>
+                Al registrarte aceptas nuestros terminos de uso y politica de privacidad.
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </div>
