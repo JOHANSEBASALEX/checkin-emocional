@@ -181,18 +181,42 @@ export default function CheckinPage() {
                 {resultado?.reflexion ? (
                   <AIReflection reflexion={resultado.reflexion} emocion={emocion} categoria={categoria} />
                 ) : (
-                  <div className="rounded-2xl p-6 border-2 border-dashed text-center"
-                    style={{ borderColor: "#D4A898", background: "#FAF8F5" }}>
-                    <Sparkles className="w-8 h-8 mx-auto mb-3" style={{ color: "#C9A84C" }} />
-                    <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Reflexion con IA - Plan Pro</p>
-                    <p className="text-xs mb-4" style={{ color: "#9A7080" }}>Recibe una guia emocional personalizada por solo $4.97/mes</p>
-                    <Link href="/cuenta">
-                      <Button className="text-white text-sm h-9 px-5 rounded-xl"
-                        style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
-                        Activar Plan Pro
-                      </Button>
-                    </Link>
-                  </div>
+                  <>
+                    <div className="rounded-2xl p-5 mb-4" style={{ background: "#FAF8F5", borderLeft: "3px solid #C9A84C" }}>
+                      <p className="text-sm leading-relaxed italic" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
+                        {({
+                          "Alegria": "Hoy tu cuerpo siente alegría. Permítete recibirla sin culpa. Tu sistema nervioso necesita estos momentos tanto como necesita el descanso.",
+                          "Tristeza": "Hoy reconociste que estás triste. Eso ya es un acto de valentía. Tu sistema nervioso necesita que lo escuches así, todos los días.",
+                          "Ansiedad": "Lo que sientes es real. Tu sistema nervioso está en modo alerta y eso tiene una razón. Respirar despacio por 60 segundos es el primer paso.",
+                          "Enojo": "El enojo que sientes tiene un mensaje. No lo ignores ni lo reprimas. Pregúntate qué límite fue cruzado hoy.",
+                          "Miedo": "El miedo que reconociste hoy no te define. Es una señal de tu sistema nervioso tratando de protegerte. Nómbralo y pierde algo de su fuerza.",
+                          "Calma": "Hoy llegaste a la calma. Guarda este momento. Tu cuerpo sabe llegar aquí y puede volver cuando lo necesites.",
+                          "Amor": "Sentir amor, así sea en pequeñas dosis, regula el sistema nervioso profundamente. Honra lo que sientes hoy.",
+                          "Confusion": "La confusión que sientes es señal de que algo en ti está cambiando. No necesitas claridad hoy. Solo necesitas seguir escuchándote."
+                        } as Record<string, string>)[categoria] ?? "Hoy te detuviste a escucharte. Eso ya es sanar."}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl p-5 mb-4 text-center" style={{ background: "linear-gradient(135deg,#FAF8F5,#F5EDE4)", border: "1px solid #D4A898" }}>
+                      <p className="text-sm font-medium mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
+                        ¿Quieres ir más profundo?
+                      </p>
+                      <p className="text-xs leading-relaxed" style={{ color: "#9A7080" }}>
+                        Con el Plan Pro recibes una reflexion profunda creada a partir de lo que escribiste hoy — no una respuesta generica, sino una guia pensada solo para ti y lo que estas viviendo en este momento.
+                      </p>
+                    </div>
+                    <div className="rounded-2xl p-6 border-2 border-dashed text-center"
+                      style={{ borderColor: "#D4A898", background: "#FAF8F5" }}>
+                      <Sparkles className="w-8 h-8 mx-auto mb-3" style={{ color: "#C9A84C" }} />
+                      <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Reflexion con IA - Plan Pro</p>
+                      <p className="text-xs mb-4" style={{ color: "#9A7080" }}>Recibe una guia emocional personalizada por solo $4.97/mes</p>
+                      <Link href="/cuenta">
+                        <Button className="text-white text-sm h-9 px-5 rounded-xl"
+                          style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
+                          Activar Plan Pro
+                        </Button>
+                      </Link>
+                    </div>
+                  </>
                 )}
 
                 <div className="flex gap-3 pt-2">
