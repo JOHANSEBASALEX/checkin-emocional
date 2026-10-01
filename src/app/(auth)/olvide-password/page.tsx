@@ -7,7 +7,7 @@ export default function OlvidePasswordPage() {
   const [enviado, setEnviado] = useState(false)
   const [error, setError] = useState("")
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
     const supabase = createClient()
@@ -35,7 +35,7 @@ export default function OlvidePasswordPage() {
                 type="email"
                 placeholder="tu@correo.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 required
                 style={{ width: "100%", padding: "0.75rem 1rem", borderRadius: "10px", border: "2px solid #e5c9b8", marginBottom: "1rem", fontSize: "1rem", boxSizing: "border-box" }}
               />
