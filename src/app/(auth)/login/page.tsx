@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
@@ -24,7 +24,7 @@ export default function LoginPage() {
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
-      setError("Correo o contraseÃ±a incorrectos")
+      setError("Correo o contraseña incorrectos")
       setLoading(false)
       return
     }
@@ -49,12 +49,12 @@ export default function LoginPage() {
             Bienvenida de vuelta
           </h2>
           <p className="text-lg leading-relaxed" style={{ color: "#E8D4C4" }}>
-            Tu espacio de bienestar emocional te espera. Cada dÃ­a es una nueva oportunidad de conectar contigo.
+            Tu espacio de bienestar emocional te espera. Cada día es una nueva oportunidad de conectar contigo.
           </p>
-          <div className="mt-6" style={{ color: "#C9A84C", opacity: 0.5, letterSpacing: "8px" }}>âœ¦ â€ âœ¦ â€ âœ¦</div>
+          <div className="mt-6" style={{ color: "#C9A84C", opacity: 0.5, letterSpacing: "8px" }}>✦ ❀ ✦ ❀ ✦</div>
         </div>
         <div className="absolute bottom-8 left-0 right-0 text-center" style={{ color: "#C9A84C", opacity: 0.3, fontSize: "12px", letterSpacing: "3px" }}>
-          REGULACIÃ“N EMOCIONAL Â· AMOR PROPIO Â· BIENESTAR REAL
+          REGULACIÓN EMOCIONAL · AMOR PROPIO · BIENESTAR REAL
         </div>
       </div>
 
@@ -74,12 +74,12 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <h1 className="text-2xl font-bold mb-1" style={{ color: "#1B2A4A", fontFamily: "'Playfair Display', serif" }}>Iniciar sesiÃ³n</h1>
+          <h1 className="text-2xl font-bold mb-1" style={{ color: "#1B2A4A", fontFamily: "'Playfair Display', serif" }}>Iniciar sesión</h1>
           <p className="text-sm mb-8" style={{ color: "#9A7080" }}>Ingresa a tu espacio de bienestar</p>
 
           <form onSubmit={handleLogin} className="space-y-5">
             <div className="space-y-1.5">
-              <Label htmlFor="email" className="font-medium" style={{ color: "#3D3030" }}>Correo electrÃ³nico</Label>
+              <Label htmlFor="email" className="font-medium" style={{ color: "#3D3030" }}>Correo electrónico</Label>
               <Input
                 id="email"
                 type="email"
@@ -92,13 +92,13 @@ export default function LoginPage() {
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="password" className="font-medium" style={{ color: "#3D3030" }}>ContraseÃ±a</Label>
+              <Label htmlFor="password" className="font-medium" style={{ color: "#3D3030" }}>Contraseña</Label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                placeholder="••••••••"
                 className="h-11 border-2 rounded-xl"
                 style={{ borderColor: "#E8D4C4", background: "#FFFFFF" }}
                 required
@@ -121,17 +121,17 @@ export default function LoginPage() {
             </Button>
           </form>
 
-      <p style={{ textAlign: 'center', marginTop: '0.75rem' }}>
-        <Link href="/olvide-password" style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+      <p style={{ textAlign: "center", marginTop: "0.75rem" }}>
+        <Link href="/olvide-password" style={{ fontSize: "0.875rem", color: "#6b7280" }}>
           ¿Olvidaste tu contraseña?
         </Link>
       </p>
 
           <div className="mt-6 pt-6 text-center" style={{ borderTop: "1px solid #E8D4C4" }}>
             <p className="text-sm" style={{ color: "#9A7080" }}>
-              Â¿No tienes cuenta?{" "}
+              ¿No tienes cuenta?{" "}
               <Link href="/registro" className="font-semibold hover:underline" style={{ color: "#C9A84C" }}>
-                RegÃ­strate gratis
+                Regístrate gratis
               </Link>
             </p>
           </div>
