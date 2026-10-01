@@ -61,6 +61,7 @@ export function MoodChart({ data }: Props) {
           dataKey="intensidad"
           stroke="#B07060"
           strokeWidth={2.5}
+     
           fill="url(#colorIntensidad)"
           dot={{ fill: "#B07060", r: 4, strokeWidth: 2, stroke: "#fff" }}
           activeDot={{ r: 6, fill: "#C9A84C", stroke: "#fff", strokeWidth: 2 }}
