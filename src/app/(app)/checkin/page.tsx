@@ -12,7 +12,7 @@ import Image from "next/image"
 
 type Paso = "emocion" | "intensidad" | "preguntas" | "resultado"
 
-const PASOS = ["Emocion", "Intensidad", "Reflexion"]
+const PASOS = ["Emoción", "Intensidad", "Reflexión"]
 
 const IMAGENES_EMOCION: Record<string, string> = {
   "Alegria":   "/emociones/ALEGRIA.jpeg",
@@ -64,7 +64,7 @@ export default function CheckinPage() {
         <h1 className="text-2xl font-bold mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
           Check-in de hoy
         </h1>
-        <p className="text-sm" style={{ color: "#9A7080" }}>Tomate un momento para conectar con como estas</p>
+        <p className="text-sm" style={{ color: "#9A7080" }}>Tómate un momento para conectar contigo. ¿Cómo estás hoy?</p>
       </div>
 
       {paso !== "resultado" && (
@@ -115,7 +115,7 @@ export default function CheckinPage() {
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <p className="font-semibold" style={{ color: "#3D3030" }}>Que tan intensa es esta emocion?</p>
+                <p className="font-semibold" style={{ color: "#3D3030" }}>¿Qué tan fuerte lo sientes hoy?</p>
                 <span className="text-2xl font-bold" style={{ color: "#B07060" }}>
                   {intensidad}<span className="text-sm" style={{ color: "#9A7080" }}>/10</span>
                 </span>
@@ -156,21 +156,21 @@ export default function CheckinPage() {
                   <Sparkles className="w-8 h-8 animate-pulse" style={{ color: "#C9A84C" }} />
                 </div>
                 <p className="font-medium" style={{ color: "#3D3030" }}>Guardando tu check-in...</p>
-                <p className="text-sm mt-1" style={{ color: "#9A7080" }}>Preparando tu reflexion personalizada</p>
+                <p className="text-sm mt-1" style={{ color: "#9A7080" }}>Preparando tu reflexión con cariño</p>
               </div>
             ) : (
               <>
                 <div className="flex items-center gap-2.5 p-4 rounded-2xl" style={{ background: "#F5EDE4" }}>
                   <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: "#B07060" }} />
                   <div>
-                    <p className="font-semibold text-sm" style={{ color: "#3D3030" }}>Check-in guardado!</p>
+                    <p className="font-semibold text-sm" style={{ color: "#3D3030" }}>¡Check-in guardado!</p>
                     <p className="text-xs" style={{ color: "#9A7080" }}>Tu registro de hoy esta en tu historial</p>
                   </div>
                 </div>
 
                 <div className="text-center py-5 rounded-2xl border"
                   style={{ borderColor: "#D4A898", background: "linear-gradient(135deg,#FAF8F5,#F5EDE4)" }}>
-                  <p className="text-sm mb-1" style={{ color: "#9A7080" }}>Tu emocion de hoy</p>
+                  <p className="text-sm mb-1" style={{ color: "#9A7080" }}>Tu emoción de hoy</p>
                   <p className="text-3xl font-bold mb-1" style={{ color: "#B07060", fontFamily: "'Playfair Display', serif" }}>{emocion}</p>
                   <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
                     style={{ background: "#FAF8F5", color: "#C9A84C", border: "1px solid #D4A898" }}>
@@ -207,12 +207,12 @@ export default function CheckinPage() {
                     <div className="rounded-2xl p-6 border-2 border-dashed text-center"
                       style={{ borderColor: "#D4A898", background: "#FAF8F5" }}>
                       <Sparkles className="w-8 h-8 mx-auto mb-3" style={{ color: "#C9A84C" }} />
-                      <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Reflexion con IA - Plan Pro</p>
-                      <p className="text-xs mb-4" style={{ color: "#9A7080" }}>Recibe una guia emocional personalizada por solo $4.97/mes</p>
+                      <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Reflexión profunda · Plan Pro</p>
+                      <p className="text-xs mb-4" style={{ color: "#9A7080" }}>Recibe una guía emocional pensada solo para ti, por solo $4.97/mes</p>
                       <Link href="/cuenta">
                         <Button className="text-white text-sm h-9 px-5 rounded-xl"
                           style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
-                          Activar Plan Pro
+                          Quiero ir más profundo
                         </Button>
                       </Link>
                     </div>
