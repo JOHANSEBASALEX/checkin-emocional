@@ -46,7 +46,7 @@ export default function RegistroPage() {
             Unete a mujeres que cuidan su mundo interior cada dia con Sana y Florece.
           </p>
           <div className="space-y-3 text-left">
-            {["Check-ins ilimitados para siempre", "Historial semanal con grafica", "Reflexiones con IA (Plan Pro)"].map(b => (
+            {["Check-ins ilimitados para siempre", "Historial semanal con gráfica", "Reflexiones profundas solo para ti (Plan Pro)"].map(b => (
               <div key={b} className="flex items-center gap-3 text-sm" style={{ color: "#D4A898" }}>
                 <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: "#C9A84C" }} />
                 {b}

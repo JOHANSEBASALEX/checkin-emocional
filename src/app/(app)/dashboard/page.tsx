@@ -132,7 +132,7 @@ export default async function DashboardPage() {
         <div className="rounded-3xl p-6 mb-8 flex items-center justify-between" style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
           <div>
             <p className="font-bold mb-1 flex items-center gap-1.5 text-white">
-              <Sparkles className="w-4 h-4" style={{ color: "#F5EDE4" }} /> Activa reflexiones con IA
+              <Sparkles className="w-4 h-4" style={{ color: "#F5EDE4" }} /> Recibe reflexiones hechas para ti
             </p>
             <p className="text-sm" style={{ color: "#F5EDE4" }}>Descubre insights personalizados por $4.97/mes</p>
           </div>

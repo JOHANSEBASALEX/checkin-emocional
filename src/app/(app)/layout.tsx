@@ -73,7 +73,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <div className="rounded-2xl p-4 mb-4" style={{ background: "linear-gradient(145deg,#B07060,#9A5848)" }}>
             <div className="flex items-center gap-1.5 mb-1.5">
               <Sparkles className="w-3.5 h-3.5 text-white" />
-              <p className="font-semibold text-xs text-white">Activa reflexiones IA</p>
+              <p className="font-semibold text-xs text-white">Recibe reflexiones para ti</p>
             </div>
             <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guia personalizada por $4.97/mes</p>
             <Link href="/cuenta">

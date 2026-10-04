@@ -107,11 +107,11 @@ export default function CuentaPage() {
               </div>
               <div>
                 <p className="font-bold text-gray-800">Plan Pro Activo</p>
-                <p className="text-xs" style={{ color: "#3aA876" }}>Tienes acceso a reflexiones con IA</p>
+                <p className="text-xs" style={{ color: "#3aA876" }}>Tienes acceso a reflexiones hechas solo para ti</p>
               </div>
             </div>
             <ul className="space-y-2 text-sm text-gray-600">
-              {["Reflexiones personalizadas con IA", "Insights de patrones emocionales", "Guía de acción concreta"].map(i => (
+              {["Reflexiones profundas pensadas solo para ti", "Insights de patrones emocionales", "Guía de acción concreta"].map(i => (
                 <li key={i} className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: "#3aA876" }} /> {i}
                 </li>
@@ -146,7 +146,7 @@ export default function CuentaPage() {
               </ul>
               <a href={gumroadUrl} target="_blank" rel="noopener noreferrer">
                 <Button className="w-full font-bold h-11 gap-2 text-sm" style={{ background: "#D4AF37", color: "#3a2a00" }}>
-                  Activar Plan Pro — $4.97/mes
+                  Quiero ir más profundo — $4.97/mes
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Button>
               </a>

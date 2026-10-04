@@ -84,7 +84,7 @@ export default function LandingPage() {
         <p style={{ color:"#FAF8F5", fontSize:"0.95rem", marginBottom:"0.25rem" }}>Plan Pro con reflexión profunda personalizada</p>
         <p style={{ color:"#D4A898", fontSize:"0.82rem", marginBottom:"0.5rem" }}>Este precio cierra en:</p>
         <Contador />
-        <a href={HOTMART_URL} target="_blank" style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"1rem", fontWeight:700, padding:"0.9rem 2rem", borderRadius:"50px", textDecoration:"none", marginTop:"0.75rem", boxShadow:"0 4px 16px rgba(201,168,76,0.4)" }}>Activar Plan Pro — $4.97/mes</a>
+        <a href={HOTMART_URL} target="_blank" style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"1rem", fontWeight:700, padding:"0.9rem 2rem", borderRadius:"50px", textDecoration:"none", marginTop:"0.75rem", boxShadow:"0 4px 16px rgba(201,168,76,0.4)" }}>Quiero ir más profundo — $4.97/mes</a>
         <p style={{ color:"#9A7080", fontSize:"0.72rem", marginTop:"0.6rem" }}>Cancela cuando quieras · Sin compromisos</p>
       </div>
       <div style={{ padding:"2.5rem 1.5rem", background:"#1B2A4A" }}>
