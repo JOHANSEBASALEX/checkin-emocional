@@ -43,9 +43,9 @@ export function AIReflection({ reflexion, emocion, categoria }: Props) {
         </div>
         <div>
           <p className="font-bold text-sm" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
-            Tu reflexion de hoy
+            Tu reflexión de hoy
           </p>
-          <p className="text-xs" style={{ color: "#9A7080" }}>Reflexion personalizada para ti</p>
+          <p className="text-xs" style={{ color: "#9A7080" }}>Reflexión pensada solo para ti</p>
         </div>
       </div>
 
@@ -81,7 +81,7 @@ export function AIReflection({ reflexion, emocion, categoria }: Props) {
 
       <div className="flex items-center justify-center gap-2 pt-3 border-t" style={{ borderColor: "#E8D4C4" }}>
         <span className="text-xs" style={{ color: "#B09888" }}>
-          Reflexion generada con amor para tu emocion de hoy:
+          Reflexión generada con amor para tu emocion de hoy:
         </span>
         <span className="text-xs font-bold px-2 py-1 rounded-full"
           style={{ background: "#F5EDE4", color: "#B07060", border: "1px solid #D4A898" }}>

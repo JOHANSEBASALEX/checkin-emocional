@@ -71,7 +71,7 @@ export function CheckinCard({ checkin }: { checkin: Checkin }) {
         <div className="rounded-xl p-3.5 border text-xs" style={{ background: "#FAF8F5", borderColor: "#E8D4C4", color: "#5A4848" }}>
           <div className="flex items-center gap-1.5 mb-1.5 font-semibold" style={{ color: "#B07060" }}>
             <Sparkles className="w-3 h-3" style={{ color: "#C9A84C" }} />
-            Tu reflexion de hoy
+            Tu reflexión de hoy
           </div>
           <p className="line-clamp-3 leading-relaxed">{checkin.reflexion_ia}</p>
         </div>

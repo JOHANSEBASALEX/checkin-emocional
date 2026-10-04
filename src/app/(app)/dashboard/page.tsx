@@ -71,7 +71,7 @@ export default async function DashboardPage() {
           <h1 className="text-2xl font-bold mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
             Hola, {nombre} 🌸
           </h1>
-          <p className="text-sm" style={{ color: "#9A7080" }}>Aqui esta tu panorama emocional</p>
+          <p className="text-sm" style={{ color: "#9A7080" }}>Aquí está tu panorama emocional</p>
         </div>
         <Link href="/checkin">
           <Button className="text-white gap-2 rounded-xl h-10" style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
@@ -95,7 +95,7 @@ export default async function DashboardPage() {
             <TrendingUp className="w-4 h-4" style={{ color: "#C9A84C" }} />
           </div>
           <p className="text-2xl font-bold mb-0.5" style={{ color: "#C9A84C" }}>{promedioIntensidad ?? "-"}</p>
-          <p className="text-xs" style={{ color: "#9A7080" }}>Intensidad media (7d)</p>
+          <p className="text-xs" style={{ color: "#9A7080" }}>Intensidad media (7 días)</p>
         </div>
 
         <div className="rounded-2xl p-5 border shadow-sm" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
               </div>
               <div>
                 <p className="text-sm font-bold" style={{ color: "#3D3030" }}>{emocionTop}</p>
-                <p className="text-xs" style={{ color: "#9A7080" }}>emocion frecuente</p>
+                <p className="text-xs" style={{ color: "#9A7080" }}>emoción frecuente</p>
               </div>
             </div>
           ) : (
