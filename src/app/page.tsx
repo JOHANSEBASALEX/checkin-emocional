@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
-const HOTMART_URL = "https://pay.hotmart.com/G106279170B"
+const HOTMART_URL = "https://pay.hotmart.com/G107853981E"
 
 function Contador() {
   const getTarget = () => {

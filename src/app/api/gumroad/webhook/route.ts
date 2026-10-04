@@ -10,17 +10,17 @@ function getSupabaseAdmin() {
 
 export async function POST(req: NextRequest) {
   // Verificar token secreto en la URL
-  const token = req.nextUrl.searchParams.get("token")
-  if (!token || token !== process.env.GUMROAD_WEBHOOK_SECRET) {
+  const token = req.headers.get("x-hotmart-hottok")
+  if (!token || token !== process.env.HOTMART_HOTTOK) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 })
   }
 
   // Gumroad envía form-urlencoded
-  const formData = await req.formData()
-  const email = formData.get("email") as string | null
-  const cancelled = formData.get("cancelled") as string | null
-  const subscriptionId = formData.get("subscription_id") as string | null
-  const isTest = formData.get("test") === "true"
+  const body = await req.json()
+  const email = (body?.data?.buyer?.email ?? null) as string | null
+  const event = (body?.event ?? "") as string
+  const subscriptionId = (body?.data?.subscription?.subscriber?.code ?? null) as string | null
+  const isTest = false
 
   if (!email) {
     return NextResponse.json({ error: "Email requerido" }, { status: 400 })
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ received: true, warning: "usuario no encontrado" })
   }
 
-  const isCancelled = cancelled === "true"
+  const isCancelled = ["SUBSCRIPTION_CANCELLATION", "PURCHASE_CANCELED", "PURCHASE_REFUNDED", "PURCHASE_CHARGEBACK"].includes(event)
   const newStatus = isCancelled ? "canceled" : "active"
   const update: Record<string, string> = { subscription_status: newStatus }
   if (subscriptionId) update.subscription_id = subscriptionId

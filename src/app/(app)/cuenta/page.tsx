@@ -8,7 +8,7 @@ import { CheckCircle, XCircle, User, Sparkles, ExternalLink, Star, Leaf } from "
 
 interface Profile { full_name: string; subscription_status: string }
 
-const GUMROAD_URL = "https://pay.hotmart.com/G106279170B"
+const GUMROAD_URL = "https://pay.hotmart.com/G107853981E"
 
 export default function CuentaPage() {
   const searchParams = useSearchParams()
@@ -118,7 +118,7 @@ export default function CuentaPage() {
               ))}
             </ul>
             <p className="text-xs text-gray-400 mt-4 pt-4 border-t" style={{ borderColor: "#d6f5e3" }}>
-              Para cancelar, visita tu cuenta en <a href="https://gumroad.com" target="_blank" rel="noopener noreferrer" className="underline">Gumroad.com</a>
+              Para cancelar, visita tu cuenta en <a href="https://purchase.hotmart.com" target="_blank" rel="noopener noreferrer" className="underline">Hotmart.com</a>
             </p>
           </div>
         ) : (
@@ -152,7 +152,7 @@ export default function CuentaPage() {
               </a>
             </div>
             <p className="text-xs text-center text-gray-400">
-              Pago seguro con Gumroad · Sin contratos · Cancela cuando quieras
+              Pago seguro con Hotmart · Sin contratos · Cancela cuando quieras
             </p>
           </div>
         )}
