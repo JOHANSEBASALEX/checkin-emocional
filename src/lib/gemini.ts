@@ -26,7 +26,7 @@ Ofrece una reflexión de 3-4 oraciones: valida la emoción sin juzgar, identific
 
   const response = await groq.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
   })
 
   return response.choices[0]?.message?.content || ""
