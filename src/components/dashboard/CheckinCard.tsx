@@ -1,5 +1,5 @@
-import { formatDistanceToNow } from "date-fns"
-import { es } from "date-fns/locale"
+import { FechaHora } from "./FechaHora"
+
 import { Sparkles } from "lucide-react"
 import { EMOCIONES } from "@/lib/constants"
 import Image from "next/image"
@@ -48,7 +48,7 @@ export function CheckinCard({ checkin }: { checkin: Checkin }) {
           <div>
             <p className="font-bold" style={{ color: "#3D3030" }}>{checkin.emocion}</p>
             <p className="text-xs" style={{ color: "#9A7080" }}>
-              {formatDistanceToNow(new Date(checkin.created_at), { addSuffix: true, locale: es })}
+              <FechaHora fecha={checkin.created_at} />
             </p>
           </div>
         </div>
