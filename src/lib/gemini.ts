@@ -22,7 +22,7 @@ El usuario ha compartido su check-in emocional de hoy:
 ${respuestasFormateadas}
 ${journal ? `- Nota personal: ${journal}` : ""}
 
-Ofrece una reflexión de 3-4 oraciones: valida la emoción sin juzgar, identifica un patrón o insight significativo, y termina con una invitación amable a una acción pequeña y concreta. Habla en segunda persona, en español, con tono cálido y esperanzador. Solo párrafo fluido, sin listas ni subtítulos.`
+Ofrece una reflexión de 3-4 oraciones: valida la emoción sin juzgar, identifica un patrón o insight significativo, y termina con una invitación amable a una acción pequeña y concreta. Usa lenguaje neutro en cuanto a género, sin palabras que marquen masculino o femenino (por ejemplo, escribe "contigo" o "hacia ti", nunca "ti mismo" ni "ti misma"). Habla en  segunda persona, en español, con tono cálido y esperanzador. Solo párrafo fluido, sin listas ni subtítulos.`
 
   const response = await groq.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
