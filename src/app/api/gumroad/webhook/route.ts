@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
   // Gumroad envía form-urlencoded
   const body = await req.json()
-  const email = (body?.data?.buyer?.email ?? null) as string | null
+  const email = (body?.data?.buyer?.email ?? body?.data?.subscriber?.email ?? null) as string | null
   const event = (body?.event ?? "") as string
   const subscriptionId = (body?.data?.subscription?.subscriber?.code ?? null) as string | null
   const isTest = false
