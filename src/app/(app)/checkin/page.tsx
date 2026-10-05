@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { EmotionWheel } from "@/components/checkin/EmotionWheel"
-import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"
+import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"; import { PasoCuerpo, respuestasCuerpo, type DatosCuerpo } from "@/components/checkin/PasoCuerpo"
 import { AIReflection } from "@/components/checkin/AIReflection"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
@@ -10,9 +10,9 @@ import { CheckCircle, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
-type Paso = "emocion" | "intensidad" | "preguntas" | "resultado"
+type Paso = "emocion" | "intensidad" | "cuerpo" | "preguntas" | "resultado"
 
-const PASOS = ["Emoción", "Intensidad", "Reflexión"]
+const PASOS = ["Emoción", "Intensidad y cuerpo", "Reflexión"]
 
 const IMAGENES_EMOCION: Record<string, string> = {
   "Alegria":   "/emociones/ALEGRIA.jpeg",
@@ -29,11 +29,11 @@ export default function CheckinPage() {
   const [paso, setPaso] = useState<Paso>("emocion")
   const [categoria, setCategoria] = useState("")
   const [emocion, setEmocion] = useState("")
-  const [intensidad, setIntensidad] = useState(5)
+  const [intensidad, setIntensidad] = useState(5); const [datosCuerpo, setDatosCuerpo] = useState<DatosCuerpo | null>(null)
   const [cargando, setCargando] = useState(false)
   const [resultado, setResultado] = useState<{ reflexion: string | null; isPro: boolean } | null>(null)
 
-  const pasoIndex = { emocion: 0, intensidad: 1, preguntas: 2, resultado: 3 }[paso]
+  const pasoIndex = { emocion: 0, intensidad: 1, cuerpo: 1, preguntas: 2, resultado: 3 }[paso]
 
   function handleEmocionSelect(cat: string, em: string) {
     setCategoria(cat)
@@ -47,7 +47,7 @@ export default function CheckinPage() {
     const res = await fetch("/api/checkin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ emocion, categoria, intensidad, respuestas, journal }),
+      body: JSON.stringify({ emocion, categoria, intensidad, respuestas: { ...respuestas, ...(datosCuerpo ? respuestasCuerpo(datosCuerpo) : {}) }, journal }),
     })
     const data = await res.json()
     setResultado({ reflexion: data.reflexion ?? null, isPro: data.isPro })
@@ -55,7 +55,7 @@ export default function CheckinPage() {
   }
 
   function resetCheckin() {
-    setEmocion(""); setCategoria(""); setIntensidad(5); setPaso("emocion"); setResultado(null)
+    setEmocion(""); setCategoria(""); setIntensidad(5); setPaso("emocion"); setResultado(null); setDatosCuerpo(null)
   }
 
   return (
@@ -136,7 +136,7 @@ export default function CheckinPage() {
                 </span>
               </div>
             </div>
-            <Button onClick={() => setPaso("preguntas")}
+            <Button onClick={() => setPaso("cuerpo")}
               className="w-full h-11 text-white font-semibold rounded-xl"
               style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
               Continuar
@@ -144,7 +144,7 @@ export default function CheckinPage() {
           </div>
         )}
 
-        {paso === "preguntas" && (
+        {paso === "cuerpo" && <PasoCuerpo onContinue={(d) => { setDatosCuerpo(d); setPaso("preguntas") }} />}{paso === "preguntas" && (
           <GuidedQuestions emocion={emocion} intensidad={intensidad} onComplete={handleComplete} />
         )}
 
