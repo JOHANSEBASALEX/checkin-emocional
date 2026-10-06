@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { EmotionWheel } from "@/components/checkin/EmotionWheel"
-import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"; import { PasoCuerpo, respuestasCuerpo, type DatosCuerpo } from "@/components/checkin/PasoCuerpo"
+import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"; import { PasoCuerpo, respuestasCuerpo, type DatosCuerpo } from "@/components/checkin/PasoCuerpo"; import { MiniReflexion } from "@/components/checkin/MiniReflexion"
 import { AIReflection } from "@/components/checkin/AIReflection"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
@@ -131,8 +131,8 @@ export default function CheckinPage() {
                 <span className="font-medium" style={{ color: "#B07060" }}>
                   {intensidad <= 3 ? "Apenas perceptible, es un susurro" :
                    intensidad <= 5 ? "Presente y notoria, la sientes claramente" :
-                   intensidad <= 7 ? "Bastante intensa, esta en primer plano" :
-                   "Muy intensa, ocupa toda tu atencion"}
+                   intensidad <= 7 ? "Bastante intensa, está en primer plano" :
+                   "Muy intensa, ocupa toda tu atención"}
                 </span>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function CheckinPage() {
                   <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: "#B07060" }} />
                   <div>
                     <p className="font-semibold text-sm" style={{ color: "#3D3030" }}>¡Check-in guardado!</p>
-                    <p className="text-xs" style={{ color: "#9A7080" }}>Tu registro de hoy esta en tu historial</p>
+                    <p className="text-xs" style={{ color: "#9A7080" }}>Tu registro de hoy está en tu historial</p>
                   </div>
                 </div>
 
@@ -178,7 +178,7 @@ export default function CheckinPage() {
                   </div>
                 </div>
 
-                {resultado?.reflexion ? (
+                <MiniReflexion datos={datosCuerpo} />{resultado?.reflexion ? (
                   <AIReflection reflexion={resultado.reflexion} emocion={emocion} categoria={categoria} />
                 ) : (
                   <>
@@ -201,7 +201,7 @@ export default function CheckinPage() {
                         ¿Quieres ir más profundo?
                       </p>
                       <p className="text-xs leading-relaxed" style={{ color: "#9A7080" }}>
-                        Con el Plan Pro recibes una reflexion profunda creada a partir de lo que escribiste hoy — no una respuesta generica, sino una guia pensada solo para ti y lo que estas viviendo en este momento.
+                        Con el Plan Pro recibes una reflexión profunda creada a partir de lo que escribiste hoy — no una respuesta genérica, sino una guía pensada solo para ti y lo que estás viviendo en este momento.
                       </p>
                     </div>
                     <div className="rounded-2xl p-6 border-2 border-dashed text-center"
