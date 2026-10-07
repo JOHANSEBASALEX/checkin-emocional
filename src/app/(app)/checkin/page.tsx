@@ -187,7 +187,7 @@ export default function CheckinPage() {
                         {({
                           "Alegria": "Hoy tu cuerpo siente alegría. Permítete recibirla sin culpa. Tu sistema nervioso necesita estos momentos tanto como necesita el descanso.",
                           "Tristeza": "Hoy reconociste que estás triste. Eso ya es un acto de valentía. Tu sistema nervioso necesita que lo escuches así, todos los días.",
-                          "Ansiedad": "Lo que sientes es real. Tu sistema nervioso está en modo alerta y eso tiene una razón. Respirar despacio por 60 segundos es el primer paso.",
+                          "Ansiedad": "Lo que sientes es real. Tu sistema nervioso está tratando de protegerte y eso tiene una razón. Respirar despacio, con la práctica de arriba, es un buen primer paso.",
                           "Enojo": "El enojo que sientes tiene un mensaje. No lo ignores ni lo reprimas. Pregúntate qué límite fue cruzado hoy.",
                           "Miedo": "El miedo que reconociste hoy no te define. Es una señal de tu sistema nervioso tratando de protegerte. Nómbralo y pierde algo de su fuerza.",
                           "Calma": "Hoy llegaste a la calma. Guarda este momento. Tu cuerpo sabe llegar aquí y puede volver cuando lo necesites.",
