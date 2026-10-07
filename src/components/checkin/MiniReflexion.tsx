@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import type { DatosCuerpo } from "./PasoCuerpo"
 import { BotonEscuchar } from "./BotonEscuchar";
+import { PracticaAudio } from "./PracticaAudio";
 
 const RONDAS = 3
 const INHALA = 4
@@ -72,6 +73,12 @@ export function MiniReflexion({ datos }: { datos: DatosCuerpo | null }) {
     <div className="rounded-2xl p-5 space-y-4" style={{ background: "#FFFFFF", border: "1px solid #E8D4C4" }}>
       {partes.length > 0 && (
         <p className="text-sm leading-relaxed" style={{ color: "#3D3030" }}>{partes.join(" ")}</p>
+      )}
+      {datos?.sistema === "Acelerada" && (
+        <PracticaAudio titulo="Orientación hacia la seguridad" descripcion="Mira a tu alrededor con calma y avísale a tu cuerpo que estás a salvo." archivo="orientacion-seguridad.mp3" />
+      )}
+      {datos?.sistema === "Apagada" && (
+        <PracticaAudio titulo="Abrazo de la mariposa" descripcion="Un abrazo suave con tus propias manos, sin esfuerzo." archivo="abrazo-mariposa.mp3" />
       )}
       <div className="rounded-xl p-4 text-center" style={{ background: "#F5EDE4" }}>
         <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Respiración del alivio</p>
