@@ -138,7 +138,7 @@ export default async function DashboardPage() {
               <div className="w-12 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0" style={{ borderColor: "#D4A898" }}>
                 <Image src={imagenTop} alt={emocionTop} width={48} height={48} className="w-full h-full object-cover" />
               </div>
-              <p className="text-[11px] sm:text-sm font-bold leading-tight w-full truncate" style={{ color: "#3D3030" }}>{emocionTop}</p>
+              <p className="text-[10px] sm:text-sm font-bold leading-tight w-full break-words hyphens-auto" style={{ color: "#3D3030" }} lang="es">{emocionTop}</p>
               <p className="text-[10px] sm:text-xs leading-tight" style={{ color: "#9A7080" }}>emoción frecuente</p>
             </div>
                       ) : (
