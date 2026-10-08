@@ -216,10 +216,15 @@ export default async function DashboardPage() {
           </Link>
         </div>
       ) : (
-        <div className="space-y-4">
+                <div className="space-y-4">
           {checkins.slice(0, 15).map(c => <CheckinCard key={c.id} checkin={c} />)}
         </div>
       )}
+
+      <p className="text-center text-xs mt-10 mb-4" style={{ color: "#9A7080" }}>
+        Sana y Florece es un espacio de autocuidado y no reemplaza la atención de un profesional de la salud mental.
+        Si estás en crisis, busca ayuda profesional de inmediato.
+      </p>
     </div>
   )
 }
