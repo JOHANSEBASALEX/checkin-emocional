@@ -48,7 +48,7 @@ export default async function DashboardPage() {
   const categoriaTop = EMOCIONES.find(e => (e.emociones as readonly string[]).includes(emocionTop ?? ""))
   const imagenTop = IMAGENES_EMOCION[categoriaTop?.categoria ?? ""] ?? "/emociones/CALMA.jpeg"
 
-    const ZONA = "America/Bogota"
+  const ZONA = "America/Bogota"
   const diaLocal = (fecha: string | Date) => new Date(fecha).toLocaleDateString("en-CA", { timeZone: ZONA })
   const hoy = diaLocal(new Date())
   const diasConCheckin = new Set((checkins ?? []).map(c => diaLocal(c.created_at)))
@@ -93,6 +93,7 @@ export default async function DashboardPage() {
   const promedioIntensidad = ultimos7.length
     ? Math.round(ultimos7.reduce((s, c) => s + c.intensidad, 0) / ultimos7.length * 10) / 10
     : null
+
   return (
     <div className="max-w-3xl mx-auto">
 
@@ -145,41 +146,42 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-               <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
-           <div className="flex items-center justify-between mb-5">
-             <div>
-               <h2 className="font-bold" style={{ color: "#3D3030" }}>Tu semana</h2>
-               <p className="text-xs" style={{ color: "#9A7080" }}>
-                 {racha > 0 ? `${racha} ${racha === 1 ? "día seguido" : "días seguidos"} cuidándote` : "Haz un check-in hoy y empieza tu racha"}
-               </p>
-             </div>
-             <div className="text-2xl font-bold" style={{ color: "#B07060" }}>{racha}</div>
-           </div>
-           <div className="flex justify-between">
-             {semana.map(d => {
-               const hecho = diasConCheckin.has(d.fecha)
-               return (
-                 <div key={d.fecha} className="flex flex-col items-center gap-2">
-                   <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold"
-                     style={{ background: hecho ? "linear-gradient(135deg,#D4A898,#B07060)" : "#F5EDE4", color: hecho ? "#FFFFFF" : "#C9B0A0", outline: d.fecha === hoy ? "2px solid #C9A84C" : "none", outlineOffset: "2px" }}>
-                     {hecho ? "✓" : ""}
-                   </div>
-                   <span className="text-xs uppercase" style={{ color: "#9A7080" }}>{d.letra}</span>
-                 </div>
-               )
-             })}
-           </div>
-         </div>
-      {chartData.length > 0 && (
+      <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
+        <div className="flex items-center justify-between mb-5">
+          <div>
+            <h2 className="font-bold" style={{ color: "#3D3030" }}>Tu semana</h2>
+            <p className="text-xs" style={{ color: "#9A7080" }}>
+              {racha > 0 ? `${racha} ${racha === 1 ? "día seguido" : "días seguidos"} cuidándote` : "Haz un check-in hoy y empieza tu racha"}
+            </p>
+          </div>
+          <div className="text-2xl font-bold" style={{ color: "#B07060" }}>{racha}</div>
+        </div>
+        <div className="flex justify-between">
+          {semana.map(d => {
+            const hecho = diasConCheckin.has(d.fecha)
+            return (
+              <div key={d.fecha} className="flex flex-col items-center gap-2">
+                <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold"
+                  style={{ background: hecho ? "linear-gradient(135deg,#D4A898,#B07060)" : "#F5EDE4", color: hecho ? "#FFFFFF" : "#C9B0A0", outline: d.fecha === hoy ? "2px solid #C9A84C" : "none", outlineOffset: "2px" }}>
+                  {hecho ? "✓" : ""}
+                </div>
+                <span className="text-xs uppercase" style={{ color: "#9A7080" }}>{d.letra}</span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {chartData30.length > 0 && (
         <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
               <h2 className="font-bold" style={{ color: "#3D3030" }}>Intensidad emocional</h2>
-              <p className="text-xs" style={{ color: "#9A7080" }}>Últimos 7 días · Mientras más baja la línea, más calma sentiste</p>
+              <p className="text-xs" style={{ color: "#9A7080" }}>Mientras más baja la línea, más calma sentiste</p>
             </div>
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#B07060" }} />
           </div>
-          {chartData30.length > 0 && (
+          <MoodChart data7={chartData} data30={chartData30} />
         </div>
       )}
 
@@ -202,7 +204,7 @@ export default async function DashboardPage() {
       {(!checkins || checkins.length === 0) ? (
         <div className="text-center py-16 rounded-3xl border-2 border-dashed" style={{ background: "#FAF8F5", borderColor: "#D4A898" }}>
           <p className="text-4xl mb-3">🌸</p>
-          <p className="font-bold mb-1" style={{ color: "#3D3030" }}>Aun no tienes check-ins</p>
+          <p className="font-bold mb-1" style={{ color: "#3D3030" }}>Aún no tienes check-ins</p>
           <p className="text-sm mb-5" style={{ color: "#9A7080" }}>Haz tu primer registro y empieza a conocerte mejor</p>
           <Link href="/checkin">
             <Button className="text-white rounded-xl" style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
