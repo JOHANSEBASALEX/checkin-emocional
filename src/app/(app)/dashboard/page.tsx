@@ -134,16 +134,14 @@ export default async function DashboardPage() {
 
         <div className="rounded-2xl p-5 border shadow-sm" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
           {emocionTop ? (
-                        <div className="flex flex-col items-center text-center gap-2">
+                                    <div className="flex flex-col items-center text-center gap-1.5 w-full overflow-hidden">
               <div className="w-12 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0" style={{ borderColor: "#D4A898" }}>
                 <Image src={imagenTop} alt={emocionTop} width={48} height={48} className="w-full h-full object-cover" />
               </div>
-              <div className="min-w-0">
-                <p className="text-sm font-bold break-words" style={{ color: "#3D3030" }}>{emocionTop}</p>
-                <p className="text-xs" style={{ color: "#9A7080" }}>emoción frecuente</p>
-              </div>
+              <p className="text-[11px] sm:text-sm font-bold leading-tight w-full truncate" style={{ color: "#3D3030" }}>{emocionTop}</p>
+              <p className="text-[10px] sm:text-xs leading-tight" style={{ color: "#9A7080" }}>emoción frecuente</p>
             </div>
-          ) : (
+                      ) : (
             <p className="text-xs" style={{ color: "#9A7080" }}>Sin datos</p>
           )}
         </div>
