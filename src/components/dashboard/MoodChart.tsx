@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import {
   ResponsiveContainer,
   AreaChart,
@@ -19,7 +20,8 @@ interface DataPoint {
 }
 
 interface Props {
-  data: DataPoint[]
+  data7: DataPoint[]
+  data30: DataPoint[]
 }
 
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; payload: DataPoint }>; label?: string }) {
@@ -35,38 +37,75 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   return null
 }
 
-export function MoodChart({ data }: Props) {
-  if (!data.length) return null
+export function MoodChart({ data7, data30 }: Props) {
+  const [rango, setRango] = useState<"7" | "30">("7")
+  const data = rango === "7" ? data7 : data30
 
   const formatted = data.map(d => ({
     ...d,
-    label: format(parseISO(d.fecha), "EEE d", { locale: es }),
+    label: format(parseISO(d.fecha), rango === "7" ? "EEE d" : "d MMM", { locale: es }),
   }))
 
+  const botones: Array<{ valor: "7" | "30"; texto: string }> = [
+    { valor: "7", texto: "7 días" },
+    { valor: "30", texto: "Mes" },
+  ]
+
   return (
-    <ResponsiveContainer width="100%" height={200}>
-      <AreaChart data={formatted} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
-        <defs>
-          <linearGradient id="colorIntensidad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#B07060" stopOpacity={0.3} />
-            <stop offset="95%" stopColor="#B07060" stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="#F5EDE4" />
-        <XAxis dataKey="label" tick={{ fontSize: 11, fill: "#9A7080" }} axisLine={false} tickLine={false} />
-        <YAxis domain={[0, 10]} tick={{ fontSize: 11, fill: "#9A7080" }} axisLine={false} tickLine={false} />
-        <Tooltip content={<CustomTooltip />} />
-        <Area
-          type="monotone"
-          dataKey="intensidad"
-          stroke="#B07060"
-          strokeWidth={2.5}
-     
-          fill="url(#colorIntensidad)"
-          dot={{ fill: "#B07060", r: 4, strokeWidth: 2, stroke: "#fff" }}
-          activeDot={{ r: 6, fill: "#C9A84C", stroke: "#fff", strokeWidth: 2 }}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
+    <div>
+      <div className="flex gap-2 mb-4">
+        {botones.map(b => (
+          <button
+            key={b.valor}
+            type="button"
+            onClick={() => setRango(b.valor)}
+            className="text-xs font-semibold px-4 py-1.5 rounded-full"
+            style={{
+              background: rango === b.valor ? "linear-gradient(135deg,#D4A898,#B07060)" : "#F5EDE4",
+              color: rango === b.valor ? "#FFFFFF" : "#9A7080",
+            }}
+          >
+            {b.texto}
+          </button>
+        ))}
+      </div>
+
+      {formatted.length === 0 ? (
+        <p className="text-sm text-center py-10" style={{ color: "#9A7080" }}>
+          Aún no hay check-ins en este período. Haz uno hoy para ver tu curva.
+        </p>
+      ) : (
+        <ResponsiveContainer width="100%" height={220}>
+          <AreaChart data={formatted} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+            <defs>
+              <linearGradient id="colorIntensidad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#B07060" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#B07060" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="#F5EDE4" />
+            <XAxis
+              dataKey="label"
+              tick={{ fontSize: 11, fill: "#9A7080" }}
+              axisLine={false}
+              tickLine={false}
+              interval="preserveStartEnd"
+              minTickGap={20}
+            />
+            <YAxis domain={[0, 10]} tick={{ fontSize: 11, fill: "#9A7080" }} axisLine={false} tickLine={false} />
+            <Tooltip content={<CustomTooltip />} />
+            <Area
+              type="monotone"
+              dataKey="intensidad"
+              stroke="#B07060"
+              strokeWidth={2.5}
+              fill="url(#colorIntensidad)"
+              dot={{ fill: "#B07060", r: 4, strokeWidth: 2, stroke: "#fff" }}
+              activeDot={{ r: 6, fill: "#C9A84C", stroke: "#fff", strokeWidth: 2 }}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      )}
+    </div>
   )
 }

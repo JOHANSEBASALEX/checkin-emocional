@@ -179,7 +179,7 @@ export default async function DashboardPage() {
             </div>
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#B07060" }} />
           </div>
-          <MoodChart data={chartData} />
+          {chartData30.length > 0 && (
         </div>
       )}
 
