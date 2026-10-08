@@ -14,6 +14,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body className={`${geist.className} antialiased`}>
         {children}
+        <footer
+          className="text-center text-xs px-6 py-4"
+          style={{ color: "#9A7080", background: "#F5EDE4" }}
+        >
+          Sana y Florece es un espacio de autocuidado y no reemplaza la atención de un profesional de la salud mental.
+          Si estás en crisis, busca ayuda profesional de inmediato.
+        </footer>
       </body>
     </html>
   )
