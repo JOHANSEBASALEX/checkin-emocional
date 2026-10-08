@@ -120,13 +120,17 @@ export default function CheckinPage() {
                   {intensidad}<span className="text-sm" style={{ color: "#9A7080" }}>/10</span>
                 </span>
               </div>
-              <Slider min={1} max={10} step={1} value={[intensidad]}
-                onValueChange={(vals) => setIntensidad(Array.isArray(vals) ? vals[0] : vals)}
-                className="w-full" />
-              <div className="flex justify-between text-xs" style={{ color: "#9A7080" }}>
-                <span>Muy leve</span>
-                <span>Muy intensa</span>
-              </div>
+              <p className="text-sm text-center" style={{ color: "#9A7080" }}>
+  Desliza el círculo hasta donde sientes la intensidad
+</p>
+<Slider min={1} max={10} step={1} value={[intensidad]}
+  onValueChange={(vals) => setIntensidad(Array.isArray(vals) ? vals[0] : vals)}
+  className="w-full" />
+<div className="grid grid-cols-3 text-xs" style={{ color: "#9A7080" }}>
+  <span className="text-left">1 · Muy leve</span>
+  <span className="text-center">5 · Moderada</span>
+  <span className="text-right">10 · Muy intensa</span>
+</div>
               <div className="rounded-2xl p-4 text-center text-sm" style={{ background: "#F5EDE4" }}>
                 <span className="font-medium" style={{ color: "#B07060" }}>
                   {intensidad <= 3 ? "Apenas perceptible, es un susurro" :

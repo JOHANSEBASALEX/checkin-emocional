@@ -21,6 +21,7 @@ interface Checkin {
   intensidad: number
   journal: string | null
   reflexion_ia: string | null
+  respuestas?: Record<string, unknown> | null
   created_at: string
 }
 
@@ -63,6 +64,25 @@ export function CheckinCard({ checkin }: { checkin: Checkin }) {
           style={{ width: `${checkin.intensidad * 10}%`, background: "linear-gradient(90deg, #D4A898, #B07060)" }} />
       </div>
 
+      {(() => {
+        const r = (checkin.respuestas ?? {}) as Record<string, unknown>
+        const cuerpo = r["¿Dónde lo siente en el cuerpo?"]
+        const sistema = r["¿Cómo está su sistema nervioso hoy?"]
+        const detonante = r["¿Qué lo detonó hoy?"]
+        const nombres: Record<string, string> = { "respiracion-alivio": "respiración del alivio", "orientacion-seguridad": "orientación hacia la seguridad", "abrazo-mariposa": "abrazo de la mariposa" }
+        const cambios: Record<string, string> = { "-2": "mucho más suave", "-1": "algo más suave", "0": "igual", "1": "algo más fuerte", "2": "mucho más fuerte" }
+        const practica = typeof r.practica === "string" ? nombres[r.practica] : undefined
+        const cambio = typeof r.cambio === "number" ? cambios[String(r.cambio)] : undefined
+        const pasopartes = [cuerpo, sistema, detonante].filter(x => typeof x === "string" && x) as string[]
+        if (!pasopartes.length && !practica && !cambio) return null
+        return (
+          <div className="rounded-xl p-3.5 mb-3 text-xs space-y-1" style={{ background: "#faf8f5", color: "#5a4848" }}>
+            {pasopartes.length > 0 && <p><strong>qué pasó:</strong> {pasopartes.join(" · ").toLowerCase()}</p>}
+            {practica && <p><strong>qué hizo:</strong> {practica}</p>}
+            {cambio && <p><strong>cómo quedó:</strong> {cambio}</p>}
+          </div>
+        )
+      })()}
       {checkin.journal && (
         <p className="text-sm mb-3 italic line-clamp-2" style={{ color: "#806860" }}>"{checkin.journal}"</p>
       )}

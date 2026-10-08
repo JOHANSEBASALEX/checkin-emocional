@@ -58,7 +58,19 @@ export default async function DashboardPage() {
     intensidad: c.intensidad,
     emocion: c.emocion,
   }))
-
+     const ZONA = "America/Bogota"
+     const diaLocal = (fecha: string | Date) => new Date(fecha).toLocaleDateString("en-CA", { timeZone: ZONA })
+     const diasConCheckin = new Set((checkins ?? []).map(c => diaLocal(c.created_at)))
+     const hoy = diaLocal(new Date())
+     const semana = Array.from({ length: 7 }, (_, i) => {
+       const d = new Date(Date.now() - (6 - i) * 86400000)
+       return { fecha: diaLocal(d), letra: d.toLocaleDateString("es", { weekday: "narrow", timeZone: ZONA }) }
+     })
+     let racha = 0
+     for (let i = diasConCheckin.has(hoy) ? 0 : 1; i < 60; i++) {
+       if (diasConCheckin.has(diaLocal(new Date(Date.now() - i * 86400000)))) racha++
+       else break
+     }
   const promedioIntensidad = ultimos7.length
     ? Math.round(ultimos7.reduce((s, c) => s + c.intensidad, 0) / ultimos7.length * 10) / 10
     : null
@@ -115,6 +127,31 @@ export default async function DashboardPage() {
         </div>
       </div>
 
+               <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
+           <div className="flex items-center justify-between mb-5">
+             <div>
+               <h2 className="font-bold" style={{ color: "#3D3030" }}>Tu semana</h2>
+               <p className="text-xs" style={{ color: "#9A7080" }}>
+                 {racha > 0 ? `${racha} ${racha === 1 ? "día seguido" : "días seguidos"} cuidándote` : "Haz un check-in hoy y empieza tu racha"}
+               </p>
+             </div>
+             <div className="text-2xl font-bold" style={{ color: "#B07060" }}>{racha}</div>
+           </div>
+           <div className="flex justify-between">
+             {semana.map(d => {
+               const hecho = diasConCheckin.has(d.fecha)
+               return (
+                 <div key={d.fecha} className="flex flex-col items-center gap-2">
+                   <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold"
+                     style={{ background: hecho ? "linear-gradient(135deg,#D4A898,#B07060)" : "#F5EDE4", color: hecho ? "#FFFFFF" : "#C9B0A0", outline: d.fecha === hoy ? "2px solid #C9A84C" : "none", outlineOffset: "2px" }}>
+                     {hecho ? "✓" : ""}
+                   </div>
+                   <span className="text-xs uppercase" style={{ color: "#9A7080" }}>{d.letra}</span>
+                 </div>
+               )
+             })}
+           </div>
+         </div>
       {chartData.length > 0 && (
         <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
           <div className="flex items-center justify-between mb-5">
