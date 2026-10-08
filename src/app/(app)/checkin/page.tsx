@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { EmotionWheel } from "@/components/checkin/EmotionWheel"
-import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"; import { PasoCuerpo, respuestasCuerpo, type DatosCuerpo } from "@/components/checkin/PasoCuerpo"; import { MiniReflexion } from "@/components/checkin/MiniReflexion"
+import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"; import { PasoCuerpo, respuestasCuerpo, type DatosCuerpo } from "@/components/checkin/PasoCuerpo"; import { MiniReflexion } from "@/components/checkin/MiniReflexion"; import { DespuesPractica } from "@/components/checkin/DespuesPractica"
 import { AIReflection } from "@/components/checkin/AIReflection"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
@@ -31,7 +31,7 @@ export default function CheckinPage() {
   const [emocion, setEmocion] = useState("")
   const [intensidad, setIntensidad] = useState(5); const [datosCuerpo, setDatosCuerpo] = useState<DatosCuerpo | null>(null)
   const [cargando, setCargando] = useState(false)
-  const [resultado, setResultado] = useState<{ reflexion: string | null; isPro: boolean } | null>(null)
+  const [resultado, setResultado] = useState<{ reflexion: string | null; isPro: boolean; checkinId?: string } | null>(null)
 
   const pasoIndex = { emocion: 0, intensidad: 1, cuerpo: 1, preguntas: 2, resultado: 3 }[paso]
 
@@ -50,7 +50,7 @@ export default function CheckinPage() {
       body: JSON.stringify({ emocion, categoria, intensidad, respuestas: { ...respuestas, ...(datosCuerpo ? respuestasCuerpo(datosCuerpo) : {}) }, journal }),
     })
     const data = await res.json()
-    setResultado({ reflexion: data.reflexion ?? null, isPro: data.isPro })
+    setResultado({ reflexion: data.reflexion ?? null, isPro: data.isPro, checkinId: data.checkinId })
     setCargando(false)
   }
 
@@ -178,7 +178,8 @@ export default function CheckinPage() {
                   </div>
                 </div>
 
-                <MiniReflexion datos={datosCuerpo} />{resultado?.reflexion ? (
+                <MiniReflexion datos={datosCuerpo} />
+                <div className="mt-4"><DespuesPractica checkinId={resultado?.checkinId} antes={intensidad} practica={datosCuerpo?.sistema === "Acelerada" ? "orientacion-seguridad" : datosCuerpo?.sistema === "Apagada" ? "abrazo-mariposa" : "respiracion-alivio"} /></div>{resultado?.reflexion ? (
                   <AIReflection reflexion={resultado.reflexion} emocion={emocion} categoria={categoria} />
                 ) : (
                   <>

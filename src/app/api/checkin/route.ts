@@ -60,12 +60,12 @@ export async function POST(req: NextRequest) {
           .update({ reflexion_ia: reflexion })
           .eq("id", checkin.id)
 
-        return NextResponse.json({ reflexion, isPro: true })
+        return NextResponse.json({ reflexion, isPro: true, checkinId: checkin.id })
       }
     } catch (err) {
       console.error("Error generando reflexión con Gemini:", err)
     }
   }
 
-  return NextResponse.json({ reflexion: null, isPro })
+  return NextResponse.json({ reflexion: null, isPro, checkinId: checkin.id })
 }
