@@ -6,7 +6,6 @@ import { MoodChart } from "@/components/dashboard/MoodChart"
 import { Button } from "@/components/ui/button"
 import { PlusCircle, TrendingUp, Calendar, Sparkles } from "lucide-react"
 import { EMOCIONES } from "@/lib/constants"
-import { subDays, startOfDay } from "date-fns"
 import Image from "next/image"
 
 const IMAGENES_EMOCION: Record<string, string> = {
@@ -30,7 +29,7 @@ export default async function DashboardPage() {
     .select("*")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false })
-    .limit(50)
+    .limit(300)
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -49,32 +48,51 @@ export default async function DashboardPage() {
   const categoriaTop = EMOCIONES.find(e => (e.emociones as readonly string[]).includes(emocionTop ?? ""))
   const imagenTop = IMAGENES_EMOCION[categoriaTop?.categoria ?? ""] ?? "/emociones/CALMA.jpeg"
 
-  const hace7Dias = startOfDay(subDays(new Date(), 6))
-  const ultimos7 = (checkins ?? []).filter(c => new Date(c.created_at) >= hace7Dias).reverse()
-  const porDia = new Map<string, typeof ultimos7[0]>()
-  ultimos7.forEach(c => { const dia = c.created_at.slice(0, 10); porDia.set(dia, c) })
-  const chartData = Array.from(porDia.values()).map(c => ({
-    fecha: c.created_at.slice(0, 10),
-    intensidad: c.intensidad,
-    emocion: c.emocion,
-  }))
-     const ZONA = "America/Bogota"
-     const diaLocal = (fecha: string | Date) => new Date(fecha).toLocaleDateString("en-CA", { timeZone: ZONA })
-     const diasConCheckin = new Set((checkins ?? []).map(c => diaLocal(c.created_at)))
-     const hoy = diaLocal(new Date())
-     const semana = Array.from({ length: 7 }, (_, i) => {
-       const d = new Date(Date.now() - (6 - i) * 86400000)
-       return { fecha: diaLocal(d), letra: d.toLocaleDateString("es", { weekday: "narrow", timeZone: ZONA }) }
-     })
-     let racha = 0
-     for (let i = diasConCheckin.has(hoy) ? 0 : 1; i < 60; i++) {
-       if (diasConCheckin.has(diaLocal(new Date(Date.now() - i * 86400000)))) racha++
-       else break
-     }
+    const ZONA = "America/Bogota"
+  const diaLocal = (fecha: string | Date) => new Date(fecha).toLocaleDateString("en-CA", { timeZone: ZONA })
+  const hoy = diaLocal(new Date())
+  const diasConCheckin = new Set((checkins ?? []).map(c => diaLocal(c.created_at)))
+
+  const semana = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(Date.now() - (6 - i) * 86400000)
+    return { fecha: diaLocal(d), letra: d.toLocaleDateString("es", { weekday: "narrow", timeZone: ZONA }) }
+  })
+
+  let racha = 0
+  for (let i = diasConCheckin.has(hoy) ? 0 : 1; i < 60; i++) {
+    if (diasConCheckin.has(diaLocal(new Date(Date.now() - i * 86400000)))) racha++
+    else break
+  }
+
+  const construirDatos = (dias: number) => {
+    const desde = diaLocal(new Date(Date.now() - (dias - 1) * 86400000))
+    const porDia = new Map<string, { suma: number; n: number; emocion: string }>()
+    ;(checkins ?? []).forEach(c => {
+      const dia = diaLocal(c.created_at)
+      if (dia < desde) return
+      const prev = porDia.get(dia)
+      porDia.set(dia, {
+        suma: (prev?.suma ?? 0) + c.intensidad,
+        n: (prev?.n ?? 0) + 1,
+        emocion: prev?.emocion ?? c.emocion,
+      })
+    })
+    return Array.from(porDia.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([fecha, v]) => ({
+        fecha,
+        intensidad: Math.round((v.suma / v.n) * 10) / 10,
+        emocion: v.emocion,
+      }))
+  }
+  const chartData = construirDatos(7)
+  const chartData30 = construirDatos(30)
+
+  const desde7 = diaLocal(new Date(Date.now() - 6 * 86400000))
+  const ultimos7 = (checkins ?? []).filter(c => diaLocal(c.created_at) >= desde7)
   const promedioIntensidad = ultimos7.length
     ? Math.round(ultimos7.reduce((s, c) => s + c.intensidad, 0) / ultimos7.length * 10) / 10
     : null
-
   return (
     <div className="max-w-3xl mx-auto">
 
@@ -157,7 +175,7 @@ export default async function DashboardPage() {
           <div className="flex items-center justify-between mb-5">
             <div>
               <h2 className="font-bold" style={{ color: "#3D3030" }}>Intensidad emocional</h2>
-              <p className="text-xs" style={{ color: "#9A7080" }}>Ultimos 7 dias</p>
+              <p className="text-xs" style={{ color: "#9A7080" }}>Últimos 7 días · Mientras más baja la línea, más calma sentiste</p>
             </div>
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#B07060" }} />
           </div>
