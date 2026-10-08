@@ -100,11 +100,17 @@ export function MoodChart({ data7, data30 }: Props) {
               stroke="#B07060"
               strokeWidth={2.5}
               fill="url(#colorIntensidad)"
-              dot={{ fill: "#B07060", r: 4, strokeWidth: 2, stroke: "#fff" }}
-              activeDot={{ r: 6, fill: "#C9A84C", stroke: "#fff", strokeWidth: 2 }}
+              dot={{ fill: "#B07060", r: 6, strokeWidth: 2, stroke: "#fff" }}
+              activeDot={{ r: 8, fill: "#C9A84C", stroke: "#fff", strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>
+      )}
+
+      {formatted.length === 1 && (
+        <p className="text-xs text-center mt-2" style={{ color: "#9A7080" }}>
+          Con un día más de check-in verás tu línea de comportamiento 🌸
+        </p>
       )}
     </div>
   )
