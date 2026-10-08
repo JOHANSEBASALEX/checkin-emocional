@@ -53,9 +53,12 @@ export default async function DashboardPage() {
   const hoy = diaLocal(new Date())
   const diasConCheckin = new Set((checkins ?? []).map(c => diaLocal(c.created_at)))
 
+    const diaSemanaHoy = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(
+    new Date().toLocaleDateString("en-US", { weekday: "short", timeZone: ZONA })
+  )
   const semana = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(Date.now() - (6 - i) * 86400000)
-    return { fecha: diaLocal(d), letra: d.toLocaleDateString("es", { weekday: "narrow", timeZone: ZONA }) }
+    const d = new Date(Date.now() + (i - diaSemanaHoy) * 86400000)
+    return { fecha: diaLocal(d), letra: d.toLocaleDateString("es", { weekday: "short", timeZone: ZONA }).replace(".", "") }
   })
 
   let racha = 0
