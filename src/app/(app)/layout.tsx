@@ -19,7 +19,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   const isPro = profile?.subscription_status === "active"
   const nombrebase = profile?.full_name?.split(" ")[0] ?? user.email?.split("@")[0] ?? "tu"
-  const nombre = nombrebase.charat(0).touppercase() + nombrebase.slice(1).tolowercase()
+  const nombre = nombrebase.charAt(0).toUpperCase() + nombrebase.slice(1).toLowerCase()
 
   return (
     <div className="min-h-screen flex" style={{ background: "linear-gradient(160deg,#EDE0D4 0%,#FAF8F5 50%,#E8D4C4 100%)" }}>
