@@ -1,7 +1,7 @@
 import { FechaHora } from "./FechaHora"
 
 import { Sparkles } from "lucide-react"
-import { EMOCIONES } from "@/lib/constants"
+import { EMOCIONES, emocionFemenina } from "@/lib/constants"
 import Image from "next/image"
 
 const IMAGENES_EMOCION: Record<string, string> = {
@@ -27,7 +27,7 @@ interface Checkin {
 
 export function CheckinCard({ checkin }: { checkin: Checkin }) {
   const categoriaObj = EMOCIONES.find(e =>
-    (e.emociones as readonly string[]).includes(checkin.emocion)
+    (e.emociones as readonly string[]).includes(emocionFemenina(checkin.emocion))
   )
   const imagenUrl = IMAGENES_EMOCION[categoriaObj?.categoria ?? ""] ?? "/emociones/CALMA.jpeg"
 
@@ -47,7 +47,7 @@ export function CheckinCard({ checkin }: { checkin: Checkin }) {
             />
           </div>
           <div>
-            <p className="font-bold" style={{ color: "#3D3030" }}>{checkin.emocion}</p>
+            <p className="font-bold" style={{ color: "#3D3030" }}>{emocionFemenina(checkin.emocion)}</p>
             <p className="text-xs" style={{ color: "#9A7080" }}>
               <FechaHora fecha={checkin.created_at} />
             </p>

@@ -5,7 +5,7 @@ import { CheckinCard } from "@/components/dashboard/CheckinCard"
 import { MoodChart } from "@/components/dashboard/MoodChart"
 import { Button } from "@/components/ui/button"
 import { PlusCircle, TrendingUp, Calendar, Sparkles } from "lucide-react"
-import { EMOCIONES } from "@/lib/constants"
+import { EMOCIONES, emocionFemenina } from "@/lib/constants"
 import Image from "next/image"
 
 const IMAGENES_EMOCION: Record<string, string> = {
@@ -24,12 +24,14 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect("/login")
 
-  const { data: checkins } = await supabase
+  const { data: checkinsraw } = await supabase
     .from("checkins")
     .select("*")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false })
     .limit(300)
+
+  const checkins = checkinsraw?.map(c => ({ ...c, emocion: emocionFemenina(c.emocion) }))
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -43,7 +45,7 @@ export default async function DashboardPage() {
   const conReflexion = checkins?.filter(c => c.reflexion_ia).length ?? 0
 
   const frecuencia: Record<string, number> = {}
-  checkins?.forEach(c => { frecuencia[c.emocion] = (frecuencia[c.emocion] ?? 0) + 1 })
+  checkins?.forEach(c => { const e = emocionFemenina(c.emocion); frecuencia[e] = (frecuencia[e] ?? 0) + 1 })
   const emocionTop = Object.entries(frecuencia).sort((a, b) => b[1] - a[1])[0]?.[0]
   const categoriaTop = EMOCIONES.find(e => (e.emociones as readonly string[]).includes(emocionTop ?? ""))
   const imagenTop = IMAGENES_EMOCION[categoriaTop?.categoria ?? ""] ?? "/emociones/CALMA.jpeg"
