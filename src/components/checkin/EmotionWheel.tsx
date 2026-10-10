@@ -28,7 +28,7 @@ export function EmotionWheel({ onSelect }: Props) {
     <div className="space-y-7">
       <div>
         <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#B07060" }}>
-          1. En que categoria esta tu emocion?
+          1. ¿En qué categoría está tu emoción?
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {EMOCIONES.map(({ categoria }) => (

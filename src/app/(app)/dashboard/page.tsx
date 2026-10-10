@@ -39,7 +39,8 @@ export default async function DashboardPage() {
     .eq("id", user.id)
     .single()
 
-  const nombre = profile?.full_name?.split(" ")[0] ?? "tu"
+  const nombrebase = profile?.full_name?.split(" ")[0] ?? "tu"
+  const nombre = nombrebase.charat(0).touppercase() + nombrebase.slice(1).tolowercase()
   const isPro = profile?.subscription_status === "active"
   const total = checkins?.length ?? 0
   const conReflexion = checkins?.filter(c => c.reflexion_ia).length ?? 0

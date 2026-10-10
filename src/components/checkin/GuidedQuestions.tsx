@@ -79,7 +79,7 @@ export function GuidedQuestions({ emocion, intensidad, categoria, onComplete }: 
         </div>
       ) : (
         <div className="space-y-3">
-          <p className="font-semibold" style={{ color: "#3D3030" }}>Algo mas que quieras expresar? (opcional)</p>
+          <p className="font-semibold" style={{ color: "#3D3030" }}>¿Algo más que quieras expresar? (opcional)</p>
           <Textarea value={journal} onChange={e => setJournal(e.target.value)}
             placeholder="Un pensamiento, una imagen, una sensacion, lo que sea..."
             className="min-h-28 resize-none rounded-xl border-2 text-gray-700"

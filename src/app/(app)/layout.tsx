@@ -18,7 +18,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     .single()
 
   const isPro = profile?.subscription_status === "active"
-  const nombre = profile?.full_name?.split(" ")[0] ?? user.email?.split("@")[0] ?? "tu"
+  const nombrebase = profile?.full_name?.split(" ")[0] ?? user.email?.split("@")[0] ?? "tu"
+  const nombre = nombrebase.charat(0).touppercase() + nombrebase.slice(1).tolowercase()
 
   return (
     <div className="min-h-screen flex" style={{ background: "linear-gradient(160deg,#EDE0D4 0%,#FAF8F5 50%,#E8D4C4 100%)" }}>
@@ -75,7 +76,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
               <Sparkles className="w-3.5 h-3.5 text-white" />
               <p className="font-semibold text-xs text-white">Recibe reflexiones para ti</p>
             </div>
-            <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guia personalizada por $4.97/mes</p>
+            <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guía personalizada por $4.97/mes</p>
             <Link href="/cuenta">
               <div className="rounded-xl py-1.5 text-center text-xs font-bold" style={{ background: "#EDE0D4", color: "#B07060" }}>
                 Ver Plan Pro
