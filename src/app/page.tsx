@@ -149,6 +149,7 @@ export default function LandingPage() {
       </div>
       <div style={{ padding:"1.5rem", textAlign:"center", background:"#1B2A4A", borderTop:"1px solid #2A3F6F" }}>
         <p style={{ fontSize:"0.75rem", color:"#9A7080", margin:0 }}>Sana y Florece — Check-in Emocional Diario · Para las mujeres que sufren en silencio</p>
+        <p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}><Link href="/privacidad" style={{ color:"#9A7080" }}>Privacidad</Link> · <Link href="/terminos" style={{ color:"#9A7080" }}>Términos</Link> · <Link href="/ayuda" style={{ color:"#9A7080" }}>Ayuda en crisis</Link></p>
       </div>
     </div>
   )
