@@ -1,10 +1,12 @@
-import { redirect } from "next/navigation"
+﻿import { redirect } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { LayoutDashboard, PlusCircle, User, Sparkles } from "lucide-react"
+import { LayoutDashboard, User, Sparkles } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 import { LogoutButton } from "@/components/LogoutButton"
 import Image from "next/image"
+import { BotonNuevoCheckin } from "@/components/BotonNuevoCheckin"
+import { NavInferior } from "@/components/NavInferior"
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
@@ -24,11 +26,31 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   return (
     <div className="min-h-screen flex" style={{ background: "linear-gradient(160deg,#EDE0D4 0%,#FAF8F5 50%,#E8D4C4 100%)" }}>
 
-      {/* Sidebar */}
-      <aside className="w-64 flex flex-col py-7 px-5 fixed h-full border-r"
+      {/* Barra superior (solo celular) */}
+      <header
+        className="md:hidden fixed top-0 inset-x-0 z-40 h-14 px-4 flex items-center justify-between border-b"
+        style={{ background: "rgba(27,42,74,0.98)", borderColor: "#2A3F6F" }}
+      >
+        <div className="flex items-center gap-2.5">
+          <Image
+            src="/logo.png"
+            alt="Sana y Florece"
+            width={32}
+            height={32}
+            style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid #C9A84C" }}
+          />
+          <span className="font-bold text-sm" style={{ color: "#FAF8F5" }}>Sana y Florece</span>
+        </div>
+        <p className="text-xs" style={{ color: "#D4A898" }}>
+          Hola, <strong style={{ color: "#FAF8F5" }}>{nombre}</strong>
+          {isPro && <span className="ml-1 font-semibold" style={{ color: "#C9A84C" }}>· Pro</span>}
+        </p>
+      </header>
+
+      {/* Menú lateral (solo computador) */}
+      <aside className="hidden md:flex w-64 flex-col py-7 px-5 fixed h-full border-r"
         style={{ background: "rgba(27,42,74,0.97)", borderColor: "#2A3F6F", backdropFilter: "blur(8px)" }}>
 
-        {/* Logo */}
         <div className="flex items-center gap-2.5 mb-8 px-1">
           <Image
             src="/logo.png"
@@ -43,15 +65,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </div>
         </div>
 
-        {/* Nav */}
         <nav className="flex flex-col gap-1 flex-1">
-          <Link href="/checkin">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl font-semibold text-sm text-white mb-1"
-              style={{ background: "linear-gradient(135deg,#B07060,#9A5848)" }}>
-              <PlusCircle className="w-4 h-4" />
-              Nuevo check-in
-            </div>
-          </Link>
+          <BotonNuevoCheckin />
           <Link href="/dashboard">
             <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm"
               style={{ color: "#D4A898" }}>
@@ -94,9 +109,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         </div>
       </aside>
 
-      <main className="ml-64 flex-1 p-8 min-h-screen">
+      <main className="md:ml-64 flex-1 min-w-0 p-4 sm:p-6 md:p-8 pt-20 pb-28 md:pt-8 md:pb-8 min-h-screen">
         {children}
       </main>
+
+      {/* Barra inferior (solo celular) */}
+      <NavInferior />
     </div>
   )
 }

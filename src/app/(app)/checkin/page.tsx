@@ -1,6 +1,7 @@
 ﻿"use client"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 
-import { useState } from "react"
 import { EmotionWheel } from "@/components/checkin/EmotionWheel"
 import { GuidedQuestions } from "@/components/checkin/GuidedQuestions"; import { PasoCuerpo, respuestasCuerpo, type DatosCuerpo } from "@/components/checkin/PasoCuerpo"; import { MiniReflexion } from "@/components/checkin/MiniReflexion"; import { DespuesPractica } from "@/components/checkin/DespuesPractica"
 import { AIReflection } from "@/components/checkin/AIReflection"
@@ -29,10 +30,20 @@ export default function CheckinPage() {
   const [paso, setPaso] = useState<Paso>("emocion")
   const [categoria, setCategoria] = useState("")
   const [emocion, setEmocion] = useState("")
-  const [intensidad, setIntensidad] = useState(5); const [datosCuerpo, setDatosCuerpo] = useState<DatosCuerpo | null>(null)
+  const [intensidad, setIntensidad] = useState(5)
+  const [datosCuerpo, setDatosCuerpo] = useState<DatosCuerpo | null>(null)
   const [cargando, setCargando] = useState(false)
+  const [ayudaAbierta, setAyudaAbierta] = useState(false)
   const [resultado, setResultado] = useState<{ reflexion: string | null; isPro: boolean; checkinId?: string } | null>(null)
 
+  const searchParams = useSearchParams()
+  const nuevo = searchParams.get("nuevo")
+
+  useEffect(() => {
+    if (nuevo) {
+      setEmocion(""); setCategoria(""); setIntensidad(5); setPaso("emocion"); setResultado(null); setDatosCuerpo(null)
+    }
+  }, [nuevo])
   const pasoIndex = { emocion: 0, intensidad: 1, cuerpo: 1, preguntas: 2, resultado: 3 }[paso]
 
   function handleEmocionSelect(cat: string, em: string) {
@@ -60,6 +71,21 @@ export default function CheckinPage() {
 
   return (
     <div className="max-w-2xl mx-auto">
+      {ayudaAbierta && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(61,48,48,0.5)" }} onClick={() => setAyudaAbierta(false)}>
+          <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-lg" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-lg font-bold mb-2" style={{ color: "#3D3030" }}>No estás sola ni solo</h2>
+            <p className="text-sm mb-4" style={{ color: "#9A7080" }}>Si sientes que necesitas apoyo ahora, puedes comunicarte con estas líneas:</p>
+            <ul className="text-sm mb-5 space-y-2" style={{ color: "#3D3030" }}>
+              <li><strong>Emergencias:</strong> 123</li>
+              <li><strong>Línea 192, opción 4:</strong> salud mental (Colombia)</li>
+            </ul>
+            <button type="button" onClick={() => setAyudaAbierta(false)} className="w-full h-11 text-white font-semibold rounded-xl" style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
           Check-in de hoy
@@ -89,7 +115,7 @@ export default function CheckinPage() {
         </div>
       )}
 
-      <div className="bg-white rounded-3xl shadow-sm border p-8" style={{ borderColor: "#D4A898" }}>
+      <div className="bg-white rounded-3xl shadow-sm border p-5 sm:p-8" style={{ borderColor: "#D4A898" }}>
 
         {paso === "emocion" && <EmotionWheel onSelect={handleEmocionSelect} />}
 
@@ -140,6 +166,12 @@ export default function CheckinPage() {
                 </span>
               </div>
             </div>
+            {intensidad >= 9 && (
+              <div className="rounded-xl p-3.5 text-sm text-center" style={{ background: "#FAF8F5", border: "1px solid #D4A898", color: "#3D3030", lineHeight: "1.6" }}>
+                Lo que sientes es muy intenso, y está bien notarlo. Si necesitas apoyo ahora, <button type="button" onClick={() => setAyudaAbierta(true)} style={{ color: "#B07060", fontWeight: 700, textDecoration: "underline", cursor: "pointer" }}>aquí hay líneas de ayuda</button>. Puedes continuar cuando quieras.
+              </div>
+            )}
+            <button type="button" onClick={() => setPaso("emocion")} className="text-sm font-medium" style={{ color: "#9A7080" }}>← Atrás</button>
             <Button onClick={() => setPaso("cuerpo")}
               className="w-full h-11 text-white font-semibold rounded-xl"
               style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>
@@ -148,8 +180,16 @@ export default function CheckinPage() {
           </div>
         )}
 
-        {paso === "cuerpo" && <PasoCuerpo onContinue={(d) => { setDatosCuerpo(d); setPaso("preguntas") }} />}{paso === "preguntas" && (
-          <GuidedQuestions emocion={emocion} intensidad={intensidad} onComplete={handleComplete} />
+        {(paso === "cuerpo" || paso === "preguntas") && (
+          <div className={paso === "cuerpo" ? "space-y-4" : "hidden"}>
+            <PasoCuerpo onContinue={(d) => { setDatosCuerpo(d); setPaso("preguntas") }} />
+            <button type="button" onClick={() => setPaso("intensidad")} className="text-sm font-medium" style={{ color: "#9A7080" }}>← Atrás</button>
+          </div>
+        )}{(paso === "cuerpo" || paso === "preguntas") && (
+          <div className={paso === "preguntas" ? "space-y-4" : "hidden"}>
+            <GuidedQuestions emocion={emocion} intensidad={intensidad} onComplete={handleComplete} />
+            <button type="button" onClick={() => setPaso("cuerpo")} className="text-sm font-medium" style={{ color: "#9A7080" }}>← Atrás</button>
+          </div>
         )}
 
         {paso === "resultado" && (
@@ -244,3 +284,5 @@ export default function CheckinPage() {
     </div>
   )
 }
+
+

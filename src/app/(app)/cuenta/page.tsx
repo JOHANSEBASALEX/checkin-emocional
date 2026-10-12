@@ -67,7 +67,7 @@ export default function CuentaPage() {
         </div>
         <div className="space-y-3">
           {[
-            { label: "Nombre", value: profile?.full_name ?? "—" },
+                        { label: "Nombre", value: profile?.full_name ? profile.full_name.split(" ").map((p: string) => p.charAt(0).toUpperCase() + p.slice(1)).join(" ") : "—" },
             { label: "Correo", value: email },
           ].map(row => (
             <div key={row.label} className="flex justify-between items-center py-2.5 border-b text-sm" style={{ borderColor: "#f0faf4" }}>

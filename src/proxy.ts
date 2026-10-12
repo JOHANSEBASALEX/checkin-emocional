@@ -33,7 +33,8 @@ export async function proxy(request: NextRequest) {
 
   const isAppRoute = pathname.startsWith("/dashboard") ||
     pathname.startsWith("/checkin") ||
-    pathname.startsWith("/cuenta")
+    pathname.startsWith("/cuenta") ||
+    pathname.startsWith("/bienvenida")
 
   const isAuthRoute = pathname.startsWith("/login") ||
     pathname.startsWith("/registro")
@@ -43,12 +44,12 @@ export async function proxy(request: NextRequest) {
   }
 
   if (isAuthRoute && user) {
-    return NextResponse.redirect(new URL("/dashboard", request.url))
+    return NextResponse.redirect(new URL("/bienvenida", request.url))
   }
 
   return supabaseResponse
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/checkin/:path*", "/cuenta/:path*", "/login", "/registro"],
+  matcher: ["/dashboard/:path*", "/checkin/:path*", "/cuenta/:path*", "/bienvenida/:path*", "/login", "/registro"],
 }
