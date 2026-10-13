@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
@@ -118,7 +118,7 @@ export default function CuentaPage() {
               ))}
             </ul>
             <p className="text-xs text-gray-400 mt-4 pt-4 border-t" style={{ borderColor: "#d6f5e3" }}>
-              Para cancelar, visita tu cuenta en <a href="https://purchase.hotmart.com" target="_blank" rel="noopener noreferrer" className="underline">Hotmart.com</a>
+              Se renueva cada mes. Cancela cuando quieras en <a href="https://purchase.hotmart.com" target="_blank" rel="noopener noreferrer" className="underline">Hotmart</a>
             </p>
           </div>
         ) : (
@@ -160,3 +160,4 @@ export default function CuentaPage() {
     </div>
   )
 }
+

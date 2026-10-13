@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+﻿import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@supabase/supabase-js"
 
 function getSupabaseAdmin() {
@@ -8,50 +8,65 @@ function getSupabaseAdmin() {
   )
 }
 
+const ACTIVAR = ["PURCHASE_APPROVED", "PURCHASE_COMPLETE"]
+const CANCELAR = ["SUBSCRIPTION_CANCELLATION", "PURCHASE_CANCELED", "PURCHASE_REFUNDED", "PURCHASE_CHARGEBACK", "PURCHASE_EXPIRED"]
+const ATRASADO = ["PURCHASE_DELAYED"]
+
+async function buscarUsuario(supabase: ReturnType<typeof getSupabaseAdmin>, email: string) {
+  const buscado = email.trim().toLowerCase()
+  for (let page = 1; page <= 20; page++) {
+    const { data, error } = await supabase.auth.admin.listUsers({ page, perPage: 1000 })
+    if (error) throw error
+    const u = data.users.find((x) => x.email?.toLowerCase() === buscado)
+    if (u) return u
+    if (data.users.length < 1000) return null
+  }
+  return null
+}
+
 export async function POST(req: NextRequest) {
-  // Verificar token secreto en la URL
   const token = req.headers.get("x-hotmart-hottok")
   if (!token || token !== process.env.HOTMART_HOTTOK) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 })
   }
 
-  // Gumroad envía form-urlencoded
   const body = await req.json()
   const email = (body?.data?.buyer?.email ?? body?.data?.subscriber?.email ?? null) as string | null
   const event = (body?.event ?? "") as string
   const subscriptionId = (body?.data?.subscription?.subscriber?.code ?? null) as string | null
-  const isTest = false
+
+  let newStatus: string | null = null
+  if (ACTIVAR.includes(event)) newStatus = "active"
+  else if (CANCELAR.includes(event)) newStatus = "canceled"
+  else if (ATRASADO.includes(event)) newStatus = "past_due"
+
+  if (!newStatus) {
+    return NextResponse.json({ received: true, skipped: "evento ignorado: " + event })
+  }
 
   if (!email) {
     return NextResponse.json({ error: "Email requerido" }, { status: 400 })
   }
 
-  // Ignorar eventos de prueba en producción
-  if (isTest && process.env.NODE_ENV === "production") {
-    return NextResponse.json({ received: true, skipped: "test event" })
-  }
-
   const supabase = getSupabaseAdmin()
 
-  // Buscar el usuario por email en auth.users via service role
-  const { data: authUsers } = await supabase.auth.admin.listUsers()
-  const authUser = authUsers?.users?.find(u => u.email === email)
+  let authUser
+  try {
+    authUser = await buscarUsuario(supabase, email)
+  } catch (err) {
+    console.error("Error buscando usuario:", err)
+    return NextResponse.json({ error: "Error buscando usuario" }, { status: 500 })
+  }
 
   if (!authUser) {
-    // El comprador no tiene cuenta — guardamos para conciliación manual
-    console.warn(`Gumroad webhook: no se encontró usuario con email ${email}`)
+    console.warn("Hotmart webhook: no se encontró usuario con email " + email + " (evento " + event + ")")
     return NextResponse.json({ received: true, warning: "usuario no encontrado" })
   }
 
-  const isCancelled = ["SUBSCRIPTION_CANCELLATION", "PURCHASE_CANCELED", "PURCHASE_REFUNDED", "PURCHASE_CHARGEBACK"].includes(event)
-  const newStatus = isCancelled ? "canceled" : "active"
   const update: Record<string, string> = { subscription_status: newStatus }
   if (subscriptionId) update.subscription_id = subscriptionId
 
-  const { error } = await supabase
-    .from("profiles")
-    .update(update)
-    .eq("id", authUser.id)
+  const { error } = await supabase.from("profiles").update(update).eq("id", authUser.id)
 
   if (error) {
     console.error("Error actualizando perfil:", error)
