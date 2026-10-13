@@ -1,11 +1,11 @@
 ﻿import { redirect } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { LayoutDashboard, User, Sparkles, Mail } from "lucide-react"
+import { Sparkles } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 import { LogoutButton } from "@/components/LogoutButton"
 import Image from "next/image"
-import { BotonNuevoCheckin } from "@/components/BotonNuevoCheckin"
+import { NavLateral } from "@/components/NavLateral"
 import { NavInferior } from "@/components/NavInferior"
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
@@ -65,27 +65,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </div>
         </div>
 
-        <nav className="flex flex-col gap-1 flex-1">
-          <BotonNuevoCheckin />
-          <Link href="/carta">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm" style={{ color: "#D4A898" }}>
-              <Mail className="w-4 h-4" />
-              Mi carta semanal
-            </div>
-          </Link>
-          <Link href="/dashboard">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm" style={{ color: "#D4A898" }}>
-              <LayoutDashboard className="w-4 h-4" />
-              Mi historial
-            </div>
-          </Link>
-          <Link href="/cuenta">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm" style={{ color: "#D4A898" }}>
-              <User className="w-4 h-4" />
-              Mi cuenta
-            </div>
-          </Link>
-        </nav>
+        <NavLateral />
 
         <Separator className="my-4" style={{ background: "#2A3F6F" }} />
 
@@ -122,3 +102,4 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     </div>
   )
 }
+
