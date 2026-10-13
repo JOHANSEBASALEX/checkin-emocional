@@ -1,4 +1,4 @@
-import { createServerClient } from "@supabase/ssr"
+﻿import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
 export async function proxy(request: NextRequest) {
@@ -34,7 +34,7 @@ export async function proxy(request: NextRequest) {
   const isAppRoute = pathname.startsWith("/dashboard") ||
     pathname.startsWith("/checkin") ||
     pathname.startsWith("/cuenta") ||
-    pathname.startsWith("/bienvenida")
+    pathname.startsWith("/bienvenida") || pathname.startsWith("/carta")
 
   const isAuthRoute = pathname.startsWith("/login") ||
     pathname.startsWith("/registro")
@@ -51,5 +51,6 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/checkin/:path*", "/cuenta/:path*", "/bienvenida/:path*", "/login", "/registro"],
+  matcher: ["/dashboard/:path*", "/checkin/:path*", "/cuenta/:path*", "/bienvenida/:path*", "/carta/:path*", "/login", "/registro"],
 }
+

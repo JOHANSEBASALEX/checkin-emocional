@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { useRouter, usePathname } from "next/navigation"
-import { PlusCircle, LayoutDashboard, User, LogOut } from "lucide-react"
+import { PlusCircle, LayoutDashboard, User, LogOut, Mail } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 
 export function NavInferior() {
@@ -31,6 +31,9 @@ export function NavInferior() {
       <button type="button" onClick={nuevo} className={base} style={pathname.startsWith("/checkin") ? fondoActivo : fondoNormal}>
         <PlusCircle className="w-5 h-5" /> Nuevo
       </button>
+      <button type="button" onClick={() => router.push("/carta")} className={base} style={pathname.startsWith("/carta") ? fondoActivo : fondoNormal}>
+        <Mail className="w-5 h-5" /> Carta
+      </button>
       <button type="button" onClick={() => router.push("/dashboard")} className={base} style={pathname.startsWith("/dashboard") ? fondoActivo : fondoNormal}>
         <LayoutDashboard className="w-5 h-5" /> Historial
       </button>
@@ -43,3 +46,4 @@ export function NavInferior() {
     </nav>
   )
 }
+

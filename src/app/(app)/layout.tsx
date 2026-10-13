@@ -1,7 +1,7 @@
 ﻿import { redirect } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { LayoutDashboard, User, Sparkles } from "lucide-react"
+import { LayoutDashboard, User, Sparkles, Mail } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 import { LogoutButton } from "@/components/LogoutButton"
 import Image from "next/image"
@@ -67,16 +67,20 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
         <nav className="flex flex-col gap-1 flex-1">
           <BotonNuevoCheckin />
+          <Link href="/carta">
+            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm" style={{ color: "#D4A898" }}>
+              <Mail className="w-4 h-4" />
+              Mi carta semanal
+            </div>
+          </Link>
           <Link href="/dashboard">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm"
-              style={{ color: "#D4A898" }}>
+            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm" style={{ color: "#D4A898" }}>
               <LayoutDashboard className="w-4 h-4" />
               Mi historial
             </div>
           </Link>
           <Link href="/cuenta">
-            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm"
-              style={{ color: "#D4A898" }}>
+            <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm" style={{ color: "#D4A898" }}>
               <User className="w-4 h-4" />
               Mi cuenta
             </div>
