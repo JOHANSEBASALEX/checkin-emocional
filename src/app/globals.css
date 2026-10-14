@@ -122,3 +122,6 @@
 .gradient-warm {
   background: linear-gradient(135deg, #EDE0D4 0%, #F5EDE4 100%);
 }
+button:not(:disabled), [role='button'], select, summary, label[for], input[type='checkbox'], input[type='radio'], input[type='submit'] {
+  cursor: pointer;
+}

@@ -6,7 +6,7 @@ import { PlusCircle, Mail, LayoutDashboard, User } from "lucide-react"
 
 const ACTIVO = { background: "linear-gradient(135deg,#B07060,#9A5848)", color: "#FFFFFF" }
 const NORMAL = { color: "#D4A898" }
-const BASE = "flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm w-full text-left transition-colors"
+const BASE = "flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm w-full text-left cursor-pointer transition-colors"
 
 export function NavLateral({ isPro }: { isPro: boolean }) {
   const router = useRouter()
@@ -42,6 +42,7 @@ export function NavLateral({ isPro }: { isPro: boolean }) {
     </nav>
   )
 }
+
 
 
 
