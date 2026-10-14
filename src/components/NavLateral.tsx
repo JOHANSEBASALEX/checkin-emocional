@@ -29,7 +29,7 @@ export function NavLateral({ isPro }: { isPro: boolean }) {
       </button>
       <Link href="/carta" className={BASE + (enCarta ? " font-semibold" : "")} style={enCarta ? ACTIVO : NORMAL}>
         <Mail className="w-4 h-4" />
-        Mi carta semanal{!isPro && <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: "#D6F5E3", color: "#1F7A4D" }}>Pro</span>}{!isPro && <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: "#D6F5E3", color: "#1F7A4D" }}>Pro</span>}
+        Mi carta semanal{!isPro && <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: "#D6F5E3", color: "#1F7A4D" }}>Pro</span>}
       </Link>
       <Link href="/dashboard" className={BASE + (enHistorial ? " font-semibold" : "")} style={enHistorial ? ACTIVO : NORMAL}>
         <LayoutDashboard className="w-4 h-4" />
@@ -42,5 +42,6 @@ export function NavLateral({ isPro }: { isPro: boolean }) {
     </nav>
   )
 }
+
 
 

@@ -111,7 +111,7 @@ export default function CuentaPage() {
               </div>
             </div>
             <ul className="space-y-2 text-sm text-gray-600">
-              {["Reflexiones profundas pensadas solo para ti", "Insights de patrones emocionales", "Guía de acción concreta"].map(i => (
+              {["Reflexión profunda sobre lo que escribes cada día", "Patrones emocionales de tu semana", "Invitación a un audio guiado para ti", "Tu carta semanal escrita para ti"].map(i => (
                 <li key={i} className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: "#3aA876" }} /> {i}
                 </li>
@@ -137,8 +137,8 @@ export default function CuentaPage() {
               <ul className="space-y-2 text-sm mb-5">
                 {[
                   "✨ Reflexión personalizada con IA",
-                  "✨ Insights de tus patrones emocionales",
-                  "✨ Guía de acción concreta",
+                  "✨ Patrones emocionales de tu semana",
+                  "✨ Invitación a un audio guiado para ti", "\u2728 Tu carta semanal completa",
                   "✨ Todo lo del plan gratuito",
                 ].map(i => (
                   <li key={i} className="text-green-100">{i}</li>
@@ -160,4 +160,6 @@ export default function CuentaPage() {
     </div>
   )
 }
+
+
 
