@@ -7,7 +7,7 @@ import { Mail, Sparkles } from "lucide-react"
 interface Estado {
   isPro: boolean
   carta: string | null
-  esMuestra: boolean
+  esMuestra: boolean; creada?: string | null
   total: number
   minimo: number
   puedeGenerar: boolean
@@ -35,7 +35,7 @@ export default function CartaPage() {
       if (!r.ok) {
         setError(d.error ?? "Algo salió mal. Intenta de nuevo.")
       } else {
-        setEstado((prev) => (prev ? { ...prev, carta: d.carta, esMuestra: d.esMuestra, motivo: "ya_existe", puedeGenerar: false } : prev))
+        setEstado((prev) => (prev ? { ...prev, carta: d.carta, esMuestra: d.esMuestra, creada: d.creada ?? null, motivo: "ya_existe", puedeGenerar: false } : prev))
       }
     } catch {
       setError("No pudimos escribir tu carta. Intenta de nuevo.")
@@ -65,7 +65,7 @@ export default function CartaPage() {
                 {estado.esMuestra ? "Tu carta de muestra" : "Esta semana"}
               </p>
             </div>
-            <div className="rounded-2xl p-5 sm:p-6" style={{ background: "#FAF8F5", borderLeft: "3px solid #C9A84C" }}>
+            {estado.creada && <p className="text-xs mb-3" style={{ color: "#9A7080" }}>Escrita el {new Date(estado.creada).toLocaleString("es-CO", { weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" })}</p>}<div className="rounded-2xl p-5 sm:p-6" style={{ background: "#FAF8F5", borderLeft: "3px solid #C9A84C" }}>
               <img src="/carta.jpg" alt="" className="float-right ml-4 mb-2 w-24 sm:w-28 rounded-full" /><p className="whitespace-pre-line leading-relaxed" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif", fontSize: "1.02rem" }}>
                 {estado.carta}
               </p>
@@ -142,6 +142,7 @@ export default function CartaPage() {
     </div>
   )
 }
+
 
 
 

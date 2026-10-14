@@ -9,7 +9,7 @@ async function cargar(userId: string) {
 
   const [perfil, carta, checkins, muestras] = await Promise.all([
     sc.from("profiles").select("full_name, subscription_status").eq("id", userId).single(),
-    sc.from("cartas").select("contenido, es_muestra").eq("user_id", userId).eq("semana", semana).maybeSingle(),
+    sc.from("cartas").select("contenido, es_muestra, created_at").eq("user_id", userId).eq("semana", semana).maybeSingle(),
     sc.from("checkins").select("emocion, intensidad, respuestas, journal, created_at").eq("user_id", userId).gte("created_at", desde).order("created_at", { ascending: true }),
     sc.from("cartas").select("id").eq("user_id", userId).eq("es_muestra", true).limit(1),
   ])
@@ -40,7 +40,7 @@ export async function GET() {
   const e = await cargar(user.id)
   return NextResponse.json({
     isPro: e.isPro,
-    carta: e.carta?.contenido ?? null,
+    carta: e.carta?.contenido ?? null, creada: e.carta?.created_at ?? null,
     esMuestra: e.carta?.es_muestra ?? false,
     total: e.lista.length,
     minimo: e.minimo,
@@ -70,14 +70,15 @@ export async function POST() {
     if (error) {
       console.error("Error guardando carta:", error)
       // Si hizo doble clic, devolvemos la que ya se guardó
-      const { data: existente } = await e.sc.from("cartas").select("contenido, es_muestra").eq("user_id", user.id).eq("semana", e.semana).maybeSingle()
+      const { data: existente } = await e.sc.from("cartas").select("contenido, es_muestra, created_at").eq("user_id", user.id).eq("semana", e.semana).maybeSingle()
       if (existente) return NextResponse.json({ carta: existente.contenido, esMuestra: existente.es_muestra })
       return NextResponse.json({ error: "No se pudo guardar" }, { status: 500 })
     }
-    return NextResponse.json({ carta: contenido, esMuestra })
+    return NextResponse.json({ carta: contenido, esMuestra, creada: new Date().toISOString() })
   } catch (err) {
     console.error("Error generando carta:", err)
     return NextResponse.json({ error: "No pudimos escribir tu carta ahora. Intenta en unos minutos." }, { status: 502 })
   }
 }
+
 
