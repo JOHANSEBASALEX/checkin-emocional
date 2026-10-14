@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+﻿import { NextRequest, NextResponse } from "next/server"
 import { createClient, createServiceClient } from "@/lib/supabase/server"
 import { generarReflexion } from "@/lib/gemini"
 
@@ -45,13 +45,13 @@ export async function POST(req: NextRequest) {
   }
 
   // Generar reflexión con Gemini solo para Pro
-  if (isPro) {
+  const previos = isPro ? (await serviceClient.from("checkins").select("emocion, intensidad, created_at").eq("user_id", user.id).neq("id", checkin.id).gte("created_at", new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString()).order("created_at", { ascending: true })).data ?? [] : []; if (isPro) {
     try {
       const reflexion = await generarReflexion(
         emocion,
         intensidad,
         respuestas ?? {},
-        journal ?? ""
+        journal ?? "", previos
       )
 
       if (reflexion) {
@@ -69,3 +69,4 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ reflexion: null, isPro, checkinId: checkin.id })
 }
+
