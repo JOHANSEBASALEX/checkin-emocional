@@ -66,7 +66,7 @@ export default function CartaPage() {
               </p>
             </div>
             <div className="rounded-2xl p-5 sm:p-6" style={{ background: "#FAF8F5", borderLeft: "3px solid #C9A84C" }}>
-              <p className="whitespace-pre-line leading-relaxed" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif", fontSize: "1.02rem" }}>
+              <img src="/carta.jpg" alt="" className="float-right ml-4 mb-2 w-24 sm:w-28 rounded-full" /><p className="whitespace-pre-line leading-relaxed" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif", fontSize: "1.02rem" }}>
                 {estado.carta}
               </p>
             </div>
@@ -142,3 +142,6 @@ export default function CartaPage() {
     </div>
   )
 }
+
+
+
