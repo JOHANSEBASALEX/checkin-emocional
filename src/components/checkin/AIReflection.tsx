@@ -81,7 +81,7 @@ export function AIReflection({ reflexion, emocion, categoria }: Props) {
 
       <div className="flex items-center justify-center gap-2 pt-3 border-t" style={{ borderColor: "#E8D4C4" }}>
         <span className="text-xs" style={{ color: "#B09888" }}>
-          Reflexión generada con amor para tu emocion de hoy:
+          Reflexión generada con amor para tu emoción de hoy:{" "}
         </span>
         <span className="text-xs font-bold px-2 py-1 rounded-full"
           style={{ background: "#F5EDE4", color: "#B07060", border: "1px solid #D4A898" }}>
