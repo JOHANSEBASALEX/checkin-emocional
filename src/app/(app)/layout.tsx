@@ -65,7 +65,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </div>
         </div>
 
-        <NavLateral />
+        <NavLateral isPro={isPro} />
 
         <Separator className="my-4" style={{ background: "#2A3F6F" }} />
 
@@ -102,4 +102,5 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     </div>
   )
 }
+
 
