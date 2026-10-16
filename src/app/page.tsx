@@ -50,8 +50,7 @@ function Cupos() {
   const ocupados = quedan === null ? 0 : total - quedan
   return (
     <div style={{ maxWidth:"320px", margin:"0.75rem auto" }}>
-      <p style={{ color:"#C9A84C", fontSize:"1.3rem", fontWeight:700, margin:"0 0 0.25rem", fontFamily:"Playfair Display, serif" }}>$4.97/mes para siempre</p>
-      <p style={{ color:"#D4A898", fontSize:"0.8rem", margin:"0 0 0.75rem", lineHeight:"1.5" }}>Si te suscribes ahora, conservas este precio mientras sigas suscrita, aunque suba después.</p>
+      <p style={{ color:"#C9A84C", fontSize:"1.3rem", fontWeight:700, margin:"0 0 0.25rem", fontFamily:"Playfair Display, serif" }}>$4.97/mes</p>
       {quedan !== null && (
         <div>
           <div style={{ height:"8px", borderRadius:"999px", background:"#2A3F6F", overflow:"hidden" }}>
@@ -104,12 +103,10 @@ export default function LandingPage() {
         <p style={{ textAlign:"center", fontSize:"0.9rem", color:"#7A5060", marginTop:"1.25rem", fontStyle:"italic" }}>Tu sistema nervioso está hablando. Solo necesita que lo escuches.</p>
       </div>
       <div style={{ padding:"2rem 1.5rem", background:"linear-gradient(135deg,#1B2A4A,#2A3F6F)", textAlign:"center" }}>
-        <div style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"10px", letterSpacing:"2px", textTransform:"uppercase", padding:"4px 14px", borderRadius:"20px", marginBottom:"0.75rem", fontWeight:700 }}>Precio de fundadora — cupos limitados</div>
+        <div style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"10px", letterSpacing:"2px", textTransform:"uppercase", padding:"4px 14px", borderRadius:"20px", marginBottom:"0.75rem", fontWeight:700 }}>Suscripción mensual</div>
         <p style={{ color:"#FAF8F5", fontSize:"0.95rem", marginBottom:"0.25rem" }}>Plan Pro con reflexión profunda personalizada</p>
-        <p style={{ color:"#D4A898", fontSize:"0.82rem", marginBottom:"0.5rem" }}>Tu precio queda fijo mientras sigas suscrita</p>
-        <Cupos />
         <Link href="/registro" style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"1rem", fontWeight:700, padding:"0.9rem 2rem", borderRadius:"50px", textDecoration:"none", marginTop:"0.75rem", boxShadow:"0 4px 16px rgba(201,168,76,0.4)" }}>Quiero ir más profundo — $4.97/mes</Link>
-        <p style={{ color:"#9A7080", fontSize:"0.72rem", marginTop:"0.6rem" }}>Cancela cuando quieras · Sin compromisos</p>
+        <p style={{ color:"#9A7080", fontSize:"0.72rem", marginTop:"0.6rem" }}>Se cobra cada mes hasta que canceles · Cancela cuando quieras</p>
       </div>
       <div style={{ padding:"2.5rem 1.5rem", background:"#1B2A4A" }}>
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.4rem", textAlign:"center", color:"#FAF8F5", marginBottom:"0.5rem" }}>Cómo funciona</h2>
@@ -145,7 +142,7 @@ export default function LandingPage() {
         <p style={{ fontSize:"0.9rem", color:"#7A5060", marginBottom:"1.5rem", lineHeight:"1.7", maxWidth:"300px", margin:"0 auto 1.5rem" }}>Sin presión. Solo 3 minutos al día para reconectar con lo que sientes.</p>
         <Link href="/registro" style={{ display:"block", background:"linear-gradient(135deg,#B07060,#9A5848)", color:"white", fontSize:"1rem", fontWeight:700, padding:"1rem 2rem", borderRadius:"50px", textDecoration:"none", maxWidth:"280px", margin:"0 auto 1rem", boxShadow:"0 4px 20px rgba(176,112,96,0.4)" }}>Comenzar gratis ahora</Link>
         <Link href="/registro" style={{ display:"block", color:"#1B2A4A", fontSize:"0.88rem", padding:"0.7rem 2rem", borderRadius:"50px", textDecoration:"none", maxWidth:"280px", margin:"0 auto", border:"1.5px solid #1B2A4A", fontWeight:600 }}>Ver Plan Pro — $4.97/mes</Link>
-        <p style={{ fontSize:"0.72rem", color:"#B09888", marginTop:"0.75rem" }}>Cancela cuando quieras · Sin compromisos</p>
+        <p style={{ fontSize:"0.72rem", color:"#B09888", marginTop:"0.75rem" }}>Se cobra cada mes hasta que canceles · Cancela cuando quieras</p>
       </div>
       <div style={{ padding:"1.5rem", textAlign:"center", background:"#1B2A4A", borderTop:"1px solid #2A3F6F" }}>
         <p style={{ fontSize:"0.75rem", color:"#9A7080", margin:0 }}>Sana y Florece — Check-in Emocional Diario · Para las mujeres que lo cargan todo en silencio</p><p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}>Sana y Florece es un espacio de autocuidado y no reemplaza la atención de un profesional de la salud mental.</p>

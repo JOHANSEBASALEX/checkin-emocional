@@ -1,4 +1,4 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import type { ReactNode } from "react"
 
 function Seccion({ t, children }: { t: string; children: ReactNode }) {
@@ -39,7 +39,7 @@ export default function TerminosPage() {
         </Seccion>
 
         <Seccion t="Plan gratuito y Plan Pro">
-          <p style={{ margin: 0 }}>El check-in diario, el historial y las prácticas gratuitas no tienen costo. El Plan Pro es una suscripción mensual que se cobra a través de Hotmart. El precio vigente se muestra al momento de suscribirte. Quienes se suscriben con el precio de fundadora conservan ese valor mientras mantengan su suscripción activa.</p>
+          <p style={{ margin: 0 }}>El check-in diario, el historial y las prácticas gratuitas no tienen costo. El Plan Pro es una suscripción mensual que se cobra a través de Hotmart. El precio vigente se muestra al momento de suscribirte.</p>
         </Seccion>
 
         <Seccion t="Cancelación y reembolsos">
