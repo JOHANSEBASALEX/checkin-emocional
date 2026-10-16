@@ -106,16 +106,16 @@ export default function LandingPage() {
       <div style={{ padding:"2rem 1.5rem", background:"linear-gradient(135deg,#1B2A4A,#2A3F6F)", textAlign:"center" }}>
         <div style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"10px", letterSpacing:"2px", textTransform:"uppercase", padding:"4px 14px", borderRadius:"20px", marginBottom:"0.75rem", fontWeight:700 }}>Precio de fundadora — cupos limitados</div>
         <p style={{ color:"#FAF8F5", fontSize:"0.95rem", marginBottom:"0.25rem" }}>Plan Pro con reflexión profunda personalizada</p>
-        <p style={{ color:"#D4A898", fontSize:"0.82rem", marginBottom:"0.5rem" }}>Tu precio queda fijo desde el día que te suscribes</p>
+        <p style={{ color:"#D4A898", fontSize:"0.82rem", marginBottom:"0.5rem" }}>Tu precio queda fijo mientras sigas suscrita</p>
         <Cupos />
-        <a href={HOTMART_URL} target="_blank" style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"1rem", fontWeight:700, padding:"0.9rem 2rem", borderRadius:"50px", textDecoration:"none", marginTop:"0.75rem", boxShadow:"0 4px 16px rgba(201,168,76,0.4)" }}>Quiero ir más profundo — $4.97/mes</a>
+        <Link href="/registro" style={{ display:"inline-block", background:"#C9A84C", color:"#1B2A4A", fontSize:"1rem", fontWeight:700, padding:"0.9rem 2rem", borderRadius:"50px", textDecoration:"none", marginTop:"0.75rem", boxShadow:"0 4px 16px rgba(201,168,76,0.4)" }}>Quiero ir más profundo — $4.97/mes</Link>
         <p style={{ color:"#9A7080", fontSize:"0.72rem", marginTop:"0.6rem" }}>Cancela cuando quieras · Sin compromisos</p>
       </div>
       <div style={{ padding:"2.5rem 1.5rem", background:"#1B2A4A" }}>
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.4rem", textAlign:"center", color:"#FAF8F5", marginBottom:"0.5rem" }}>Cómo funciona</h2>
         <p style={{ textAlign:"center", color:"#D4A898", fontSize:"0.85rem", marginBottom:"1.5rem" }}>3 minutos al día. Sin complicaciones.</p>
         <div style={{ display:"flex", flexDirection:"column", gap:"1rem", maxWidth:"360px", margin:"0 auto" }}>
-          {[{n:"1",t:"Elige cómo te sientes hoy",d:"8 categorías emocionales con ilustraciones. Sin juicio. Solo honestidad."},{n:"2",t:"Responde 3 preguntas guiadas",d:"Preguntas pensadas para que te conozcas mejor cada día."},{n:"3",t:"Recibe tu reflexión del día",d:"Una guía cálida y profunda creada a partir de lo que escribiste, solo para ti."}].map((s,i) => (
+          {[{n:"1",t:"Elige cómo te sientes hoy",d:"8 categorías emocionales con ilustraciones. Sin juicio. Solo honestidad."},{n:"2",t:"Responde 3 preguntas guiadas",d:"Preguntas pensadas para que te conozcas mejor cada día."},{n:"3",t:"Recibe tu reflexión del día",d:"Una guía cálida. Con el Plan Pro, escrita a partir de lo que tú escribiste, solo para ti."}].map((s,i) => (
             <div key={i} style={{ display:"flex", gap:"1rem", alignItems:"flex-start", background:"rgba(255,255,255,0.06)", padding:"1rem", borderRadius:"16px", border:"1px solid #2A3F6F" }}>
               <div style={{ width:"34px", height:"34px", borderRadius:"50%", background:"linear-gradient(135deg,#B07060,#9A5848)", color:"white", display:"flex", alignItems:"center", justifyContent:"center", fontWeight:700, flexShrink:0, fontSize:"0.9rem" }}>{s.n}</div>
               <div><p style={{ fontWeight:700, color:"#FAF8F5", margin:"0 0 0.25rem", fontSize:"0.9rem" }}>{s.t}</p><p style={{ fontSize:"0.82rem", color:"#D4A898", margin:0, lineHeight:"1.5" }}>{s.d}</p></div>
@@ -126,7 +126,7 @@ export default function LandingPage() {
       <div style={{ padding:"2.5rem 1.5rem", background:"#FAF8F5" }}>
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.3rem", textAlign:"center", color:"#3D3030", marginBottom:"1.25rem" }}>Gratuito vs Plan Pro</h2>
         <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem", maxWidth:"360px", margin:"0 auto" }}>
-          {[{f:"Check-in emocional diario",g:true,p:true},{f:"8 categorías emocionales",g:true,p:true},{f:"Historial de emociones",g:true,p:true},{f:"Reflexión general del día",g:true,p:true},{f:"Reflexión profunda personalizada",g:false,p:true},{f:"Guía específica según lo que escribiste",g:false,p:true}].map((r,i) => (
+          {[{f:"Check-in emocional diario",g:true,p:true},{f:"8 categorías emocionales",g:true,p:true},{f:"Historial de emociones",g:true,p:true},{f:"Audios guiados para calmarte",g:true,p:true},{f:"Reflexión general del día",g:true,p:true},{f:"Reflexión profunda personalizada",g:false,p:true},{f:"Guía específica según lo que escribiste",g:false,p:true},{f:"Patrones de tu semana",g:false,p:true},{f:"Una carta nueva cada semana",g:false,p:true}].map((r,i) => (
             <div key={i} style={{ display:"grid", gridTemplateColumns:"1fr auto auto", gap:"0.5rem", alignItems:"center", padding:"0.7rem 1rem", background:"white", borderRadius:"10px", border:"1px solid #E8D4C4" }}>
               <p style={{ margin:0, fontSize:"0.85rem", color:"#3D3030" }}>{r.f}</p>
               <span style={{ fontSize:"1rem", textAlign:"center", width:"32px" }}>{r.g?"✅":"❌"}</span>
@@ -142,13 +142,13 @@ export default function LandingPage() {
       </div>
             <div style={{ padding:"3rem 1.5rem", textAlign:"center", background:"linear-gradient(160deg,#F5EDE4,#EDE0D4)" }}>
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.6rem", color:"#3D3030", marginBottom:"0.75rem", lineHeight:"1.3" }}>Hoy puede ser el día<br />que empieces a escucharte</h2>
-        <p style={{ fontSize:"0.9rem", color:"#7A5060", marginBottom:"1.5rem", lineHeight:"1.7", maxWidth:"300px", margin:"0 auto 1.5rem" }}>Sin excusas. Sin tiempo. Solo 3 minutos al día para reconectar con lo que sientes.</p>
+        <p style={{ fontSize:"0.9rem", color:"#7A5060", marginBottom:"1.5rem", lineHeight:"1.7", maxWidth:"300px", margin:"0 auto 1.5rem" }}>Sin presión. Solo 3 minutos al día para reconectar con lo que sientes.</p>
         <Link href="/registro" style={{ display:"block", background:"linear-gradient(135deg,#B07060,#9A5848)", color:"white", fontSize:"1rem", fontWeight:700, padding:"1rem 2rem", borderRadius:"50px", textDecoration:"none", maxWidth:"280px", margin:"0 auto 1rem", boxShadow:"0 4px 20px rgba(176,112,96,0.4)" }}>Comenzar gratis ahora</Link>
-        <a href={HOTMART_URL} target="_blank" style={{ display:"block", color:"#1B2A4A", fontSize:"0.88rem", padding:"0.7rem 2rem", borderRadius:"50px", textDecoration:"none", maxWidth:"280px", margin:"0 auto", border:"1.5px solid #1B2A4A", fontWeight:600 }}>Ver Plan Pro — $4.97/mes</a>
+        <Link href="/registro" style={{ display:"block", color:"#1B2A4A", fontSize:"0.88rem", padding:"0.7rem 2rem", borderRadius:"50px", textDecoration:"none", maxWidth:"280px", margin:"0 auto", border:"1.5px solid #1B2A4A", fontWeight:600 }}>Ver Plan Pro — $4.97/mes</Link>
         <p style={{ fontSize:"0.72rem", color:"#B09888", marginTop:"0.75rem" }}>Cancela cuando quieras · Sin compromisos</p>
       </div>
       <div style={{ padding:"1.5rem", textAlign:"center", background:"#1B2A4A", borderTop:"1px solid #2A3F6F" }}>
-        <p style={{ fontSize:"0.75rem", color:"#9A7080", margin:0 }}>Sana y Florece — Check-in Emocional Diario · Para las mujeres que sufren en silencio</p>
+        <p style={{ fontSize:"0.75rem", color:"#9A7080", margin:0 }}>Sana y Florece — Check-in Emocional Diario · Para las mujeres que lo cargan todo en silencio</p><p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}>Sana y Florece es un espacio de autocuidado y no reemplaza la atención de un profesional de la salud mental.</p>
         <p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}><Link href="/privacidad" style={{ color:"#9A7080" }}>Privacidad</Link> · <Link href="/terminos" style={{ color:"#9A7080" }}>Términos</Link> · <Link href="/ayuda" style={{ color:"#9A7080" }}>Ayuda en crisis</Link></p>
       </div>
     </div>

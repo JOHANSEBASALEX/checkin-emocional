@@ -152,7 +152,7 @@ export default function CuentaPage() {
               </a>
             </div>
             <p className="text-xs text-center text-gray-400">
-              Pago seguro con Hotmart · Sin contratos · Cancela cuando quieras
+              <strong>Paga con el mismo correo de tu cuenta: {email}</strong><br />Pago seguro con Hotmart · Sin contratos · Cancela cuando quieras
             </p>
           </div>
         )}

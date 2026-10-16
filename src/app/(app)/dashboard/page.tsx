@@ -96,6 +96,17 @@ export default async function DashboardPage() {
 
   const desde7 = diaLocal(new Date(Date.now() - 6 * 86400000))
   const ultimos7 = (checkins ?? []).filter(c => diaLocal(c.created_at) >= desde7)
+       const enRango = (c: { created_at: string }, desde: number, hasta: number) => {
+       const t = new Date(c.created_at).getTime()
+       return t >= Date.now() - hasta * 86400000 && t < Date.now() - desde * 86400000
+     }
+     const media = (lista: { intensidad: number }[]) =>
+       lista.length ? lista.reduce((s, c) => s + c.intensidad, 0) / lista.length : null
+     const mediaEsta = media((checkins ?? []).filter(c => enRango(c, 0, 7)))
+     const mediaPasada = media((checkins ?? []).filter(c => enRango(c, 7, 14)))
+     const diferencia = mediaEsta !== null && mediaPasada !== null
+       ? Math.round((mediaEsta - mediaPasada) * 10) / 10
+       : null
   const promedioIntensidad = ultimos7.length
     ? Math.round(ultimos7.reduce((s, c) => s + c.intensidad, 0) / ultimos7.length * 10) / 10
     : null
@@ -150,6 +161,23 @@ export default async function DashboardPage() {
         </div>
       </div>
 
+               <div className="rounded-3xl p-5 border shadow-sm mb-8 flex items-center gap-4" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
+           <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style={{ background: "#F5EDE4", color: "#B07060" }}>
+             {diferencia === null ? "🌱" : diferencia < 0 ? "↓" : diferencia > 0 ? "↑" : "="}
+           </div>
+           <div>
+             <p className="font-bold text-sm" style={{ color: "#3D3030" }}>Esta semana vs la anterior</p>
+             <p className="text-xs" style={{ color: "#9A7080" }}>
+               {diferencia === null
+                 ? "Con dos semanas de check-ins vas a poder ver cómo cambia tu intensidad."
+                 : diferencia < 0
+                 ? `Tus check-ins fueron más suaves: bajaste ${Math.abs(diferencia)} puntos de intensidad en promedio.`
+                 : diferencia > 0
+                 ? `Esta semana fue más intensa (+${diferencia} puntos). Notarlo ya es parte de cuidarte.`
+                 : "Tu intensidad se mantuvo igual que la semana pasada."}
+             </p>
+           </div>
+         </div>
       <div className="rounded-3xl p-6 border shadow-sm mb-8" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
         <div className="flex items-center justify-between mb-5">
           <div>
