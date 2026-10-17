@@ -105,9 +105,9 @@ export default function RegistroPage() {
                   style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="password" style={{ color: "#3D3030" }}>Contrasena</Label>
+                <Label htmlFor="password" style={{ color: "#3D3030" }}>Contraseña</Label>
                 <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)}
-                  placeholder="Minimo 8 caracteres" minLength={8} className="h-11 border-2 rounded-xl"
+                  placeholder="Mínimo 8 caracteres" minLength={8} className="h-11 border-2 rounded-xl"
                   style={{ borderColor: "#D4A898", background: "#FAF8F5" }} required />
               </div>
 

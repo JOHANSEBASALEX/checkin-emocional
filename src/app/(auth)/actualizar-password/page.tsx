@@ -14,7 +14,7 @@ export default function ActualizarPasswordPage() {
     const supabase = createClient()
     const result = await supabase.auth.updateUser({ password: password })
     if (result.error) {
-      setError("No pudimos actualizar tu contrasena. Pide un nuevo link.")
+      setError("No pudimos actualizar tu contraseña. Pide un nuevo link.")
       return
     }
     router.push("/login?password_actualizada=true")
