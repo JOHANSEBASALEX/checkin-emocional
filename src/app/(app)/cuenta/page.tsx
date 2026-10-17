@@ -132,7 +132,7 @@ export default function CuentaPage() {
               <p className="text-green-200 text-sm mb-4">Reflexión IA personalizada cada día</p>
               <div className="flex items-end gap-1 mb-5">
                 <span className="text-4xl font-bold">$4.97</span>
-                <span className="text-green-200 mb-1">/mes</span>
+                <span className="text-green-200 mb-1">USD/mes</span>
               </div>
               <ul className="space-y-2 text-sm mb-5">
                 {[
