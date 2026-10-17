@@ -23,13 +23,13 @@ export default function ActualizarPasswordPage() {
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#fdf8f3", padding: "1.5rem" }}>
       <div style={{ maxWidth: "420px", width: "100%", backgroundColor: "white", padding: "2.5rem", borderRadius: "16px", boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}>
-        <h1 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "0.5rem", color: "#1e2a4a" }}>Actualizar contrasena</h1>
-        <p style={{ color: "#6b7280", marginBottom: "1.5rem" }}>Escribe tu nueva contrasena.</p>
+        <h1 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "0.5rem", color: "#1e2a4a" }}>Actualizar contraseña</h1>
+        <p style={{ color: "#6b7280", marginBottom: "1.5rem" }}>Escribe tu nueva contraseña.</p>
         <form onSubmit={handleSubmit}>
-          <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 500, color: "#1e2a4a" }}>Nueva contrasena</label>
+          <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 500, color: "#1e2a4a" }}>Nueva contraseña</label>
           <input
             type="password"
-            placeholder="Minimo 6 caracteres"
+            placeholder="Mínimo 6 caracteres"
             value={password}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
             minLength={6}
@@ -41,7 +41,7 @@ export default function ActualizarPasswordPage() {
             type="submit"
             style={{ width: "100%", padding: "0.875rem", borderRadius: "10px", border: "none", backgroundColor: "#1e2a4a", color: "white", fontWeight: "bold", fontSize: "1rem", cursor: "pointer" }}
           >
-            Actualizar contrasena
+            Actualizar contraseña
           </button>
         </form>
       </div>
