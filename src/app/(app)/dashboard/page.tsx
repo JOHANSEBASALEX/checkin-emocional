@@ -120,7 +120,26 @@ export default async function DashboardPage() {
   const nombresPractica: Record<string, string> = { "respiracion-alivio": "la respiración del alivio", "orientacion-seguridad": "la orientación hacia la seguridad", "abrazo-mariposa": "el abrazo de la mariposa" }
   const mejorPractica = Object.entries(efectoPracticas).filter(([, e]) => e.veces >= 2).sort((a, b) => b[1].suaves / b[1].veces - a[1].suaves / a[1].veces)[0]
 
-  const promedioIntensidad = ultimos7.length
+    const ayer = diaLocal(new Date(Date.now() - 86400000))
+     const limite7 = Date.now() - 7 * 86400000
+     const visiblesTodos = (checkins ?? []).filter(c => isPro || new Date(c.created_at).getTime() >= limite7)
+     const ocultos = (checkins ?? []).length - visiblesTodos.length
+     const visibles = visiblesTodos.slice(0, 30)
+     const grupos: { dia: string; items: typeof visibles }[] = []
+     for (const c of visibles) {
+       const d = diaLocal(c.created_at)
+       const g = grupos[grupos.length - 1]
+       if (g && g.dia === d) g.items.push(c)
+       else grupos.push({ dia: d, items: [c] })
+     }
+     const etiquetaDia = (d: string) => {
+       if (d === hoy) return "Hoy"
+       if (d === ayer) return "Ayer"
+       const s = new Date(d + "T12:00:00").toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long" })
+       return s.charAt(0).toUpperCase() + s.slice(1)
+     }
+
+     const promedioIntensidad = ultimos7.length
     ? Math.round(ultimos7.reduce((s, c) => s + c.intensidad, 0) / ultimos7.length * 10) / 10
     : null
 
@@ -269,7 +288,15 @@ export default async function DashboardPage() {
         </div>
       ) : (
                 <div className="space-y-4">
-          {checkins.slice(0, 15).map(c => <CheckinCard key={c.id} checkin={c} />)}
+          {grupos.map(g => (
+             <div key={g.dia} className="space-y-3">
+               <p className="text-xs font-bold uppercase tracking-wide" style={{ color: "#9A7080" }}>{etiquetaDia(g.dia)}</p>
+               {g.items.map(c => <CheckinCard key={c.id} checkin={c} />)}
+             </div>
+           ))}
+           {!isPro && ocultos > 0 && (
+             <p className="text-xs text-center" style={{ color: "#9A7080" }}>Estás viendo tus últimos 7 días. Tus registros anteriores siguen guardados y los ves con el Plan Pro.</p>
+           )}
         </div>
       )}
 
