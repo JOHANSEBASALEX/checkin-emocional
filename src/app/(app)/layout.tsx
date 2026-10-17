@@ -75,7 +75,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
               <Sparkles className="w-3.5 h-3.5 text-white" />
               <p className="font-semibold text-xs text-white">Recibe reflexiones para ti</p>
             </div>
-            <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guía personalizada por $4.97/mes</p>
+            <p className="text-xs mb-3" style={{ color: "#F5EDE4" }}>Recibe guía personalizada por USD $4.97/mes</p>
             <Link href="/cuenta">
               <div className="rounded-xl py-1.5 text-center text-xs font-bold" style={{ background: "#EDE0D4", color: "#B07060" }}>
                 Ver Plan Pro

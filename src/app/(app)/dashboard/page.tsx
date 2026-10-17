@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation"
+﻿import { redirect } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { CheckinCard } from "@/components/dashboard/CheckinCard"
@@ -223,7 +223,7 @@ export default async function DashboardPage() {
             <p className="font-bold mb-1 flex items-center gap-1.5 text-white">
               <Sparkles className="w-4 h-4" style={{ color: "#F5EDE4" }} /> Recibe reflexiones hechas para ti
             </p>
-            <p className="text-sm" style={{ color: "#F5EDE4" }}>Descubre insights personalizados por $4.97/mes</p>
+            <p className="text-sm" style={{ color: "#F5EDE4" }}>Descubre insights personalizados por USD $4.97/mes</p>
           </div>
           <Link href="/cuenta" className="flex-shrink-0">
             <Button className="ml-4 font-bold text-sm" style={{ background: "#EDE0D4", color: "#B07060" }}>Ver Pro</Button>

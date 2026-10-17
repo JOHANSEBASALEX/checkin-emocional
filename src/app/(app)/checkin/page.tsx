@@ -253,7 +253,7 @@ export default function CheckinPage() {
                       style={{ borderColor: "#D4A898", background: "#FAF8F5" }}>
                       <Sparkles className="w-8 h-8 mx-auto mb-3" style={{ color: "#C9A84C" }} />
                       <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Reflexión profunda · Plan Pro</p>
-                      <p className="text-xs mb-4" style={{ color: "#9A7080" }}>Recibe una guía emocional pensada solo para ti, por solo $4.97/mes</p>
+                      <p className="text-xs mb-4" style={{ color: "#9A7080" }}>Recibe una guía emocional pensada solo para ti, por solo USD $4.97/mes</p>
                       <Link href="/cuenta">
                         <Button className="text-white text-sm h-9 px-5 rounded-xl"
                           style={{ background: "linear-gradient(135deg,#1B2A4A,#2A3F6F)" }}>

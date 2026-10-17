@@ -146,7 +146,7 @@ export default function CuentaPage() {
               </ul>
               <a href={gumroadUrl} target="_blank" rel="noopener noreferrer">
                 <Button className="w-full font-bold h-11 gap-2 text-sm" style={{ background: "#D4AF37", color: "#3a2a00" }}>
-                  Quiero ir más profundo — $4.97/mes
+                  Quiero ir más profundo — USD $4.97/mes
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Button>
               </a>
