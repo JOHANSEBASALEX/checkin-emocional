@@ -1,4 +1,4 @@
-import { FechaHora } from "./FechaHora"
+﻿import { FechaHora } from "./FechaHora"
 
 import { Sparkles } from "lucide-react"
 import { EMOCIONES, emocionFemenina } from "@/lib/constants"
@@ -77,9 +77,9 @@ export function CheckinCard({ checkin }: { checkin: Checkin }) {
         if (!pasopartes.length && !practica && !cambio) return null
         return (
           <div className="rounded-xl p-3.5 mb-3 text-xs space-y-1" style={{ background: "#faf8f5", color: "#5a4848" }}>
-            {pasopartes.length > 0 && <p><strong>qué pasó:</strong> {pasopartes.join(" · ").toLowerCase()}</p>}
-            {practica && <p><strong>qué hizo:</strong> {practica}</p>}
-            {cambio && <p><strong>cómo quedó:</strong> {cambio}</p>}
+            {pasopartes.length > 0 && <p><strong>Qué pasó:</strong> {pasopartes.join(" · ").toLowerCase()}</p>}
+            {practica && <p><strong>Qué hizo:</strong> {practica}</p>}
+            {cambio && <p><strong>Cómo quedó:</strong> {cambio}</p>}
           </div>
         )
       })()}
