@@ -107,6 +107,19 @@ export default async function DashboardPage() {
      const diferencia = mediaEsta !== null && mediaPasada !== null
        ? Math.round((mediaEsta - mediaPasada) * 10) / 10
        : null
+    const efectoPracticas: Record<string, { veces: number; suaves: number }> = {}
+  for (const c of checkins ?? []) {
+    const r = (c.respuestas ?? {}) as Record<string, unknown>
+    if (typeof r.practica === "string" && typeof r.cambio === "number") {
+      const e = efectoPracticas[r.practica] ?? { veces: 0, suaves: 0 }
+      e.veces++
+      if (r.cambio < 0) e.suaves++
+      efectoPracticas[r.practica] = e
+    }
+  }
+  const nombresPractica: Record<string, string> = { "respiracion-alivio": "la respiración del alivio", "orientacion-seguridad": "la orientación hacia la seguridad", "abrazo-mariposa": "el abrazo de la mariposa" }
+  const mejorPractica = Object.entries(efectoPracticas).filter(([, e]) => e.veces >= 2).sort((a, b) => b[1].suaves / b[1].veces - a[1].suaves / a[1].veces)[0]
+
   const promedioIntensidad = ultimos7.length
     ? Math.round(ultimos7.reduce((s, c) => s + c.intensidad, 0) / ultimos7.length * 10) / 10
     : null
@@ -228,6 +241,16 @@ export default async function DashboardPage() {
           <Link href="/cuenta" className="flex-shrink-0">
             <Button className="ml-4 font-bold text-sm" style={{ background: "#EDE0D4", color: "#B07060" }}>Ver Pro</Button>
           </Link>
+        </div>
+      )}
+
+            {mejorPractica && mejorPractica[1].suaves > 0 && (
+        <div className="rounded-3xl p-5 border shadow-sm mb-8 flex items-center gap-4" style={{ background: "#FFFFFF", borderColor: "#E8D4C4" }}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style={{ background: "#F5EDE4" }}>🌿</div>
+          <div>
+            <p className="font-bold text-sm" style={{ color: "#3D3030" }}>Qué te ayuda</p>
+            <p className="text-xs" style={{ color: "#9A7080" }}>Después de {nombresPractica[mejorPractica[0]] ?? "tu práctica"}, tu emoción se sintió más suave {mejorPractica[1].suaves} de {mejorPractica[1].veces} veces.</p>
+          </div>
         </div>
       )}
 
