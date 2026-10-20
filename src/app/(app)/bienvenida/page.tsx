@@ -97,7 +97,7 @@ export default function BienvenidaPage() {
         </div>
 
         <p className="text-gray-600 text-sm leading-relaxed">
-          Cuando estés lista o listo, toca <span className="font-semibold" style={{ color: "#a05a48" }}>Nuevo check-in</span> en
+          Cuando sientas que es el momento, toca <span className="font-semibold" style={{ color: "#a05a48" }}>Nuevo check-in</span> en
           el menú. Aquí estaremos contigo, sin prisa. 💛
         </p>
       </div>

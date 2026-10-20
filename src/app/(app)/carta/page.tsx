@@ -51,7 +51,7 @@ export default function CartaPage() {
         <h1 className="text-2xl font-bold mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
           Tu carta de la semana
         </h1>
-        <p className="text-sm" style={{ color: "#9A7080" }}>Una carta escrita para ti, con lo que viviste estos días.</p>
+        <p className="text-sm" style={{ color: "#9A7080" }}>Una carta escrita para ti, con lo que viviste estos días. Hay una carta por semana: la semana empieza el lunes y, desde ese día, puedes pedir la nueva con tus check-ins (con al menos 2). La escribe una inteligencia artificial para que sientas que alguien miró tu semana con cuidado: es un mensaje de ánimo y compañía, no un diagnóstico.</p>
       </div>
 
       <div className="bg-white rounded-3xl shadow-sm border p-5 sm:p-8" style={{ borderColor: "#D4A898" }}>
@@ -137,7 +137,7 @@ export default function CartaPage() {
       </div>
 
       <p className="text-xs text-center mt-5 leading-relaxed" style={{ color: "#9A7080" }}>
-        Esta carta la escribe una inteligencia artificial a partir de tus check-ins. No reemplaza a una psicóloga ni a un servicio de salud. Tus check-ins son solo tuyos.
+        Esta carta la escribe una inteligencia artificial a partir de tus check-ins. No reemplaza a un profesional de la salud mental ni a un servicio de salud. Tus check-ins son solo tuyos.
       </p>
     </div>
   )

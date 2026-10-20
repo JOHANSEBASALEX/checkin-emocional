@@ -223,7 +223,7 @@ export default function CheckinPage() {
                 </div>
 
                 <MiniReflexion datos={datosCuerpo} />
-                <div className="mt-4"><DespuesPractica checkinId={resultado?.checkinId} antes={intensidad} practica={datosCuerpo?.sistema === "Acelerada" ? "orientacion-seguridad" : datosCuerpo?.sistema === "Apagada" ? "abrazo-mariposa" : "respiracion-alivio"} /></div>{resultado?.reflexion ? (
+                <div className="mt-4"><DespuesPractica checkinId={resultado?.checkinId} antes={intensidad} practica={datosCuerpo?.sistema === "Acelerado" ? "orientacion-seguridad" : datosCuerpo?.sistema === "Apagado" ? "abrazo-mariposa" : "respiracion-alivio"} /></div>{resultado?.reflexion ? (
                   <AIReflection reflexion={resultado.reflexion} emocion={emocion} categoria={categoria} />
                 ) : (
                   <>

@@ -70,3 +70,4 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ reflexion: null, isPro, checkinId: checkin.id })
 }
 
+export const maxDuration = 60

@@ -1,132 +1,175 @@
-export const EMOCIONES = [
-  {
-    categoria: "Alegría",
-    color: "#F59E0B",
-    emoji: "😊",
-    emociones: ["Feliz", "Agradecida", "Entusiasmada", "Esperanzada", "Orgullosa", "Tranquila"],
-  },
-  {
-    categoria: "Tristeza",
-    color: "#3B82F6",
-    emoji: "😢",
-    emociones: ["Triste", "Melancólica", "Decepcionada", "Sola", "Añorante", "Abatida"],
-  },
-  {
-    categoria: "Ansiedad",
-    color: "#8B5CF6",
-    emoji: "😰",
-    emociones: ["Ansiosa", "Preocupada", "Nerviosa", "Abrumada", "Tensa", "Insegura"],
-  },
-  {
-    categoria: "Enojo",
-    color: "#EF4444",
-    emoji: "😠",
-    emociones: ["Enojada", "Frustrada", "Irritada", "Resentida", "Indignada", "Impaciente"],
-  },
-  {
-    categoria: "Miedo",
-    color: "#6B7280",
-    emoji: "😨",
-    emociones: ["Asustada", "Insegura", "Vulnerable", "Intimidada", "Aprensiva", "Paralizada"],
-  },
-  {
-    categoria: "Calma",
-    color: "#10B981",
-    emoji: "😌",
-    emociones: ["Calmada", "Serena", "Equilibrada", "Centrada", "Presente", "Aceptada"],
-  },
-  {
-    categoria: "Amor",
-    color: "#EC4899",
-    emoji: "🥰",
-    emociones: ["Amada", "Conectada", "Compasiva", "Cariñosa", "Apreciada", "Íntima"],
-  },
-  {
-    categoria: "Confusión",
-    color: "#F97316",
-    emoji: "😵",
-    emociones: ["Confundida", "Perdida", "Indecisa", "Dubitativa", "Desorientada", "Bloqueada"],
-  },
-] as const
+﻿export const EMOCIONES = [
+     {
+       categoria: "Alegría",
+       color: "#F59E0B",
+       emoji: "😊",
+       emociones: ["Alegría", "Gratitud", "Entusiasmo", "Esperanza", "Orgullo", "Ilusión", "Alivio", "Satisfacción"],
+     },
+     {
+       categoria: "Tristeza",
+       color: "#3B82F6",
+       emoji: "😢",
+       emociones: ["Tristeza", "Melancolía", "Decepción", "Soledad", "Añoranza", "Abatimiento", "Desánimo", "Vacío", "Culpa", "Duelo"],
+     },
+     {
+       categoria: "Ansiedad",
+       color: "#8B5CF6",
+       emoji: "😰",
+       emociones: ["Ansiedad", "Preocupación", "Nervios", "Agobio", "Tensión", "Inseguridad", "Estrés", "Agotamiento"],
+     },
+     {
+       categoria: "Enojo",
+       color: "#EF4444",
+       emoji: "😠",
+       emociones: ["Enojo", "Frustración", "Irritación", "Resentimiento", "Indignación", "Impaciencia", "Rabia", "Celos"],
+     },
+     {
+       categoria: "Miedo",
+       color: "#6B7280",
+       emoji: "😨",
+       emociones: ["Miedo", "Vulnerabilidad", "Intimidación", "Aprensión", "Parálisis", "Pánico", "Desconfianza", "Vergüenza"],
+     },
+     {
+       categoria: "Calma",
+       color: "#10B981",
+       emoji: "😌",
+       emociones: ["Calma", "Serenidad", "Equilibrio", "Estabilidad", "Presencia", "Aceptación", "Tranquilidad", "Paz"],
+     },
+     {
+       categoria: "Amor",
+       color: "#EC4899",
+       emoji: "🥰",
+       emociones: ["Amor", "Conexión", "Compasión", "Cariño", "Aprecio", "Intimidad", "Ternura", "Pertenencia"],
+     },
+     {
+       categoria: "Confusión",
+       color: "#F97316",
+       emoji: "😵",
+       emociones: ["Confusión", "Falta de rumbo", "Indecisión", "Duda", "Desorientación", "Bloqueo", "Saturación mental", "Incertidumbre"],
+     },
+   ] as const
 
-export type CategoriaEmocion = (typeof EMOCIONES)[number]["categoria"]
+   export type CategoriaEmocion = (typeof EMOCIONES)[number]["categoria"]
 
-// Traduce los nombres antiguos (masculinos) guardados en check-ins viejos
-const A_FEMENINO: Record<string, string> = {
-  Agradecido: "Agradecida", Entusiasmado: "Entusiasmada", Esperanzado: "Esperanzada", Orgulloso: "Orgullosa", Tranquilo: "Tranquila",
-  Melancólico: "Melancólica", Decepcionado: "Decepcionada", Solo: "Sola", Abatido: "Abatida",
-  Ansioso: "Ansiosa", Preocupado: "Preocupada", Nervioso: "Nerviosa", Abrumado: "Abrumada", Tenso: "Tensa", Inseguro: "Insegura",
-  Enojado: "Enojada", Frustrado: "Frustrada", Irritado: "Irritada", Resentido: "Resentida", Indignado: "Indignada",
-  Asustado: "Asustada", Intimidado: "Intimidada", Aprensivo: "Aprensiva", Paralizado: "Paralizada",
-  Calmado: "Calmada", Sereno: "Serena", Equilibrado: "Equilibrada", Centrado: "Centrada", Aceptado: "Aceptada",
-  Amado: "Amada", Conectado: "Conectada", Compasivo: "Compasiva", Cariñoso: "Cariñosa", Apreciado: "Apreciada", Íntimo: "Íntima",
-  Confundido: "Confundida", Perdido: "Perdida", Indeciso: "Indecisa", Dubitativo: "Dubitativa", Desorientado: "Desorientada", Bloqueado: "Bloqueada",
-}
+   // Traduce los nombres antiguos (masculinos y femeninos) guardados en check-ins viejos al nombre neutro actual
+   const NOMBRES_ANTIGUOS: Record<string, string> = {
+     Feliz: "Alegría", Agradecido: "Gratitud", Agradecida: "Gratitud", Entusiasmado: "Entusiasmo", Entusiasmada: "Entusiasmo", Esperanzado: "Esperanza", Esperanzada: "Esperanza", Orgulloso: "Orgullo", Orgullosa: "Orgullo", Tranquilo: "Tranquilidad", Tranquila: "Tranquilidad",
+     Triste: "Tristeza", Melancólico: "Melancolía", Melancólica: "Melancolía", Decepcionado: "Decepción", Decepcionada: "Decepción", Solo: "Soledad", Sola: "Soledad", Añorante: "Añoranza", Abatido: "Abatimiento", Abatida: "Abatimiento",
+     Ansioso: "Ansiedad", Ansiosa: "Ansiedad", Preocupado: "Preocupación", Preocupada: "Preocupación", Nervioso: "Nervios", Nerviosa: "Nervios", Abrumado: "Agobio", Abrumada: "Agobio", Tenso: "Tensión", Tensa: "Tensión", Inseguro: "Inseguridad", Insegura: "Inseguridad",
+     Enojado: "Enojo", Enojada: "Enojo", Frustrado: "Frustración", Frustrada: "Frustración", Irritado: "Irritación", Irritada: "Irritación", Resentido: "Resentimiento", Resentida: "Resentimiento", Indignado: "Indignación", Indignada: "Indignación", Impaciente: "Impaciencia",
+     Asustado: "Miedo", Asustada: "Miedo", Vulnerable: "Vulnerabilidad", Intimidado: "Intimidación", Intimidada: "Intimidación", Aprensivo: "Aprensión", Aprensiva: "Aprensión", Paralizado: "Parálisis", Paralizada: "Parálisis",
+     Calmado: "Calma", Calmada: "Calma", Sereno: "Serenidad", Serena: "Serenidad", Equilibrado: "Equilibrio", Equilibrada: "Equilibrio", Centrado: "Estabilidad", Centrada: "Estabilidad", Presente: "Presencia", Aceptado: "Aceptación", Aceptada: "Aceptación",
+     Amado: "Amor", Amada: "Amor", Conectado: "Conexión", Conectada: "Conexión", Compasivo: "Compasión", Compasiva: "Compasión", Cariñoso: "Cariño", Cariñosa: "Cariño", Apreciado: "Aprecio", Apreciada: "Aprecio", Íntimo: "Intimidad", Íntima: "Intimidad",
+     Confundido: "Confusión", Confundida: "Confusión", Perdido: "Falta de rumbo", Perdida: "Falta de rumbo", Indeciso: "Indecisión", Indecisa: "Indecisión", Dubitativo: "Duda", Dubitativa: "Duda", Desorientado: "Desorientación", Desorientada: "Desorientación", Bloqueado: "Bloqueo", Bloqueada: "Bloqueo",
+   }
 
-export function emocionFemenina(e: string): string {
-  return A_FEMENINO[e] ?? e
-}
+   export function emocionFemenina(e: string): string {
+     return NOMBRES_ANTIGUOS[e] ?? e
+   }
 
-export const PREGUNTAS_POR_EMOCION: Record<string, string[]> = {
-  // Alegría
-  Feliz: ["¿Qué está contribuyendo a tu felicidad hoy?", "¿Cómo puedes nutrir este estado?", "¿Con quién quieres compartir esta alegría?"],
-  Agradecida: ["¿Por qué te sientes agradecida hoy?", "¿Quién o qué contribuyó a este sentimiento?", "¿Cómo puedes expresar tu gratitud?"],
-  Entusiasmada: ["¿Qué te genera este entusiasmo?", "¿Qué posibilidades ves adelante?", "¿Cuál es el primer paso que quieres dar?"],
-  Esperanzada: ["¿Qué esperas que suceda?", "¿Qué te da esta esperanza?", "¿Qué puedes hacer hoy para apoyar esa esperanza?"],
-  Orgullosa: ["¿De qué logro te sientes orgullosa?", "¿Qué dice esto sobre ti?", "¿Cómo quieres celebrarlo?"],
-  Tranquila: ["¿Qué está generando esta tranquilidad?", "¿Cómo puedes mantener esta calma?", "¿Hay algo que quieras resolver desde este estado?"],
-  // Tristeza
-  Triste: ["¿Qué está detrás de tu tristeza hoy?", "¿Qué necesitas en este momento?", "¿Hay alguien con quien puedas hablar?"],
-  Melancólica: ["¿Qué recuerdos o pensamientos aparecen?", "¿Qué extrañas o añoras?", "¿Cómo puedes honrar ese sentimiento?"],
-  Decepcionada: ["¿Qué esperabas que fuera diferente?", "¿Qué aprendiste de esto?", "¿Cómo puedes cuidarte hoy?"],
-  Sola: ["¿Cuándo empezaste a sentirte sola?", "¿Qué tipo de conexión necesitas ahora?", "¿Hay alguien a quien puedas contactar?"],
-  Añorante: ["¿Qué o a quién añoras?", "¿Qué significaba eso para ti?", "¿Cómo puedes honrar ese recuerdo?"],
-  Abatida: ["¿Qué te tiene tan agotada?", "¿Cuándo fue la última vez que te cuidaste?", "¿Qué es lo más pequeño que puedes hacer por ti ahora?"],
-  // Ansiedad
-  Ansiosa: ["¿Qué situación te genera ansiedad?", "¿Cuál es el peor escenario que imaginas?", "¿Qué está en tu control ahora mismo?"],
-  Preocupada: ["¿Qué está en tu mente?", "¿Esta preocupación es sobre algo que puedes cambiar?", "¿Qué necesitas para sentirte más segura?"],
-  Nerviosa: ["¿Qué evento o situación te pone nerviosa?", "¿Qué has manejado bien antes en situaciones similares?", "¿Qué te ayudaría a calmarte?"],
-  Abrumada: ["¿Qué responsabilidades o pensamientos te pesan?", "¿Cuál es la prioridad más importante ahora?", "¿A qué puedes decir 'no' o delegar?"],
-  Tensa: ["¿Dónde sientes la tensión en tu cuerpo?", "¿Qué situación la está generando?", "¿Cuándo fue la última vez que descansaste de verdad?"],
-  Insegura: ["¿Sobre qué te sientes insegura?", "¿Qué evidencia tienes de tus capacidades?", "¿Quién te recuerda tu valor?"],
-  // Enojo
-  Enojada: ["¿Qué sucedió para que te sintieras así?", "¿Qué límite sientes que fue cruzado?", "¿Cómo puedes expresar esto de forma constructiva?"],
-  Frustrada: ["¿Qué no está saliendo como esperabas?", "¿Qué está en tu control cambiar?", "¿Qué necesitas para avanzar?"],
-  Irritada: ["¿Qué situación o persona te irritó?", "¿Hay algo más profundo detrás de esta irritación?", "¿Cómo puedes crear espacio para calmarte?"],
-  Resentida: ["¿Hay algo que no has podido expresar?", "¿Este resentimiento te está afectando a ti?", "¿Qué necesitarías para empezar a soltar esto?"],
-  Indignada: ["¿Qué injusticia o situación te generó esto?", "¿Cómo puedes canalizar esta energía positivamente?", "¿Hay algo concreto que puedas hacer?"],
-  Impaciente: ["¿Con qué o quién te sientes impaciente?", "¿Qué expectativas tienes?", "¿Qué puedes controlar mientras esperas?"],
-  // Miedo
-  Asustada: ["¿Qué te genera miedo en este momento?", "¿Qué tan probable es que ese escenario ocurra?", "¿Qué te haría sentir más segura?"],
-  Vulnerable: ["¿En qué área te sientes vulnerable?", "¿Hay alguien de confianza con quien compartir esto?", "¿Cómo puedes cuidarte ahora?"],
-  Intimidada: ["¿Qué o quién te intimida?", "¿Qué recursos tienes para enfrentar esto?", "¿Cuál sería un pequeño paso valiente?"],
-  Aprensiva: ["¿Qué cambio o situación te preocupa?", "¿Qué has superado antes que parecía difícil?", "¿Qué información te daría más claridad?"],
-  Paralizada: ["¿Qué decisión o situación te tiene paralizada?", "¿Cuál es el paso más pequeño posible?", "¿Qué le dirías a una amiga en tu lugar?"],
-  // Calma
-  Calmada: ["¿Qué contribuye a tu calma hoy?", "¿Hay algo que quieras reflexionar desde este estado?", "¿Cómo puedes llevar esta calma a otras áreas?"],
-  Serena: ["¿Qué prácticas te llevaron a esta serenidad?", "¿Qué quieres crear o decidir desde aquí?", "¿Cómo puedes compartir esto?"],
-  Equilibrada: ["¿Qué áreas de tu vida se sienten en equilibrio?", "¿Hay algo que quieras ajustar?", "¿Qué quieres mantener?"],
-  Centrada: ["¿Qué te ancla a tu centro hoy?", "¿Cuál es tu intención para las próximas horas?", "¿Qué quieres dejar ir?"],
-  Presente: ["¿Qué estás apreciando en este momento?", "¿Qué sensaciones observas en tu cuerpo?", "¿Qué quieres hacer con esta presencia?"],
-  Aceptada: ["¿Qué estás aceptando hoy?", "¿Cómo se siente soltar esa lucha?", "¿Qué viene después de la aceptación?"],
-  // Amor
-  Amada: ["¿Quién te hace sentir amada?", "¿Cómo recibes el amor?", "¿Cómo quieres honrar esa conexión?"],
-  Conectada: ["¿Con quién o qué te sientes conectada?", "¿Qué nutre esa conexión?", "¿Cómo puedes profundizarla?"],
-  Compasiva: ["¿Hacia quién diriges tu compasión hoy?", "¿Incluyes tu propia compasión hacia ti?", "¿Cómo puedes expresar esto?"],
-  Cariñosa: ["¿Qué o quién despierta tu cariño?", "¿Cómo expresas ese cariño?", "¿Hay alguien que necesite recibirlo hoy?"],
-  Apreciada: ["¿Quién o qué te hace sentir apreciada?", "¿Cómo recibes ese aprecio?", "¿A quién quieres apreciar tú hoy?"],
-  Íntima: ["¿Qué tipo de intimidad buscas?", "¿Qué barreras sientes para conectar profundamente?", "¿Qué paso pequeño puedes dar?"],
-  // Confusión
-  Confundida: ["¿Qué situación te genera confusión?", "¿Qué información necesitas para aclarar?", "¿Con quién podrías hablar sobre esto?"],
-  Perdida: ["¿En qué área de tu vida te sientes perdida?", "¿Qué valores te guían cuando no hay claridad?", "¿Cuál es el próximo paso aunque sea pequeño?"],
-  Indecisa: ["¿Qué decisión te está costando tomar?", "¿Qué necesitas para decidir?", "¿Cuál opción se alinea más con quien quieres ser?"],
-  Dubitativa: ["¿De qué dudas en este momento?", "¿Qué evidencia tienes a favor y en contra?", "¿Qué diría tu yo más sabio?"],
-  Desorientada: ["¿Qué cambio o situación te desorientó?", "¿Qué sí está claro para ti?", "¿Qué rutina o práctica te ancla?"],
-  Bloqueada: ["¿En qué área sientes el bloqueo?", "¿Qué crees que lo está causando?", "¿Qué harías si no tuvieras miedo a equivocarte?"],
-}
+   const PREGUNTAS_POR_CATEGORIA: Record<string, string[]> = {
+     Alegría: [
+       "¿Qué pasó hoy que te dejó esta sensación? Cuéntalo con detalle, como si se lo contaras a alguien cercano.",
+       "¿Qué parte de ti, o de lo que hiciste, hizo posible este momento?",
+       "¿Cómo podrías guardar este momento para recordarlo en un día más difícil?",
+     ],
+     Tristeza: [
+       "Cuenta con tus palabras qué pasó o qué te tiene así. Puedes desahogarte: aquí no hay que ordenar nada.",
+       "¿Qué necesitas en este momento, aunque no sepas bien cómo conseguirlo?",
+       "¿Qué te daría un poco de alivio hoy, aunque sea pequeño?",
+     ],
+     Ansiedad: [
+       "¿Qué es lo que tu mente no deja de repasar ahora mismo? Puedes escribirlo tal como viene, sin ordenarlo.",
+       "De todo eso, ¿qué parte depende de ti hoy y qué parte no?",
+       "¿Qué pequeño gesto podría darle a tu cuerpo un poco de seguridad en este momento?",
+     ],
+     Enojo: [
+       "¿Qué pasó hoy, y qué sentiste que se estaba pasando por alto o cruzando un límite?",
+       "Debajo del enojo muchas veces hay algo más: dolor, cansancio, ganas de que te escuchen. ¿Qué crees que hay en tu caso?",
+       "¿Cómo podrías expresar esto, o darte un respiro mientras baja la intensidad, de una forma que no te cueste después?",
+     ],
+     Miedo: [
+       "¿A qué le tienes miedo en este momento? Ponerle nombre ayuda a que pese menos.",
+       "¿Qué te daría un poco más de seguridad ahora mismo?",
+       "¿Con qué recursos o apoyos cuentas, aunque hoy cueste verlos?",
+     ],
+     Calma: [
+       "¿Qué está ayudando a que hoy te sientas así?",
+       "¿Dónde la sientes en el cuerpo? Quédate un momento ahí.",
+       "¿Qué podrías hacer para volver a este lugar cuando el día se ponga difícil?",
+     ],
+     Amor: [
+       "¿Quién o qué despierta esto en ti hoy?",
+       "¿Cómo te llega ese afecto: lo recibes con facilidad o te cuesta un poco?",
+       "¿Cómo podrías expresarlo o recibirlo hoy, aunque sea de una forma pequeña?",
+     ],
+     Confusión: [
+       "¿Qué es lo que hoy no logras entender o decidir? Escríbelo aunque suene desordenado.",
+       "Entre todo eso, ¿hay algo que sí tengas claro, por pequeño que sea?",
+       "¿Qué paso pequeño, sin presión, podría darte un poco de claridad?",
+     ],
+   }
 
-export const PREGUNTAS_DEFAULT = [
-  "¿Qué está generando este sentimiento?",
-  "¿Qué necesitas en este momento?",
-  "¿Qué acción pequeña puedes tomar hoy?",
-]
+   const PREGUNTAS_ESPECIFICAS: Record<string, string[]> = {
+     Tristeza: [
+       "Cuenta con tus palabras qué pasó o qué te tiene así. Puedes desahogarte: aquí no hay que ordenar nada.",
+       "¿Qué necesitas en este momento, aunque no sepas bien cómo conseguirlo?",
+       "¿Qué te daría un poco de alivio hoy, aunque sea pequeño?",
+     ],
+     Soledad: [
+       "¿Cuándo empezaste a notar esta soledad? ¿Es de hoy o viene de más atrás?",
+       "¿Qué tipo de compañía te haría falta ahora: alguien que escuche, que acompañe en silencio, que te haga reír?",
+       "¿Hay alguien a quien podrías escribirle hoy, aunque sea un mensaje corto?",
+     ],
+     Culpa: [
+       "Cuenta con calma qué pasó y qué es lo que más te pesa de eso.",
+       "¿Qué quisieras poder hacer o decir para sentirte en paz con esto?",
+       "¿Hay algo que sí puedas reparar o cambiar, y algo que ya no depende de ti?",
+     ],
+     Vergüenza: [
+       "¿Qué situación despertó esta vergüenza? Puedes contarla con las palabras que quieras.",
+       "¿Qué temes que piensen de ti, y qué tan seguro es que sea así?",
+       "¿Qué te gustaría que pasara de ahora en adelante con esta situación?",
+     ],
+     Duelo: [
+       "¿A quién o a qué estás despidiendo? Si quieres, cuenta algo de eso que valoras.",
+       "¿Cómo se siente este duelo en tu cuerpo y en tus días?",
+       "No hay una forma correcta de atravesar esto. ¿Qué te acompañaría hoy: un recuerdo, un pequeño ritual, compañía?",
+     ],
+     Vacío: [
+       "¿Cómo describirías este vacío? ¿Se parece más al cansancio, a la desconexión o a la falta de sentido?",
+       "¿Hay algo que antes disfrutabas y hoy no te mueve?",
+       "¿Qué cosa pequeña podría darle un poco de color a hoy? Y si este vacío se repite, vale la pena conversarlo con un profesional.",
+     ],
+     Desánimo: [
+       "¿Qué fue lo que más te quitó las ganas hoy?",
+       "¿Qué esperabas de este día y qué distancia hay con lo que pasó?",
+       "¿Qué cosa pequeña, de menos de cinco minutos, podrías hacer para sentir que avanzaste algo?",
+     ],
+     Agotamiento: [
+       "¿Qué te ha ido gastando la energía últimamente?",
+       "¿Cuándo fue la última vez que descansaste de verdad, sin pendientes en la cabeza?",
+       "¿Qué es lo más pequeño que podrías soltar hoy, o para lo que podrías pedir ayuda?",
+     ],
+     Estrés: [
+       "¿Qué pendientes o presiones llevas encima ahora mismo?",
+       "Si los ordenaras del más urgente al menos urgente, ¿cuál es el único que merece tu atención hoy?",
+       "¿Qué pausa breve podrías darte antes de seguir?",
+     ],
+     Pánico: [
+       "Ahora mismo, ¿qué notas en tu cuerpo? Los latidos, la respiración, las manos...",
+       "Esta sensación es intensa, pero pasa. ¿Qué te ha ayudado antes en momentos así?",
+       "¿Hay alguien cerca a quien puedas avisar que estás pasando por esto?",
+     ],
+   }
+
+   export const PREGUNTAS_POR_EMOCION: Record<string, string[]> = Object.fromEntries(
+     EMOCIONES.flatMap((c) => c.emociones.map((e) => [e, PREGUNTAS_ESPECIFICAS[e] ?? PREGUNTAS_POR_CATEGORIA[c.categoria]] as [string, string[]]))
+   )
+
+   export const PREGUNTAS_DEFAULT = [
+     "¿Qué está pasando dentro de ti en este momento?",
+     "¿Qué necesitas ahora, aunque no sepas cómo conseguirlo?",
+     "¿Qué pequeño gesto de cuidado podrías tener contigo hoy?",
+   ]
+   

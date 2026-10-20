@@ -81,4 +81,4 @@ export async function POST() {
   }
 }
 
-
+export const maxDuration = 60

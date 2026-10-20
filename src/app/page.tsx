@@ -81,7 +81,7 @@ export default function LandingPage() {
       </nav>
       <div style={{ background:"linear-gradient(160deg,#FAF8F5 0%,#EDE0D4 100%)", padding:"3rem 1.5rem 2.5rem", textAlign:"center" }}>
         <Image src="/logo.png" alt="Sana y Florece" width={88} height={88} style={{ borderRadius:"50%", objectFit:"cover", margin:"0 auto 1rem", display:"block", border:"3px solid #C9A84C", boxShadow:"0 4px 20px rgba(176,112,96,0.25)" }} />
-        <div style={{ display:"inline-block", background:"#F5EDE4", color:"#B07060", fontSize:"10px", letterSpacing:"2px", textTransform:"uppercase", padding:"4px 14px", borderRadius:"20px", marginBottom:"1rem", border:"1px solid #D4A898" }}>Para las mujeres que lo cargan todo en silencio</div>
+        <div style={{ display:"inline-block", background:"#F5EDE4", color:"#B07060", fontSize:"10px", letterSpacing:"2px", textTransform:"uppercase", padding:"4px 14px", borderRadius:"20px", marginBottom:"1rem", border:"1px solid #D4A898" }}>Para quienes lo cargan todo en silencio</div>
         <h1 style={{ fontFamily:"Playfair Display, serif", fontSize:"2.1rem", lineHeight:"1.25", color:"#3D3030", margin:"0 0 1rem" }}>
           ¿Cuándo fue la última vez<br />que te preguntaste<br /><em style={{ color:"#B07060" }}>cómo estás de verdad?</em>
         </h1>
@@ -93,7 +93,7 @@ export default function LandingPage() {
       <div style={{ padding:"2.5rem 1.5rem", background:"#F5EDE4", borderTop:"1px solid #E8D4C4", borderBottom:"1px solid #E8D4C4" }}>
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.3rem", textAlign:"center", color:"#3D3030", marginBottom:"1.25rem", lineHeight:"1.4" }}>¿Te suena familiar alguna de estas?</h2>
         <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem", maxWidth:"360px", margin:"0 auto" }}>
-          {["Te despiertas agotada aunque hayas dormido","Tu mente no para aunque tu cuerpo no se mueva","Sientes que nadie realmente te entiende","Das todo a los demás y no te queda nada para ti","Sabes que algo no está bien pero no sabes qué"].map((t,i) => (
+          {["Te despiertas con cansancio aunque hayas dormido","Tu mente no para aunque tu cuerpo no se mueva","Sientes que nadie realmente te entiende","Das todo a los demás y no te queda nada para ti","Sabes que algo no está bien pero no sabes qué"].map((t,i) => (
             <div key={i} style={{ display:"flex", gap:"0.75rem", alignItems:"flex-start", padding:"0.85rem 1rem", background:"white", borderRadius:"12px", border:"1px solid #E8D4C4" }}>
               <span style={{ color:"#B07060", fontSize:"1rem", flexShrink:0 }}>✦</span>
               <p style={{ margin:0, fontSize:"0.9rem", color:"#3D3030", lineHeight:"1.5" }}>{t}</p>
@@ -112,7 +112,7 @@ export default function LandingPage() {
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.4rem", textAlign:"center", color:"#FAF8F5", marginBottom:"0.5rem" }}>Cómo funciona</h2>
         <p style={{ textAlign:"center", color:"#D4A898", fontSize:"0.85rem", marginBottom:"1.5rem" }}>3 minutos al día. Sin complicaciones.</p>
         <div style={{ display:"flex", flexDirection:"column", gap:"1rem", maxWidth:"360px", margin:"0 auto" }}>
-          {[{n:"1",t:"Elige cómo te sientes hoy",d:"8 categorías emocionales con ilustraciones. Sin juicio. Solo honestidad."},{n:"2",t:"Responde 3 preguntas guiadas",d:"Preguntas pensadas para que te conozcas mejor cada día."},{n:"3",t:"Recibe tu reflexión del día",d:"Una guía cálida. Con el Plan Pro, escrita a partir de lo que tú escribiste, solo para ti."}].map((s,i) => (
+          {[{n:"1",t:"Elige cómo te sientes",d:"Toca una categoría y luego la emoción que mejor lo describe. Hay más de 60 para elegir."},{n:"2",t:"Mide la intensidad y escucha a tu cuerpo",d:"Desliza del 1 al 10 y cuéntanos dónde lo sientes, cómo está tu sistema y qué lo detonó. Puedes saltar lo que no quieras responder."},{n:"3",t:"Responde tres preguntas guiadas",d:"Sirven para desahogarte con calma. No hay respuestas correctas, y puedes dejar una nota libre."},{n:"4",t:"Haz una práctica de un minuto",d:"Un audio corto para calmar el cuerpo. Después marca cómo quedó tu emoción."},{n:"5",t:"Recibe tu reflexión",d:"Gratis: una reflexión general. Plan Pro: una reflexión escrita a partir de lo que tú contaste, con una mirada nueva y pasos para tu situación."}].map((s,i) => (
             <div key={i} style={{ display:"flex", gap:"1rem", alignItems:"flex-start", background:"rgba(255,255,255,0.06)", padding:"1rem", borderRadius:"16px", border:"1px solid #2A3F6F" }}>
               <div style={{ width:"34px", height:"34px", borderRadius:"50%", background:"linear-gradient(135deg,#B07060,#9A5848)", color:"white", display:"flex", alignItems:"center", justifyContent:"center", fontWeight:700, flexShrink:0, fontSize:"0.9rem" }}>{s.n}</div>
               <div><p style={{ fontWeight:700, color:"#FAF8F5", margin:"0 0 0.25rem", fontSize:"0.9rem" }}>{s.t}</p><p style={{ fontSize:"0.82rem", color:"#D4A898", margin:0, lineHeight:"1.5" }}>{s.d}</p></div>
@@ -120,7 +120,25 @@ export default function LandingPage() {
           ))}
         </div>
       </div>
-      <div style={{ padding:"2.5rem 1.5rem", background:"#FAF8F5" }}>
+      <div style={{ padding:"2.5rem 1.5rem", background:"#F5EDE4" }}>
+           <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.3rem", textAlign:"center", color:"#3D3030", marginBottom:"0.5rem" }}>Más que un registro diario</h2>
+           <p style={{ textAlign:"center", color:"#7A5060", fontSize:"0.85rem", marginBottom:"1.25rem" }}>Lo que recibes además de tu check-in</p>
+           <div style={{ display:"flex", flexDirection:"column", gap:"1rem", maxWidth:"360px", margin:"0 auto" }}>
+             <div style={{ background:"white", padding:"1.1rem", borderRadius:"16px", border:"1px solid #E8D4C4" }}>
+               <p style={{ fontWeight:700, color:"#3D3030", margin:"0 0 0.35rem", fontSize:"0.95rem" }}>Tu carta de la semana</p>
+               <p style={{ color:"#7A5060", margin:0, fontSize:"0.85rem", lineHeight:"1.6" }}>Cada semana, a partir del lunes, puedes pedir una carta escrita para ti con lo que registraste: una voz que mira tu semana completa con cuidado, te reconoce y te acompaña. Es parte del Plan Pro; en el plan gratis recibes una carta de muestra.</p>
+             </div>
+             <div style={{ background:"white", padding:"1.1rem", borderRadius:"16px", border:"1px solid #E8D4C4" }}>
+               <p style={{ fontWeight:700, color:"#3D3030", margin:"0 0 0.35rem", fontSize:"0.95rem" }}>Tu historial</p>
+               <p style={{ color:"#7A5060", margin:0, fontSize:"0.85rem", lineHeight:"1.6" }}>Cada check-in queda guardado y ordenado por día, para que veas cómo cambia lo que sientes con el tiempo. En el plan gratis ves tus últimos 7 días; con el Plan Pro, todo tu historial.</p>
+             </div>
+             <div style={{ background:"white", padding:"1.1rem", borderRadius:"16px", border:"1px solid #E8D4C4" }}>
+               <p style={{ fontWeight:700, color:"#3D3030", margin:"0 0 0.35rem", fontSize:"0.95rem" }}>Tus audios de calma</p>
+               <p style={{ color:"#7A5060", margin:0, fontSize:"0.85rem", lineHeight:"1.6" }}>Después de cada check-in, una práctica guiada de un minuto para darle calma a tu cuerpo. Luego marcas cómo quedó tu emoción.</p>
+             </div>
+           </div>
+         </div>
+         <div style={{ padding:"2.5rem 1.5rem", background:"#FAF8F5" }}>
         <h2 style={{ fontFamily:"Playfair Display, serif", fontSize:"1.3rem", textAlign:"center", color:"#3D3030", marginBottom:"1.25rem" }}>Gratuito vs Plan Pro</h2>
         <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem", maxWidth:"360px", margin:"0 auto" }}>
           {[{f:"Check-in emocional diario",g:true,p:true},{f:"8 categorías emocionales",g:true,p:true},{f:"Historial de tus últimos 7 días",g:true,p:true},{f:"Historial completo",g:false,p:true},{f:"Audios guiados para calmarte",g:true,p:true},{f:"Reflexión general del día",g:true,p:true},{f:"Reflexión profunda personalizada",g:false,p:true},{f:"Guía específica según lo que escribiste",g:false,p:true},{f:"Patrones de tu semana",g:false,p:true},{f:"Una carta nueva cada semana",g:false,p:true}].map((r,i) => (
@@ -145,7 +163,7 @@ export default function LandingPage() {
         <p style={{ fontSize:"0.72rem", color:"#B09888", marginTop:"0.75rem" }}>Se cobra cada mes hasta que canceles · Cancela cuando quieras</p>
       </div>
       <div style={{ padding:"1.5rem", textAlign:"center", background:"#1B2A4A", borderTop:"1px solid #2A3F6F" }}>
-        <p style={{ fontSize:"0.75rem", color:"#9A7080", margin:0 }}>Sana y Florece — Check-in Emocional Diario · Para las mujeres que lo cargan todo en silencio</p><p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}>Sana y Florece es un espacio de autocuidado y no reemplaza la atención de un profesional de la salud mental.</p>
+        <p style={{ fontSize:"0.75rem", color:"#9A7080", margin:0 }}>Sana y Florece — Check-in Emocional Diario · Para quienes lo cargan todo en silencio</p><p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}>Sana y Florece es un espacio de autocuidado y no reemplaza la atención de un profesional de la salud mental.</p>
         <p style={{ fontSize:"0.72rem", color:"#9A7080", margin:"0.6rem 0 0" }}><Link href="/privacidad" style={{ color:"#9A7080" }}>Privacidad</Link> · <Link href="/terminos" style={{ color:"#9A7080" }}>Términos</Link> · <Link href="/ayuda" style={{ color:"#9A7080" }}>Ayuda en crisis</Link></p>
       </div>
     </div>

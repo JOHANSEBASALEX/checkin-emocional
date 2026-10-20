@@ -77,7 +77,7 @@ export function CheckinCard({ checkin }: { checkin: Checkin }) {
         if (!pasopartes.length && !practica && !cambio) return null
         return (
           <div className="rounded-xl p-3.5 mb-3 text-xs space-y-1" style={{ background: "#faf8f5", color: "#5a4848" }}>
-            {pasopartes.length > 0 && <p><strong>Qué pasó:</strong> {pasopartes.join(" · ").toLowerCase()}</p>}
+            {pasopartes.length > 0 && <p><strong>Qué pasó:</strong> {pasopartes.join(" · ").toLowerCase().replace("acelerada", "acelerado").replace("apagada", "apagado")}</p>}
             {practica && <p><strong>Qué hizo:</strong> {practica}</p>}
             {cambio && <p><strong>Cómo quedó:</strong> {cambio}</p>}
           </div>

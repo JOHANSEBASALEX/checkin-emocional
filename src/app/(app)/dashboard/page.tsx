@@ -273,7 +273,7 @@ export default async function DashboardPage() {
         </div>
       )}
 
-      <h2 className="font-bold mb-4" style={{ color: "#3D3030" }}>Historial reciente</h2>
+      <h2 className="font-bold mb-4" style={{ color: "#3D3030" }}>Historial reciente</h2><p className="text-xs mb-4 -mt-2 leading-relaxed" style={{ color: "#9A7080" }}>Aquí queda guardado cada check-in, agrupado por día, para que veas cómo cambia lo que sientes con el tiempo. En el plan gratis ves tus últimos 7 días; con el Plan Pro, todo tu historial.</p>
 
       {(!checkins || checkins.length === 0) ? (
         <div className="text-center py-16 rounded-3xl border-2 border-dashed" style={{ background: "#FAF8F5", borderColor: "#D4A898" }}>

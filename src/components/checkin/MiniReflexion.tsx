@@ -31,8 +31,8 @@ function estadoAudio(t: number) {
 }
 
 function textoSistema(s: string): string {
-  if (s === "Acelerada") return "Tu sistema está acelerado, en modo alerta. Cuando pasa eso, no hace falta pensar más: lo primero es darle al cuerpo una señal de seguridad."
-  if (s === "Apagada") return "Tu sistema está apagado, con cansancio y desconexión. No es pereza: es una forma de protegerte. Empieza muy suave, con una sola cosa pequeña."
+  if (s === "Acelerado") return "Tu sistema está acelerado, en modo alerta. Cuando pasa eso, no hace falta pensar más: lo primero es darle al cuerpo una señal de seguridad."
+  if (s === "Apagado") return "Tu sistema está apagado, con cansancio y desconexión. No es pereza: es una forma de protegerte. Empieza muy suave, con una sola cosa pequeña."
   if (s === "Dentro de mi ventana") return "Hoy estás dentro de tu ventana: puedes sentir sin desbordarte. Fíjate en qué te ayudó, porque es información valiosa."
   return ""
 }
@@ -74,10 +74,10 @@ export function MiniReflexion({ datos }: { datos: DatosCuerpo | null }) {
       {partes.length > 0 && (
         <p className="text-sm leading-relaxed" style={{ color: "#3D3030" }}>{partes.join(" ")}</p>
       )}
-      {datos?.sistema === "Acelerada" && (
+      {datos?.sistema === "Acelerado" && (
         <PracticaAudio titulo="Orientación hacia la seguridad" descripcion="Mira a tu alrededor con calma y avísale a tu cuerpo que estás a salvo." archivo="orientacion-seguridad.mp3" />
       )}
-      {datos?.sistema === "Apagada" && (
+      {datos?.sistema === "Apagado" && (
         <PracticaAudio titulo="Abrazo de la mariposa" descripcion="Un abrazo suave con tus propias manos, sin esfuerzo." archivo="abrazo-mariposa.mp3" />
       )}
       <div className="rounded-xl p-4 text-center" style={{ background: "#F5EDE4" }}>

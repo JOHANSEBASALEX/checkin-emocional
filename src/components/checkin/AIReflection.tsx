@@ -20,6 +20,9 @@ interface Props {
 
 export function AIReflection({ reflexion, emocion, categoria }: Props) {
   const imagenUrl = IMAGENES_REFLEXION[categoria ?? ""] ?? "/emociones/CALMA.jpeg"
+     const corte = reflexion.indexOf("Si quieres hablar con alguien ahora:")
+     const texto = (corte >= 0 ? reflexion.slice(0, corte) : reflexion).trim()
+     const aviso = corte >= 0 ? reflexion.slice(corte) : ""
 
   return (
     <div className="rounded-3xl p-6 border-2" style={{
@@ -69,10 +72,9 @@ export function AIReflection({ reflexion, emocion, categoria }: Props) {
           </p>
         </div>
 
-        <blockquote className="leading-relaxed text-[15px] italic flex-1"
+        <div className="flex-1"><blockquote className="leading-relaxed text-[15px] italic whitespace-pre-line"
           style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif", lineHeight: "1.8" }}>
-          "{reflexion}"
-        </blockquote>
+          "{texto}"</blockquote>{aviso && (<p className="text-xs mt-4 leading-relaxed" style={{ color: "#7A5060" }}>{aviso}</p>)}</div>
       </div>
 
       <div className="text-center mb-4" style={{ color: "#D4A898", letterSpacing: "8px", opacity: 0.5, fontSize: "12px" }}>

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 
@@ -7,7 +7,7 @@ const OPCIONES = [
   { valor: -1, texto: "Algo más suave", mensaje: "Un pequeño alivio también cuenta. Tu cuerpo ya está respondiendo." },
   { valor: 0, texto: "Igual", mensaje: "Sigue igual, y eso también es información valiosa. No tiene que cambiar hoy." },
   { valor: 1, texto: "Algo más fuerte", mensaje: "A veces pasa al notar lo que se siente. No estás haciendo nada mal. Sé amable contigo." },
-  { valor: 2, texto: "Mucho más fuerte", mensaje: "Gracias por ser honesta con lo que sientes. Si es mucho, pausa y busca a alguien de confianza." },
+  { valor: 2, texto: "Mucho más fuerte", mensaje: "Gracias por contar con sinceridad lo que sientes. Si es mucho, pausa y busca a alguien de confianza." },
 ]
 
 export function DespuesPractica({ checkinId, practica }: { checkinId?: string; antes?: number; practica: string }) {

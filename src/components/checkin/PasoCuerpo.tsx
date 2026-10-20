@@ -10,9 +10,9 @@ export interface DatosCuerpo {
 
 const CUERPO = ["Mandíbula o cuello tenso", "Presión en el pecho", "Manos o pies fríos", "Nudo en el estómago", "Cuerpo pesado o sin energía", "No siento nada en particular"]
 const SISTEMA = [
-  { v: "Acelerada", d: "Inquieta, en alerta, con la mente a mil" },
+  { v: "Acelerado", d: "Inquieto, en alerta, con la mente a mil" },
   { v: "Dentro de mi ventana", d: "Presente y estable, puedo sentir sin desbordarme" },
-  { v: "Apagada", d: "Cansada, desconectada, como en piloto automático" },
+  { v: "Apagado", d: "Cansado, desconectado, como en piloto automático" },
 ]
 const DETONANTES = ["Un conflicto", "Presión de tiempo", "Cansancio o hambre", "Un recuerdo", "Mucha gente o ruido", "No sé qué fue"]
 
