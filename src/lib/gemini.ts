@@ -107,7 +107,7 @@
        const editado = await llamar(promptEditor(texto, senal), "low", 0.4)
        if (editado.length > 150) texto = editado
      } catch {}
-     texto = texto.replace(/ti mism[oa]/gi, "ti")
+     texto = texto.replace(/ti mism[oa]/gi, "ti").replace(/ser vist[oa] y escuchad[oa]/gi, "que te vean y te escuchen").replace(/ser vist[oa] y respetad[oa]/gi, "que te vean y te respeten").replace(/ser vist[oa]/gi, "que te vean").replace(/ser reconocid[oa]/gi, "que te reconozcan").replace(/ser escuchad[oa]/gi, "que te escuchen").replace(/ser valorad[oa]/gi, "que te valoren").replace(/ser comprendid[oa]/gi, "que te comprendan").replace(/ser respetad[oa]/gi, "que te respeten")
 
      if (pesada || senal) {
        return texto + "\n\nSi quieres hablar con alguien ahora: en Colombia puedes llamar a la línea 106 (gratuita, las 24 horas). Si estás en otro país, encuentra una línea de ayuda en findahelpline.com o llama a la línea de emergencias de tu lugar. Si estás en peligro ahora mismo, llama al 123 en Colombia o a emergencias donde estés."

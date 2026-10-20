@@ -35,7 +35,7 @@
        .replace(/\bcansada\b/gi, "con cansancio")
        .replace(/\bagotada\b/gi, "sin fuerzas")
        .replace(/\babrumada\b/gi, "con mucha carga")
-       .replace(/ti mism[oa]/gi, "ti")
+       .replace(/ti mism[oa]/gi, "ti").replace(/ser vist[oa] y escuchad[oa]/gi, "que te vean y te escuchen").replace(/ser vist[oa] y respetad[oa]/gi, "que te vean y te respeten").replace(/ser vist[oa]/gi, "que te vean").replace(/ser reconocid[oa]/gi, "que te reconozcan").replace(/ser escuchad[oa]/gi, "que te escuchen").replace(/ser valorad[oa]/gi, "que te valoren").replace(/ser comprendid[oa]/gi, "que te comprendan").replace(/ser respetad[oa]/gi, "que te respeten")
    }
 
    async function llamar(contenido: string, esfuerzo: string, temperatura: number): Promise<string> {
