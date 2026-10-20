@@ -18,7 +18,7 @@
    }
 
    function promptEditor(borrador: string, ligero: boolean): string {
-     const neutro = `Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona. Reemplaza "ti mismo" o "ti misma" por "ti"; "muy bajo" o "muy baja" por "con el ánimo muy abajo"; "acompañado" o "acompañada" por "con compañía"; "sola" o "solo" (como adjetivo) por "sin compañía"; "cansado" o "cansada" por "con cansancio"; "atrapado" o "atrapada" por "sin salida a la vista". Usa "alguien cercano" en vez de "amigo" o "amiga".`
+     const neutro = `Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona. Reemplaza "ti mismo" o "ti misma" por "ti"; "muy bajo" o "muy baja" por "con el ánimo muy abajo"; "acompañado" o "acompañada" por "con compañía"; "sola" o "solo" (como adjetivo) por "sin compañía"; "cansado" o "cansada" por "con cansancio"; "atrapado" o "atrapada" por "sin salida a la vista". Usa "alguien cercano" en vez de "amigo" o "amiga". Revisa cada palabra con terminación -o/-a que describa a la persona y reescribe la frase con un sustantivo o un verbo: "estás atenta" pasa a "prestas atención", "te sientes segura" a "sientes seguridad", "estás cansado" a "sientes cansancio".`
      if (ligero) {
        return `Corrige el siguiente texto en español conservando su sentido, su tono y su extensión. Solo cambia lo necesario para cumplir esto: ${neutro} No agregues teléfonos, líneas de ayuda ni comentarios. Devuelve solo el texto corregido.
 
@@ -30,7 +30,7 @@
    3. Nada de listas de pasos ni tono de receta ("Primero...", "Después..."). Como mucho una invitación pequeña y suave, dicha como posibilidad dentro del texto.
    4. Quita frases hechas ("es comprensible que", "carga pesada", "camino", "paso a paso", "permítete", "es válido sentir", "luz en la tempestad"). Cierra con ánimo sincero que la haga sentir importante, sin prometer resultados.
    5. ${neutro}
-   6. De 230 a 320 palabras, de 4 a 6 párrafos cortos separados por una línea en blanco, sin viñetas, títulos, comillas ni emojis. No agregues teléfonos ni líneas de ayuda.
+   6. De 230 a 320 palabras (si el borrador es corto porque la persona escribió muy poco, respeta esa brevedad: 150 a 200 palabras y ninguna suposición sobre su vida), de 4 a 6 párrafos cortos separados por una línea en blanco, sin viñetas, títulos, comillas ni emojis. No agregues teléfonos ni líneas de ayuda.
    Devuelve solo el texto final.
 
    Borrador:
@@ -79,6 +79,7 @@
    - De 230 a 320 palabras, en 4 a 6 párrafos cortos separados por una línea en blanco. Sin viñetas, numeraciones, títulos ni emojis.
    - Habla de tú, con voz cálida y cercana, de persona a persona, como dicho en voz baja. Con ritmo, y alguna frase corta que respire.
    - Retoma sus propias palabras cuando puedas.
+   - Si la persona escribió muy poco o nada (una palabra, una letra, "no"), NO inventes lo que vive ni le atribuyas motivos o situaciones: acompaña con lo que sí sabes (la emoción, lo que sintió en el cuerpo, que se detuvo a registrarlo) en 150 a 200 palabras, sin suposiciones sobre su vida, y dile que lo que sintió ya cuenta aunque no cuente más.
    - No uses: "Veo que", "Siento profundamente", "Es comprensible que", "una carga pesada", "permítete", "es válido sentir", "camino", "viaje", "sanar heridas", "abrazar tus emociones", "luz en la tempestad", "paso a paso". Nada de tono de manual, de informe ni de receta.
    - No cuentes cifras ni enumeres sus emociones. Si hay un dato verificado, úsalo con delicadeza; nunca inventes hechos de su vida.
    - Sin ejercicios de respiración ni del cuerpo: para eso están los audios. El cuerpo solo si ayuda y en una frase.

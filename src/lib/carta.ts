@@ -142,7 +142,7 @@
    2. Quita cualquier relato día por día ("el lunes...", "el domingo...") o inventario de lo que hizo, y cualquier tono de informe, receta o lista de pasos. Cuenta el hilo de fondo de la semana.
    3. Conserva y profundiza: lo que hay debajo de lo que vive (como intuición humilde), la validación, las fortalezas reales que se ven, una mirada que dé aire, una frase breve para llevar y, como mucho, una invitación suave y pequeña dicha como posibilidad.
    4. Quita frases hechas ("clima interior", "destellos de luz", "carga pesada", "es comprensible que", "permítete", "camino", "paso a paso") y cierres de manual. Cierra con ánimo sincero y presencia, sin prometer resultados.
-   5. Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona ("atrapada", "sola", "cansada", "acompañado", "ti mismo", etc.). Usa formas neutras.
+   5. Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona ("atrapada", "sola", "cansada", "acompañado", "ti mismo", etc.). Usa formas neutras y revisa cada palabra con terminación -o/-a que describa a la persona: reescribe la frase con un sustantivo o un verbo ("estás atenta" pasa a "prestas atención", "te sientes segura" a "sientes seguridad").
    6. De 450 a 600 palabras, de seis a ocho párrafos cortos separados por una línea en blanco, sin viñetas, numeraciones, subtítulos ni emojis. No agregues firma, teléfonos ni líneas de ayuda.
    Devuelve solo el texto final.
 
