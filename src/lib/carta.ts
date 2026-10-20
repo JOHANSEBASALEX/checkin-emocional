@@ -106,7 +106,8 @@
    - De 450 a 600 palabras, en 6 a 8 párrafos cortos separados por una línea en blanco. Sin viñetas, numeraciones, subtítulos ni emojis.
    - Empieza con "Hola, ${nombre}." en su propia línea y sigue con una apertura íntima.
    - Habla de tú, con voz cálida, de persona a persona, con ritmo y alguna frase corta que respire. Evita el tono de informe, de manual o de receta.
-   - Evita frases hechas ("clima interior", "destellos de luz", "carga pesada", "es comprensible que", "permítete", "camino", "viaje", "sanar heridas", "abrazar tus emociones", "paso a paso").
+   - Evita frases hechas ("clima interior", "destellos de luz", "carga pesada", "es comprensible que", "permítete", "camino", "viaje", "sanar heridas", "abrazar tus emociones", "paso a paso", "luz", "tormenta", "corriente", "sistema nervioso").
+   - Eres un acompañamiento escrito con ayuda de inteligencia artificial: no hables como si fueras una persona presente ("he sentido", "aquí estoy"); di lo que leíste y lo que se nota ("leí con atención", "se nota que"). No recorras las emociones una por una ("la melancolía..., la culpa..., la alegría..."): cuenta el hilo de fondo.
    - No incluyas ejercicios de respiración ni del cuerpo; los audios existen para eso y puedes mencionarlos sin decir su nombre.
    - Lenguaje neutro en cuanto a género, siempre y sin excepción: la persona puede ser hombre, mujer u otra y no lo sabes. Nunca uses adjetivos ni participios que cambien según el género al referirte a ella (sola, solo, cansada, cansado, atrapada, agotada, listo, lista, sentida, acompañado, etc.). Usa formas neutras ("sin compañía", "con cansancio", "sin salida a la vista", "con compañía"). Tampoco "amigo", "amiga", "hombre" ni "mujer". "Ti mismo" y "ti misma" no existen: di "ti". Revisa el texto antes de responder.
    - Escribe con ortografía y tildes correctas.
@@ -131,7 +132,7 @@
 
    Una frase para llevar esta semana: lo que duele es lo que importó, y lo que importó no se pierde del todo.
 
-   No tienes que atravesar esto sin compañía. Lo que sientes cuenta, tienes derecho a tomarte el tiempo que necesites, y aquí hay alguien que lo ve y lo valora.`
+   No tienes que atravesar esto sin compañía. Lo que sientes cuenta, tienes derecho a tomarte el tiempo que necesites, y este espacio está para recibirlo.`
 
      let texto = await llamar(prompt, "medium", 0.8)
      if (!texto) throw new Error("Carta vacía")
@@ -141,7 +142,7 @@
    1. Debe empezar con "Hola, ${nombre}." en su propia línea y seguir con una apertura íntima.
    2. Quita cualquier relato día por día ("el lunes...", "el domingo...") o inventario de lo que hizo, y cualquier tono de informe, receta o lista de pasos. Cuenta el hilo de fondo de la semana.
    3. Conserva y profundiza: lo que hay debajo de lo que vive (como intuición humilde), la validación, las fortalezas reales que se ven, una mirada que dé aire, una frase breve para llevar y, como mucho, una invitación suave y pequeña dicha como posibilidad.
-   4. Quita frases hechas ("clima interior", "destellos de luz", "carga pesada", "es comprensible que", "permítete", "camino", "paso a paso") y cierres de manual. Cierra con ánimo sincero y presencia, sin prometer resultados.
+   4. Quita frases hechas ("clima interior", "destellos de luz", "carga pesada", "es comprensible que", "permítete", "camino", "paso a paso", "luz", "tormenta", "corriente") y cierres de manual. No recorras las emociones una por una, no uses lenguaje clínico ("sistema nervioso", "aceleración", "apagamiento") y no digas "he sentido" ni "aquí estoy": di lo que leíste y lo que se nota. Cierra con ánimo sincero y presencia, sin prometer resultados.
    5. Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona ("atrapada", "sola", "cansada", "acompañado", "ti mismo", etc.). Usa formas neutras y revisa cada palabra con terminación -o/-a que describa a la persona: reescribe la frase con un sustantivo o un verbo ("estás atenta" pasa a "prestas atención", "te sientes segura" a "sientes seguridad").
    6. De 450 a 600 palabras, de seis a ocho párrafos cortos separados por una línea en blanco, sin viñetas, numeraciones, subtítulos ni emojis. No agregues firma, teléfonos ni líneas de ayuda.
    Devuelve solo el texto final.
