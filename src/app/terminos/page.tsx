@@ -43,7 +43,7 @@ export default function TerminosPage() {
         </Seccion>
 
         <Seccion t="Cancelación y reembolsos">
-          <p style={{ margin: 0 }}>Puedes cancelar tu suscripción cuando quieras desde tu cuenta de Hotmart. Al cancelar, conservas el Plan Pro hasta el final del periodo que ya pagaste. Los reembolsos se gestionan según las condiciones de Hotmart. Si tienes un problema con un cobro, escríbenos a alexvsalexvs30@gmail.com.</p>
+          <p style={{ margin: 0 }}>Puedes cancelar tu suscripción cuando quieras desde tu cuenta de Hotmart. Al cancelar, conservas el Plan Pro hasta el final del periodo que ya pagaste. Los reembolsos se gestionan según las condiciones de Hotmart. Si tienes un problema con un cobro, escríbenos a sanayfloreceoficial@gmail.com.</p>
         </Seccion>
 
         <Seccion t="Disponibilidad">
@@ -55,7 +55,7 @@ export default function TerminosPage() {
         </Seccion>
 
         <Seccion t="Cambios y contacto">
-          <p style={{ margin: 0 }}>Podemos actualizar estos términos y cambiaremos la fecha de arriba. Para cualquier consulta escríbenos a alexvsalexvs30@gmail.com.</p>
+          <p style={{ margin: 0 }}>Podemos actualizar estos términos y cambiaremos la fecha de arriba. Para cualquier consulta escríbenos a sanayfloreceoficial@gmail.com.</p>
         </Seccion>
 
         <Link href="/" style={{ display: "inline-block", marginTop: "1rem", color: "#B07060", fontWeight: 700 }}>Volver al inicio</Link>

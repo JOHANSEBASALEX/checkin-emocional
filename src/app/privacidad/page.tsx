@@ -19,7 +19,7 @@ export default function PrivacidadPage() {
         <p style={{ fontSize: "0.8rem", color: "#7A5060", marginBottom: "1.5rem" }}>Última actualización: 10 de octubre de 2026</p>
 
         <Seccion t="Quiénes somos">
-          <p style={{ margin: 0 }}>Sana y Florece, Check-in Emocional Diario, es una aplicación de autocuidado emocional. Para cualquier consulta sobre tus datos escríbenos a alexvsalexvs30@gmail.com.</p>
+          <p style={{ margin: 0 }}>Sana y Florece, Check-in Emocional Diario, es una aplicación de autocuidado emocional. Para cualquier consulta sobre tus datos escríbenos a sanayfloreceoficial@gmail.com.</p>
         </Seccion>
 
         <Seccion t="Qué datos guardamos">
@@ -40,7 +40,7 @@ export default function PrivacidadPage() {
         </Seccion>
 
         <Seccion t="Reflexión con inteligencia artificial (Plan Pro)">
-          <p style={{ margin: 0 }}>Para crear tu reflexión profunda enviamos tu emoción, intensidad, respuestas y nota a un servicio de inteligencia artificial de Google (Gemini). Esa información se procesa en los servidores de ese proveedor, según sus propias políticas. Esto solo ocurre si tienes el Plan Pro.</p>
+          <p style={{ margin: 0 }}>Para crear tu reflexión profunda enviamos tu emoción, intensidad, respuestas y nota a un servicio de inteligencia artificial de Groq. Esa información se procesa en los servidores de ese proveedor, según sus propias políticas. Esto solo ocurre si tienes el Plan Pro.</p>
         </Seccion>
 
         <Seccion t="Con quién compartimos datos">
@@ -49,12 +49,12 @@ export default function PrivacidadPage() {
             <li>Supabase: almacenamiento de datos e inicio de sesión.</li>
             <li>Vercel: alojamiento de la aplicación.</li>
             <li>Hotmart: pagos y suscripciones.</li>
-            <li>Google (Gemini): reflexión con IA, solo en el Plan Pro.</li>
+            <li>Groq: reflexión con IA, solo en el Plan Pro.</li>
           </ul>
         </Seccion>
 
         <Seccion t="Tus derechos">
-          <p style={{ margin: 0 }}>Puedes pedirnos acceso, corrección o eliminación de tus datos y de tu cuenta escribiendo a alexvsalexvs30@gmail.com. Si pides eliminar tu cuenta, borramos tus check-ins.</p>
+          <p style={{ margin: 0 }}>Puedes pedirnos acceso, corrección o eliminación de tus datos y de tu cuenta escribiendo a sanayfloreceoficial@gmail.com. Si pides eliminar tu cuenta, borramos tus check-ins.</p>
         </Seccion>
 
         <Seccion t="Seguridad">

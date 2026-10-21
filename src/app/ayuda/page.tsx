@@ -30,7 +30,7 @@ export default function AyudaPage() {
         </div>
 
         <p style={{ fontSize: "0.85rem", color: "#7A5060", lineHeight: "1.6", marginTop: "1.5rem" }}>Sana y Florece es un espacio de autocuidado. No reemplaza la atención de un profesional de la salud mental ni un servicio de emergencias.</p>
-        <p style={{ fontSize: "0.85rem", color: "#7A5060", lineHeight: "1.6" }}>Para consultas sobre la app (no urgentes), escribe a alexvsalexvs30@gmail.com.</p>
+        <p style={{ fontSize: "0.85rem", color: "#7A5060", lineHeight: "1.6" }}>Para consultas sobre la app (no urgentes), escribe a sanayfloreceoficial@gmail.com.</p>
         <Link href="/" style={{ display: "inline-block", marginTop: "1rem", color: "#B07060", fontWeight: 700 }}>Volver al inicio</Link>
       </div>
     </div>

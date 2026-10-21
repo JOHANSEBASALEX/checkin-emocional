@@ -18,7 +18,7 @@
    }
 
    function promptEditor(borrador: string, ligero: boolean): string {
-     const neutro = `Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona. Reemplaza "ti mismo" o "ti misma" por "ti"; "muy bajo" o "muy baja" por "con el ánimo muy abajo"; "acompañado" o "acompañada" por "con compañía"; "sola" o "solo" (como adjetivo) por "sin compañía"; "cansado" o "cansada" por "con cansancio"; "atrapado" o "atrapada" por "sin salida a la vista". Usa "alguien cercano" en vez de "amigo" o "amiga". Revisa cada palabra con terminación -o/-a que describa a la persona y reescribe la frase con un sustantivo o un verbo: "estás atenta" pasa a "prestas atención", "te sientes segura" a "sientes seguridad", "estás cansado" a "sientes cansancio".`
+     const neutro = `Lenguaje 100% neutro en cuanto a género: ninguna palabra que marque género al referirse a la persona. Reemplaza "ti mismo" o "ti misma" por "ti"; "muy bajo" o "muy baja" por "con el ánimo muy abajo"; "acompañado" o "acompañada" por "con compañía"; "sola" o "solo" (como adjetivo) por "sin compañía"; "cansado" o "cansada" por "con cansancio"; "atrapado" o "atrapada" por "sin salida a la vista". Usa "alguien cercano" en vez de "amigo" o "amiga". Revisa cada palabra con terminación -o/-a que describa a la persona y reescribe la frase con un sustantivo o un verbo: "estás atenta" pasa a "prestas atención", "te sientes segura" a "sientes seguridad", "estás cansado" a "sientes cansancio".  Nunca uses @, ni la barra (o/a), ni la x para evitar el género: reescribe la frase con otras palabras.`
      if (ligero) {
        return `Corrige el siguiente texto en español conservando su sentido, su tono y su extensión. Solo cambia lo necesario para cumplir esto: ${neutro} No agregues teléfonos, líneas de ayuda ni comentarios. Devuelve solo el texto corregido.
 
@@ -68,7 +68,7 @@
 
    Cómo escucharla (sin títulos ni numeración en el texto):
    - Recibe lo que contó como lo recibiría alguien que de verdad quiere escucharla. Empieza por lo humano, no por la emoción: reconoce que se atrevió a contarlo y cuánto pesa lo que vive, con detalles y palabras suyas.
-   - Refleja lo que hay debajo de lo que cuenta (miedo a fallar a los suyos, cansancio de aguantar, necesidad de ser vista, de estabilidad, de respeto...), siempre como una intuición humilde ("me da la impresión de que", "quizá", "tal vez"), nunca como una afirmación.
+   - Refleja con sus propias palabras lo que contó. No agregues motivos, miedos ni necesidades que ella no haya escrito. Si nombras algo de fondo, que sea solo algo que ella misma dijo, y siempre como posibilidad ("quizá", "tal vez").
    - Valida y normaliza: lo que siente tiene sentido dado lo que carga, a cualquiera le pesaría, y sentirlo no es debilidad ni fracaso.
    - Nombra una fortaleza o un valor que SÍ se ve en lo que escribió, con hechos reales (que siguió buscando salidas, que se preocupa por los suyos, que se detuvo a escucharse, que pidió ayuda). Debe ser verdad y específico, nunca un elogio vacío.
    - Ofrécele una mirada que le dé aire: que el dolor es señal de lo que le importa, que esto es un momento y no toda su vida, que su valor no está en juego aunque hoy lo parezca, que puede tratarse con la ternura con la que trataría a alguien que quiere. Elige lo que encaje; no los uses todos.
@@ -107,11 +107,22 @@
        const editado = await llamar(promptEditor(texto, senal), "low", 0.4)
        if (editado.length > 150) texto = editado
      } catch {}
-     texto = texto.replace(/ti mism[oa]/gi, "ti").replace(/ser vist[oa] y escuchad[oa]/gi, "que te vean y te escuchen").replace(/ser vist[oa] y respetad[oa]/gi, "que te vean y te respeten").replace(/ser vist[oa]/gi, "que te vean").replace(/ser reconocid[oa]/gi, "que te reconozcan").replace(/ser escuchad[oa]/gi, "que te escuchen").replace(/ser valorad[oa]/gi, "que te valoren").replace(/ser comprendid[oa]/gi, "que te comprendan").replace(/ser respetad[oa]/gi, "que te respeten")
+     const entrada = (journal + " " + Object.values(respuestas).join(" ")).toLowerCase()
+const frasesFuertes = ["sin salida", "seguir así", "seguir viviendo", "quitarte la vida", "hacerte daño", "no vale la pena", "rendirte", "peligro"]
+const inventaFrase = (t: string) => !senal && frasesFuertes.some((f) => t.toLowerCase().includes(f) && !entrada.includes(f))
+if (inventaFrase(texto)) {
+  texto = await llamar(prompt + "\n\nIMPORTANTE: no uses frases sobre no ver salida, no querer seguir, rendirse, peligro o hacerse daño. Quédate solo con lo que la persona escribió.", "medium", 0.5)
+  if (!texto || inventaFrase(texto)) {
+    texto = "Gracias por detenerte a registrar cómo te sientes hoy. Ponerle nombre a lo que sientes ya es una forma de cuidarte, y lo que sentiste hoy cuenta aunque no hayas podido explicarlo con muchas palabras.\n\nSi te nace, quizá esta noche puedas darte un momento tranquilo o escuchar uno de los audios que aparecen arriba. Tu registro de hoy queda guardado, y esta app está para acompañarte cuando quieras volver."
+  }
+}
+     texto = texto.replace(/ti mism[oa]/gi, "ti").replace(/contigo mism[oa]/gi, "contigo")
 
-     if (pesada || senal) {
-       return texto + "\n\nSi quieres hablar con alguien ahora: en Colombia puedes llamar a la línea 106 (gratuita, las 24 horas). Si estás en otro país, encuentra una línea de ayuda en findahelpline.com o llama a la línea de emergencias de tu lugar. Si estás en peligro ahora mismo, llama al 123 en Colombia o a emergencias donde estés."
-     }
-     return texto
-   }
-   
+     if (senal) {
+    return "Gracias por detenerte a escribir cómo estás hoy. Poner en palabras lo que sientes cuando pesa tanto no es fácil, y lo hiciste. Eso habla de una parte de ti que sigue buscando compañía, y vale mucho.\n\nLo que sientes hoy es real y merece cuidado, pero no es lo único que eres ni lo que será siempre. Los momentos más oscuros suelen cambiar, aunque desde adentro cueste creerlo. Tu vida importa.\n\nSi puedes, escríbele o llama hoy a alguien de confianza y dile algo sencillo, como que hoy lo estás pasando muy mal y necesitas compañía. No hace falta explicarlo todo. Pedir una mano es un acto de valentía.\n\nMientras tanto, uno de los audios que aparecen arriba puede acompañarte un rato. Tu registro queda guardado, y este espacio seguirá aquí cuando quieras volver. Mereces cuidado, hoy y mañana.\n\nSi quieres hablar con alguien ahora: en Colombia puedes llamar a la línea 106 (gratuita, las 24 horas). Si estás en otro país, encuentra una línea de ayuda en findahelpline.com o llama a la línea de emergencias de tu lugar. Si estás en peligro ahora mismo, llama al 123 en Colombia o a emergencias donde estés."
+}
+if (pesada) {
+          return texto + "\n\nSi en algún momento quieres conversar con alguien, en Colombia puedes llamar a la línea 106 (gratuita, las 24 horas). Fuera de Colombia, puedes buscar una línea de apoyo en findahelpline.com."
+  }
+  return texto
+}
