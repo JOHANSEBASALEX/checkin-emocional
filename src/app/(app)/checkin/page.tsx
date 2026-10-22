@@ -241,7 +241,7 @@ export default function CheckinPage() {
                         } as Record<string, string>)[categoria] ?? "Hoy te detuviste a escucharte. Eso ya es sanar."}
                       </p>
                     </div>
-                    <div className="rounded-2xl p-5 mb-4 text-center" style={{ background: "linear-gradient(135deg,#FAF8F5,#F5EDE4)", border: "1px solid #D4A898" }}>
+                    {intensidad >= 9 && (<p className="text-sm text-center mb-4" style={{ color: "#9A7080", lineHeight: "1.6" }}>Si en algún momento quieres conversar con alguien, en Colombia puedes llamar a la línea 106 (gratuita, las 24 horas). Fuera de Colombia, puedes buscar una línea de apoyo en findahelpline.com.</p>)}<div className={"rounded-2xl p-5 mb-4 text-center" + (intensidad >= 9 ? " hidden" : "")} style={{ background: "linear-gradient(135deg,#FAF8F5,#F5EDE4)", border: "1px solid #D4A898" }}>
                       <p className="text-sm font-medium mb-1" style={{ color: "#3D3030", fontFamily: "'Playfair Display', serif" }}>
                         ¿Quieres ir más profundo?
                       </p>
@@ -249,7 +249,7 @@ export default function CheckinPage() {
                         Con el Plan Pro recibes una reflexión profunda creada a partir de lo que escribiste hoy — no una respuesta genérica, sino una guía pensada solo para ti y lo que estás viviendo en este momento.
                       </p>
                     </div>
-                    <div className="rounded-2xl p-6 border-2 border-dashed text-center"
+                    <div className={"rounded-2xl p-6 border-2 border-dashed text-center" + (intensidad >= 9 ? " hidden" : "")}
                       style={{ borderColor: "#D4A898", background: "#FAF8F5" }}>
                       <Sparkles className="w-8 h-8 mx-auto mb-3" style={{ color: "#C9A84C" }} />
                       <p className="font-semibold mb-1" style={{ color: "#3D3030" }}>Reflexión profunda · Plan Pro</p>

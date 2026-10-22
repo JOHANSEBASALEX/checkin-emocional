@@ -126,3 +126,9 @@ if (pesada) {
   }
   return texto
 }
+
+export function mensajeSenal(respuestas: Record<string, string>, journal: string): string | null {
+  const detectada = /sin salida|no quiero seguir|quitarme la vida|hacerme da[ñn]o|suicid|morirme|no vale la pena vivir|acabar con todo|desaparecer/i.test(journal + " " + Object.values(respuestas).join(" "))
+  if (!detectada) return null
+  return "Gracias por detenerte a escribir cómo estás hoy. Poner en palabras lo que sientes cuando pesa tanto no es fácil, y lo hiciste. Eso habla de una parte de ti que sigue buscando compañía, y vale mucho.\n\nLo que sientes hoy es real y merece cuidado, pero no es lo único que eres ni lo que será siempre. Los momentos más oscuros suelen cambiar, aunque desde adentro cueste creerlo. Tu vida importa.\n\nSi puedes, escríbele o llama hoy a alguien de confianza y dile algo sencillo, como que hoy lo estás pasando muy mal y necesitas compañía. No hace falta explicarlo todo. Pedir una mano es un acto de valentía.\n\nMientras tanto, uno de los audios que aparecen arriba puede acompañarte un rato. Tu registro queda guardado, y este espacio seguirá aquí cuando quieras volver. Mereces cuidado, hoy y mañana.\n\nSi quieres hablar con alguien ahora: en Colombia puedes llamar a la línea 106 (gratuita, las 24 horas). Si estás en otro país, encuentra una línea de ayuda en findahelpline.com o llama a la línea de emergencias de tu lugar. Si estás en peligro ahora mismo, llama al 123 en Colombia o a emergencias donde estés."
+}
