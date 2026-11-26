@@ -124,7 +124,7 @@ export default async function DashboardPage() {
      const limite7 = Date.now() - 7 * 86400000
      const visiblesTodos = (checkins ?? []).filter(c => isPro || new Date(c.created_at).getTime() >= limite7)
      const ocultos = (checkins ?? []).length - visiblesTodos.length
-     const visibles = visiblesTodos.slice(0, 30)
+     const visibles = visiblesTodos.slice(0, isPro ? 300 : 30)
      const grupos: { dia: string; items: typeof visibles }[] = []
      for (const c of visibles) {
        const d = diaLocal(c.created_at)
